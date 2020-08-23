@@ -6,4 +6,11 @@ def fib(f: (Int, Int) => Int)(a: Int): Int = {
 }
 
 def fib2(f: (Int, Int) => Int)(a: Int): Int = a match {
-    c
+    case 0|1 => a
+    case _ => f(fib2(f)( a - 1), fib2(f)(a - 2));
+}
+
+
+for (i <- 0 until 10) println(fib(sum)(i))
+(0 to 10) map  (fib2((x,y) => x + y)(_)) foreach println
+
