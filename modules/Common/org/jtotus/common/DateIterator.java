@@ -18,4 +18,16 @@ package org.jtotus.common;
 
 import java.util.Date;
 import java.util.Iterator;
-impo
+import org.joda.time.DateTime;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class DateIterator implements Iterator<Date>, Iterable<Date> {
+
+    private int step = 1;
+    private DateTime toDate;
+    private DateTime fromDate;
+    private DateTime current;
+    private
