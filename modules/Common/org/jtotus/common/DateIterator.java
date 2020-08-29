@@ -30,4 +30,12 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
     private DateTime toDate;
     private DateTime fromDate;
     private DateTime current;
-    private
+    private boolean debug = false;
+    private boolean first = true;
+
+    // Starts with past date(fromDate) and going towards ending date
+    public DateIterator(Date tmpStart, Date tmpEnd) {
+        fromDate = new DateTime(tmpEnd);
+        toDate = new DateTime(tmpStart);
+
+       
