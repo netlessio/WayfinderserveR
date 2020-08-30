@@ -38,4 +38,7 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
         fromDate = new DateTime(tmpEnd);
         toDate = new DateTime(tmpStart);
 
-       
+        if (toDate.compareTo(fromDate) < 0) {
+            System.err.printf("Warning startin date is afte ending date! Reversing dates("
+                    + fromDate.toDate() + ":" + toDate.toDate() + "\n");
+            DateTime tmp = fromDate.toDateTime(
