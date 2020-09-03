@@ -48,4 +48,10 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
                     + fromDate.toDate() + ":" + toDate.toDate() + "\n");
         }
 
-//        D
+//        DateTimeFormatter formater = DateTimeFormat.forPattern("dd-MM-yyyy");
+//        System.err.printf("Assigned start2:%s, toDate:%s\n", formater.print(fromDate), formater.print(toDate));
+
+        current = fromDate.toDateTime();
+    }
+
+    // Starts with past date(fromDate) and going towar
