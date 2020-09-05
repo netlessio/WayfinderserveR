@@ -54,4 +54,10 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
         current = fromDate.toDateTime();
     }
 
-    // Starts with past date(fromDate) and going towar
+    // Starts with past date(fromDate) and going towards ending date
+    public DateIterator(DateTime startDate, DateTime endDate) {
+        fromDate = startDate.toDateTime();
+        toDate = endDate.toDateTime();
+
+        if (!toDate.isAfter(fromDate)) {
+            System.err.printf("Warning
