@@ -73,4 +73,13 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
         current = fromDate.toDateTime();
     }
 
-    public voi
+    public void setStep(int stepSize) {
+        step = stepSize;
+    }
+
+    public boolean hasNext() {
+        DateTime rangeCheck = current.toDateTime().plusDays(step);
+
+        //Skip weekends
+//        while (DayisHoliday.isHoliday(rangeCheck)) {
+//           
