@@ -64,4 +64,13 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
                     + fromDate.toDate() + ":" + toDate.toDate() + "\n");
             DateTime tmp = fromDate.toDateTime();
             fromDate = toDate;
-     
+            toDate = tmp;
+
+            System.err.printf("New time startin date is afte ending date! Reversing dates("
+                    + fromDate.toDate() + ":" + toDate.toDate() + "\n");
+        }
+
+        current = fromDate.toDateTime();
+    }
+
+    public voi
