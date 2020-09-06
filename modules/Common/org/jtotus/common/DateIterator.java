@@ -101,4 +101,16 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
 //        }
 //
 //        if (debug) {
-//            System.out.printf("nextInCalendar:%s \n", cur
+//            System.out.printf("nextInCalendar:%s \n", current.toString());
+//        }
+
+        return current.toDateTime();
+    }
+
+    public Date next() {
+        return nextInCalendar().toDate();
+    }
+
+    public void remove() {
+        throw new UnsupportedOperationException("Cannot remove");
+ 
