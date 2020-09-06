@@ -82,4 +82,12 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
 
         //Skip weekends
 //        while (DayisHoliday.isHoliday(rangeCheck)) {
-//           
+//            rangeCheck = rangeCheck.plusDays(1);
+//        }
+        
+        return rangeCheck.isBefore(toDate) || rangeCheck.isEqual(toDate);
+    }
+
+    public DateTime nextInCalendar() {
+        if (!first) {
+            current = current.plusDays(s
