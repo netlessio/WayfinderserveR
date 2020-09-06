@@ -90,4 +90,15 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
 
     public DateTime nextInCalendar() {
         if (!first) {
-            current = current.plusDays(s
+            current = current.plusDays(step);    
+        }
+
+        first = false;
+        
+        //Skip weekends
+//        while (DayisHoliday.isHoliday(current)) {
+//            current = current.plusDays(1);
+//        }
+//
+//        if (debug) {
+//            System.out.printf("nextInCalendar:%s \n", cur
