@@ -125,4 +125,14 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
     }
     
     public DateTime getCurrentAsCalendar() {
-        return current.t
+        return current.toDateTime();
+    }
+
+    public void move(int i) {
+        for (int jump = 0; this.hasNext() && jump <= i; jump++) {
+            this.next();
+        }
+    }
+
+    public Iterator<Date> iterator() {
+       
