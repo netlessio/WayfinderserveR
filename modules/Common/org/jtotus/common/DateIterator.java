@@ -113,4 +113,16 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
 
     public void remove() {
         throw new UnsupportedOperationException("Cannot remove");
- 
+    }
+
+    public void reset() {
+        current = fromDate.toDateTime();
+        first = true;
+    }
+
+    public Date getCurrent() {
+        return current.toDate();
+    }
+    
+    public DateTime getCurrentAsCalendar() {
+        return current.t
