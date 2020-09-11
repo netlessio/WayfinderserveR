@@ -135,4 +135,7 @@ public class DateIterator implements Iterator<Date>, Iterable<Date> {
     }
 
     public Iterator<Date> iterator() {
-       
+        current = fromDate.toDateTime();
+        return this;
+    }
+}
