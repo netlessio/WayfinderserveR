@@ -18,4 +18,13 @@
 package org.jtotus.common;
 
 import java.util.Calendar;
-import org.joda
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeConstants;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class DayisHoliday {
+    private static final int[]days= {1012010, 6012010, 2042010, 5042010,
+                                     13052010, 6122010, 25062010, 
