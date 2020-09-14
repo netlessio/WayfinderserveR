@@ -39,4 +39,9 @@ public class DayisHoliday {
             return false;
         }
 
-        if (date.get(Cal
+        if (date.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY ||
+                date.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+            return true;
+        }
+
+        int toSearch =  date.get(Calendar.DATE)*1000000+(date.get(Calendar.MONTH)+1)*10000
