@@ -58,4 +58,10 @@ public class DayisHoliday {
 
         if (date == null ||
             date.getDayOfWeek() == DateTimeConstants.SATURDAY ||
-            date
+            date.getDayOfWeek() == DateTimeConstants.SUNDAY) {
+            return true;
+        }
+
+        
+        //int toSearch =  date.get(Calendar.DATE)*1000000+(date.get(Calendar.MONTH)+1)*10000+date.get(Calendar.YEAR);
+        int toSearch =  date.getDayO
