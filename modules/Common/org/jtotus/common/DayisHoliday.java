@@ -47,4 +47,15 @@ public class DayisHoliday {
         int toSearch =  date.get(Calendar.DATE)*1000000+(date.get(Calendar.MONTH)+1)*10000+date.get(Calendar.YEAR);
         //System.out.printf("To search:%d == %d:%d:%d\n", toSearch, date.get(Calendar.DATE), date.get(Calendar.MONTH)+1, date.get(Calendar.YEAR));
         for (int i = 0;i < days.length;i++) {
-            if (days[i] 
+            if (days[i] == toSearch) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isHoliday(DateTime date) {
+
+        if (date == null ||
+            date.getDayOfWeek() == DateTimeConstants.SATURDAY ||
+            date
