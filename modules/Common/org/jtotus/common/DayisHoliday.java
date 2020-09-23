@@ -64,4 +64,8 @@ public class DayisHoliday {
 
         
         //int toSearch =  date.get(Calendar.DATE)*1000000+(date.get(Calendar.MONTH)+1)*10000+date.get(Calendar.YEAR);
-        int toSearch =  date.getDayO
+        int toSearch =  date.getDayOfMonth()*1000000+date.getMonthOfYear()*10000+date.getYear();
+        //System.out.printf("To search:%d == %d:%d:%d\n", toSearch, date.get(Calendar.DATE), date.get(Calendar.MONTH)+1, date.get(Calendar.YEAR));
+        for (int day : days) {
+            if (day == toSearch) {
+       
