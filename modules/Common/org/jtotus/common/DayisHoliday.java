@@ -68,4 +68,9 @@ public class DayisHoliday {
         //System.out.printf("To search:%d == %d:%d:%d\n", toSearch, date.get(Calendar.DATE), date.get(Calendar.MONTH)+1, date.get(Calendar.YEAR));
         for (int day : days) {
             if (day == toSearch) {
-       
+                return true;
+            }
+        }
+        return false;
+    }
+}
