@@ -138,3 +138,10 @@ public class Helper {
         }
 
         newArray = new double[oldArray.length+1];
+        System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+        newArray[newArray.length-1] = newValue;
+        return newArray;
+    }
+
+    
+}
