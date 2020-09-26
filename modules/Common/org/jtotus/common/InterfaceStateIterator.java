@@ -17,4 +17,17 @@
 
 package org.jtotus.common;
 
-import java.ut
+import java.util.Iterator;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public interface InterfaceStateIterator extends Iterator , Iterable{
+
+
+    
+
+
+
+}
