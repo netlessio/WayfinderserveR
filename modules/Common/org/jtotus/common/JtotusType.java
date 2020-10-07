@@ -16,4 +16,19 @@ public class JtotusType {
     private BigDecimal bigDecimalValue = null; // Prefer over float !!!!
 
     private char charType = 0;
-    private f
+    private float floatValue = 0.0f;
+    private int intValue = 0;
+    private long longValue = 0;
+
+
+
+    
+
+
+
+
+    
+
+
+
+}
