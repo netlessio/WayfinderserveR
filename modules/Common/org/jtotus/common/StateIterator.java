@@ -134,3 +134,68 @@ public class StateIterator {
 
             return;
         }
+
+        if (dateRange != null) {
+            dateRange.next();
+        }
+
+        return;
+    }
+
+    public int hasNext() {
+
+        //go to upper parameters
+        int last_index = numberParameter.size() - 1;
+        for (; last_index >= 0; last_index--) {
+            NumberRangeIter<Double> iter = numberParameter.get(last_index);
+            if (!iter.hasNext()) {
+                if (last_index == 0) {
+                    if (needs_reset) {
+                        return this.END_STATE;
+                    }
+                    needs_reset = true;
+                    break;
+                }
+            } else {
+                break;
+            }
+
+            if (dateRange != null && !dateRange.hasNext()) {
+                return this.DATES_CONSUMED;
+            }
+
+        }
+
+        return this.COUNTINUE_STATE;
+
+    }
+
+    //TODO:to templete
+    public int nextInt(String paramName) {
+        return this.nextDouble(paramName).intValue();
+    }
+
+    public Integer nextInteger(String paramName) {
+        Double retDouble = this.nextDouble(paramName);
+        Integer nextInt = Integer.valueOf(retDouble.intValue());
+        return nextInt;
+    }
+
+    public Double nextDouble(String paramName) {
+        Iterator<NumberRangeIter<Double>> numIter = numberParameter.listIterator();
+        while (numIter.hasNext()) {
+            NumberRangeIter<Double> val = numIter.next();
+            //System.out.printf("Parameters in array:%s\n", val.getName());
+            if (paramName.compareTo(val.getName()) == 0) {
+                return val.getCurrent();
+            }
+        }
+
+        System.err.printf("Parameter not found:%s\n", paramName);
+        return new Double("0");
+    }
+
+    public Date nextDate() {
+        return dateRange.getCurrent();
+    }
+}
