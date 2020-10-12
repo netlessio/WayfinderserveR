@@ -88,3 +88,34 @@ public class DataFetcher {
     }
 
     public double fetchClosePrice(String name, String date) {
+        DateTime tdate = dateFormatter.parseDateTime(date);
+
+        return fetcher.fetchData(name, tdate, 0);
+    }
+    
+    public Map<String, Double> fetchPeriodVolume(String name, String fromDate, String toDate) {
+        DateTime todate = dateFormatter.parseDateTime(toDate);
+        DateTime fromdate = dateFormatter.parseDateTime(fromDate);
+
+        return fetcher.fetchDataPeriod(name, fromdate, todate, 1);
+    }
+
+    public double fetchVolume(String name, String date) {
+        DateTime tdate = dateFormatter.parseDateTime(date);
+
+        return fetcher.fetchData(name, tdate, 1);
+    }
+    
+    public Map<String, Double> fetchPeriodData(String name, String fromDate, String toDate, String type) {
+        DateTime todate = dateFormatter.parseDateTime(toDate);
+        DateTime fromdate = dateFormatter.parseDateTime(fromDate);
+        
+        return fetcher.fetchDataPeriod(name, fromdate, todate, typeMap.get(type));
+    }
+
+    public double fetchData(String name, String date, String type) {
+        DateTime tdate = dateFormatter.parseDateTime(date);
+
+        return fetcher.fetchData(name, tdate, typeMap.get(type));
+    }
+}
