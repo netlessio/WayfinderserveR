@@ -23,3 +23,10 @@ import org.joda.time.LocalDate;
  *
  * @author Evgeni Kappinen
  */
+public class StockUnit {
+    public LocalDate date = null;
+    public Double value = null;
+
+    //Annotation for XYPlot
+    public String annotation = null;
+}
