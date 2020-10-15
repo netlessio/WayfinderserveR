@@ -12,4 +12,11 @@ public class SourceCache {
 
     private static final long serialVersionUID = 1L;
     private static SourceCache instance;
-    private static HttpCache<S
+    private static HttpCache<String, HttpCache<String, Object>> cache;
+
+    public class HttpCache<K, V> extends LinkedHashMap<K, V> {
+        private int maxSize = 50;
+
+        public HttpCache(int maxSize) {
+            super(maxSize + 1, 1, true);
+            this.maxS
