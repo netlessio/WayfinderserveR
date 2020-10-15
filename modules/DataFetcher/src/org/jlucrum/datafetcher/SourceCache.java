@@ -19,4 +19,14 @@ public class SourceCache {
 
         public HttpCache(int maxSize) {
             super(maxSize + 1, 1, true);
-            this.maxS
+            this.maxSize = maxSize;
+        }
+
+        @Override
+        protected boolean removeEldestEntry(Entry<K, V> entry) {
+            return size() > this.maxSize;
+        }
+    }
+
+    protected void initCache(int maxSize) {
+        cache = new HttpCache<String,HttpCache<String,Obj
