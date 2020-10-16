@@ -29,4 +29,14 @@ public class SourceCache {
     }
 
     protected void initCache(int maxSize) {
-        cache = new HttpCache<String,HttpCache<String,Obj
+        cache = new HttpCache<String,HttpCache<String,Object>>(maxSize);
+    }
+
+    public synchronized static SourceCache getInstance(int maxSize) {
+
+        if (instance == null) {
+            instance = new SourceCache();
+            instance.initCache(maxSize);
+        }
+        return instance;
+    
