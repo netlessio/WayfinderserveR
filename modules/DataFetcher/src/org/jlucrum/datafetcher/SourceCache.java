@@ -39,4 +39,12 @@ public class SourceCache {
             instance.initCache(maxSize);
         }
         return instance;
+    }
+
     
+    public synchronized Object getData(String stockName, String startDate, String endDate) {
+        HttpCache<String, Object> records = cache.get(stockName);
+        if (records == null) {
+            return null;
+        }
+        return records.get(startD
