@@ -47,4 +47,11 @@ public class SourceCache {
         if (records == null) {
             return null;
         }
-        return records.get(startD
+        return records.get(startDate + ":" + endDate);
+    }
+    
+    
+    public synchronized void putData(String stockName, String startDate, String endDate, Object record) {
+        HttpCache<String, Object> records = cache.get(stockName);
+        if (records == null) {
+            records = new H
