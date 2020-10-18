@@ -9,4 +9,20 @@ import java.util.Map;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.jun
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author home
+ */
+public class DataFetcherTest {
+    
+    public DataFetcherTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownC
