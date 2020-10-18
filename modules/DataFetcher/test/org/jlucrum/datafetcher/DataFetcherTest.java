@@ -25,4 +25,14 @@ public class DataFetcherTest {
     }
 
     @AfterClass
-    public static void tearDownC
+    public static void tearDownClass() throws Exception {
+    }
+
+
+    @Test
+    public void testDataSource() {
+        DataFetcher instance = new DataFetcher();
+        
+        
+        instance.setSource("NasdaqOmxNordic");
+        Map <String,Double>result = instance.fetchPeriodData("Met
