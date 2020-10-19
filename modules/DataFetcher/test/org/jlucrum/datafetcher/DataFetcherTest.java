@@ -35,4 +35,10 @@ public class DataFetcherTest {
         
         
         instance.setSource("NasdaqOmxNordic");
-        Map <String,Double>result = instance.fetchPeriodData("Met
+        Map <String,Double>result = instance.fetchPeriodData("Metso Oyj", "2011-09-13", "2011-09-15", "close");
+        
+        for (Entry<String, Double> entry : result.entrySet()) {
+            System.out.printf("%s - %f\n", entry.getKey(), entry.getValue());
+        }
+        
+        assertEquals(result.get("2011-09-15"), Double.v
