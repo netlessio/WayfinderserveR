@@ -41,4 +41,9 @@ public class DataFetcherTest {
             System.out.printf("%s - %f\n", entry.getKey(), entry.getValue());
         }
         
-        assertEquals(result.get("2011-09-15"), Double.v
+        assertEquals(result.get("2011-09-15"), Double.valueOf("25.230000"));
+        assertEquals(result.get("2011-09-14"), Double.valueOf("23.880000"));
+        assertEquals(result.get("2011-09-13"), Double.valueOf("23.370000"));
+        
+        
+        result = instance.fetchPeriodData("Metso Oyj", 
