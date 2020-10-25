@@ -62,4 +62,9 @@ public class DataFetcherTest {
             System.out.printf("trades: %s - %f\n", entry.getKey(), entry.getValue());
         }
         
-        assertEquals(resu
+        assertEquals(result.get("2011-09-15"), Double.valueOf("5704"));
+        assertEquals(result.get("2011-09-14"), Double.valueOf("4795"));
+        assertEquals(result.get("2011-09-13"), Double.valueOf("4901"));
+        
+    }
+}
