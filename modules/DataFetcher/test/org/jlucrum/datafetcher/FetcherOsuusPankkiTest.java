@@ -29,4 +29,13 @@ public class FetcherOsuusPankkiTest {
     }
 
     @AfterClass
-    public static void tearDownClass() t
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Test
+    public void testFetchData() {
+        System.out.println("fetchData");
+        String stockName = "KONE Oyj";
+        int type = 0;
+        
+        FetcherOsuusPankki instance = new Fetcher
