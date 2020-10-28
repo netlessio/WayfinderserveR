@@ -19,4 +19,14 @@ import static org.junit.Assert.*;
  */
 public class FetcherOsuusPankkiTest {
     private String patternString = "yyyy-MM-dd";
-    private DateTimeFormatter formatter 
+    private DateTimeFormatter formatter = DateTimeFormat.forPattern(patternString);
+    
+    public FetcherOsuusPankkiTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() t
