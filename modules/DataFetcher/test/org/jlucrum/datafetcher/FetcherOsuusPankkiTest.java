@@ -38,4 +38,12 @@ public class FetcherOsuusPankkiTest {
         String stockName = "KONE Oyj";
         int type = 0;
         
-        FetcherOsuusPankki instance = new Fetcher
+        FetcherOsuusPankki instance = new FetcherOsuusPankki();
+        
+        DateTime date = formatter.parseDateTime("2011-05-02");
+        Double expResult = Double.valueOf("42.450000");
+        Double result = instance.fetchData(stockName, date, type);
+        assertEquals(expResult, result);
+        
+        
+        date = fo
