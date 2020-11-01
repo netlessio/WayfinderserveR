@@ -54,4 +54,10 @@ public class FetcherOsuusPankkiTest {
 
     @Test
     public void testFetchDataPeriod() {
-  
+        System.out.println("fetchDataPeriod");
+        String name = "KONE Oyj";
+
+        DateTime fromDate = formatter.parseDateTime("2011-05-01");
+        DateTime toDate = formatter.parseDateTime("2011-05-05");;
+        int type = 0;
+   
