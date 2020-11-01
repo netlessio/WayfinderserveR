@@ -46,4 +46,12 @@ public class FetcherOsuusPankkiTest {
         assertEquals(expResult, result);
         
         
-        date = fo
+        date = formatter.parseDateTime("2011-05-03");
+        expResult = Double.valueOf("41.770000");
+        result = instance.fetchData(stockName, date, type);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testFetchDataPeriod() {
+  
