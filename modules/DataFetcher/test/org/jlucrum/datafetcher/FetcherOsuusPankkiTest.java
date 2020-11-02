@@ -60,4 +60,10 @@ public class FetcherOsuusPankkiTest {
         DateTime fromDate = formatter.parseDateTime("2011-05-01");
         DateTime toDate = formatter.parseDateTime("2011-05-05");;
         int type = 0;
-   
+        FetcherOsuusPankki instance = new FetcherOsuusPankki();
+        
+        
+        Map<String,Double> result = instance.fetchDataPeriod(name, fromDate, toDate, type);
+        
+        assertEquals(result.get("2011-05-05"), Double.valueOf("41.120000"));
+     
