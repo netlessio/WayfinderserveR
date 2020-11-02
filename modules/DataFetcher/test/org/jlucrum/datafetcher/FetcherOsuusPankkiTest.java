@@ -66,4 +66,9 @@ public class FetcherOsuusPankkiTest {
         Map<String,Double> result = instance.fetchDataPeriod(name, fromDate, toDate, type);
         
         assertEquals(result.get("2011-05-05"), Double.valueOf("41.120000"));
-     
+        assertEquals(result.get("2011-05-04"), Double.valueOf("41.640000"));
+        assertEquals(result.get("2011-05-03"), Double.valueOf("41.770000"));
+        assertEquals(result.get("2011-05-02"), Double.valueOf("42.450000"));
+    }
+
+}
