@@ -11,4 +11,15 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
-    You 
+    You should have received a copy of the GNU General Public License
+    along with jTotus.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ *
+ * http://blogs.sun.com/geertjan/entry/netbeans_groovy_editor_in_a
+ *
+ */
+
+package jtotus.rulebase
+
+import org.jtotus.common
