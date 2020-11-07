@@ -73,4 +73,15 @@ method = new org.jtotus.methods.SimpleMovingAvg()
 method.run()
 
 StockType stock = new StockType("Fortum Oyj")
-PeriodClosingPrice period =
+PeriodClosingPrice period = new PeriodClosingPrice(stock);
+
+Float max =  period.getMaxValue()
+Float min = period.getMinValue();
+println stock.getHexName() +  " Max:" + max + " Min:" + min + "\n";
+
+
+
+
+//Thread potential = new Thread(new PotentialWithIn());
+//potential.start();
+
