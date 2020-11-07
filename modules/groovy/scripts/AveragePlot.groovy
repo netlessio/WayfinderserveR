@@ -29,4 +29,23 @@ import org.jtotus.common.Helper;
 import org.jtotus.engine.Engine;
 import org.jtotus.gui.graph.GraphPacket;
 import org.jtotus.methods.PeriodClosingPrice;
-import org.jt
+import org.jtotus.methods.PotentialWithIn;
+
+//Example 1
+class Callee {
+  void hello() {
+     println "hello, world"
+  }
+}
+
+c = new Callee()
+c.hello()
+
+
+//Example 2
+def name='Example 2'
+println "Hello $name!"
+
+
+//Example 3
+//Class.forName(
