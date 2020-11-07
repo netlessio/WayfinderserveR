@@ -52,4 +52,25 @@ println "Hello $name!"
 //Class.forName("jtotus.threads.Dispatcher").newInstance()
 //Class.forName("jtotus.engine.SimpleMovingAvg").newInstance()
 //Class.forName("jtotus.engine.SimpleMovingAvg").newInstance()
-//Class.forName("jtotus.databa
+//Class.forName("jtotus.database.DataFetcher").newInstance()
+
+//Example 4
+
+Helper help = Helper.getInstance()
+System.out.println(help)
+
+
+
+
+
+
+
+
+
+//Example 5
+
+method = new org.jtotus.methods.SimpleMovingAvg()
+method.run()
+
+StockType stock = new StockType("Fortum Oyj")
+PeriodClosingPrice period =
