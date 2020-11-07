@@ -48,4 +48,8 @@ println "Hello $name!"
 
 
 //Example 3
-//Class.forName(
+//Class.forName("jtotus.common.StockName").newInstance()
+//Class.forName("jtotus.threads.Dispatcher").newInstance()
+//Class.forName("jtotus.engine.SimpleMovingAvg").newInstance()
+//Class.forName("jtotus.engine.SimpleMovingAvg").newInstance()
+//Class.forName("jtotus.databa
