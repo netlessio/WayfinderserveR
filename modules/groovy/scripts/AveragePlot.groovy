@@ -85,3 +85,5 @@ println stock.getHexName() +  " Max:" + max + " Min:" + min + "\n";
 //Thread potential = new Thread(new PotentialWithIn());
 //potential.start();
 
+println "DONE for AveragePlot"
+
