@@ -18,4 +18,14 @@
 
  *
  *
- * http://blogs.sun.com/geer
+ * http://blogs.sun.com/geertjan/entry/netbeans_groovy_editor_in_a
+ *
+ */
+
+package jtotus.rulebase
+
+import org.jtotus.common.StockType
+import org.jtotus.methods.SimpleMovingAvg
+import org.jtotus.common.Helper;
+import org.jtotus.engine.Engine;
+i
