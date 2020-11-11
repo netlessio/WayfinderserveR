@@ -28,4 +28,12 @@ import org.jtotus.common.StockType
 import org.jtotus.methods.SimpleMovingAvg
 import org.jtotus.common.Helper;
 import org.jtotus.engine.Engine;
-i
+import org.jtotus.gui.graph.GraphPacket;
+import org.jtotus.common.MethodResults;
+//
+//
+//results = new MethodResults("StockClosingPrice");
+//
+//def drawClosingPrice (String reviewTarget, int daysToSearch) {
+//
+//stockType = new org.jtotus.common.StockType(re
