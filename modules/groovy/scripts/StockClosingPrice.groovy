@@ -36,4 +36,13 @@ import org.jtotus.common.MethodResults;
 //
 //def drawClosingPrice (String reviewTarget, int daysToSearch) {
 //
-//stockType = new org.jtotus.common.StockType(re
+//stockType = new org.jtotus.common.StockType(reviewTarget)
+//
+//sender = new org.jtotus.gui.graph.GraphSender();
+//packet = new org.jtotus.gui.graph.GraphPacket();
+//packet.seriesTitle = stockType.getStockName()+"_ClosingPrice";
+//
+//
+//
+//for (int i=0; i<daysToSearch;i++) {
+//        sender.sen
