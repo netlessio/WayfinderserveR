@@ -45,4 +45,7 @@ import org.jtotus.common.MethodResults;
 //
 //
 //for (int i=0; i<daysToSearch;i++) {
-//        sender.sen
+//        sender.sentPacket(stockType.getStockName(), stockType.fetchPastDayClosingPricePacket(i))
+//        if (i==daysToSearch-1) {
+//            Double result = stockType.fetchCurrentClosingPrice();
+//            results.putResult(stockType.getStockName(), result.d
