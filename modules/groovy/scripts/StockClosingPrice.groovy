@@ -60,4 +60,11 @@ import org.jtotus.common.MethodResults;
 //Iterator<String> iter = method.iterator();
 //
 //while(iter.hasNext()) {
-//    drawClosingPrice(iter.next(), 100
+//    drawClosingPrice(iter.next(), 100)
+//}
+
+println "DONE for StockClosingPrice"
+
+//results.printToConsole()
+//return results
+return null
