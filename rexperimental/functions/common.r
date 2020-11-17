@@ -33,4 +33,10 @@ jluc.convMapToTs <- function(map) {
 jluc.fetch <- function(name, from=as.Date(Sys.Date()-252), to=Sys.Date(), src="jlucrum", type="close")
 {
   if (!is.null(src) && src == "jlucrum") {
-      tmpData <- fetcher$fetchPeriodData(name, format(fro
+      tmpData <- fetcher$fetchPeriodData(name, format(from), format(to), type)
+      stockValue<-jluc.convMapToTs(tmpData)
+    } else {
+      if (!is.null(src)) {
+        newdata <- getSymbols(name, from=format(from), to=format(to), src=src)  
+      } else {
+        newdata <- getSymbols(name, from=for
