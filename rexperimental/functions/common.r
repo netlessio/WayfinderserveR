@@ -25,4 +25,12 @@ jluc.convMapToTs <- function(map) {
 #    data <- rbind(data,dayData);
 #  }
 #  tsdata <- xts(data[,2], data[,1])
-#  re
+#  return(tsdata)
+}
+
+
+#wrapper for quantmod with jlucrum
+jluc.fetch <- function(name, from=as.Date(Sys.Date()-252), to=Sys.Date(), src="jlucrum", type="close")
+{
+  if (!is.null(src) && src == "jlucrum") {
+      tmpData <- fetcher$fetchPeriodData(name, format(fro
