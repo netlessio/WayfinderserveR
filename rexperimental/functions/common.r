@@ -39,4 +39,18 @@ jluc.fetch <- function(name, from=as.Date(Sys.Date()-252), to=Sys.Date(), src="j
       if (!is.null(src)) {
         newdata <- getSymbols(name, from=format(from), to=format(to), src=src)  
       } else {
-        newdata <- getSymbols(name, from=for
+        newdata <- getSymbols(name, from=format(from), to=format(to))
+      }
+      #stockData <- Cl(get(name))
+      stockValue <- get(newdata)
+    }
+
+  if (length(stockValue) != 0) {
+    colnames(stockValue) <- c(name)
+  }
+
+  return(stockValue)
+}
+
+# Volatility
+# http://en.wikipedia
