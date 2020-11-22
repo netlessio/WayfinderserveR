@@ -53,4 +53,15 @@ jluc.fetch <- function(name, from=as.Date(Sys.Date()-252), to=Sys.Date(), src="j
 }
 
 # Volatility
-# http://en.wikipedia
+# http://en.wikipedia.org/wiki/Volatility_(finance)
+jluc.volatility<-function(data, period=-1, norm=F) {
+  if (period > 0) {
+    len <- period
+  } else {
+    len <- length(data)
+  }
+  
+  if (norm) {
+    volatility <- sd(na.omit(diff(log(data))))*sqrt(1/len)
+  }else {
+    volatility
