@@ -64,4 +64,17 @@ jluc.volatility<-function(data, period=-1, norm=F) {
   if (norm) {
     volatility <- sd(na.omit(diff(log(data))))*sqrt(1/len)
   }else {
-    volatility
+    volatility <- sd(data)*sqrt(1/len)  
+  }
+  
+  return(volatility)
+}
+
+
+# no unit-root -> stationary process
+# contains a unit-root -> non-stationary
+
+jluc.detrend <- function(data, n=5, plot=F, name=NULL) {
+  # shapiro.qqnorm
+  if (n == 0) {
+    final <- na.omit(data
