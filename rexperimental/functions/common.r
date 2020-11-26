@@ -88,4 +88,9 @@ jluc.detrend <- function(data, n=5, plot=F, name=NULL) {
   }
   
   if (plot) {
-    qqn
+    qqnorm(final)
+    qqline(final)
+    normTest<-shapiro.test(as.double(final))
+    wvalue=paste("W",round(normTest$statistic, digits=4), sep="=")
+    pvalue=paste("p",round(normTest$p.value, digits=4), sep="=")
+    shapiroMesg=paste(wvalue, pvalue, s
