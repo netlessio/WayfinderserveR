@@ -77,4 +77,15 @@ jluc.volatility<-function(data, period=-1, norm=F) {
 jluc.detrend <- function(data, n=5, plot=F, name=NULL) {
   # shapiro.qqnorm
   if (n == 0) {
-    final <- na.omit(data
+    final <- na.omit(data)
+  } else if ( n==1 ) {
+    final <- na.omit(diff(data))
+  }else {
+    sma <- SMA(na.omit(data[!is.infinite(data)]), n)
+    merged<-merge(data, sma)
+    names(merged) <- c("data", "sma")
+    final <- na.omit(merged$data-merged$sma)
+  }
+  
+  if (plot) {
+    qqn
