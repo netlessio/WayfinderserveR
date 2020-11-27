@@ -105,4 +105,16 @@ jluc.detrend <- function(data, n=5, plot=F, name=NULL) {
   }
   
   if (!is.null(name)) {
-    names(
+    names(final) <- c(name)
+  }
+
+  return(final)
+}
+
+#Converts to time series and plot
+jluc.plag2 <- function(a,b) {
+  merged<-na.omit(merge(a,b))
+  names(merged) <- c("a", "b")
+  a_series <- as.ts(merged$a)
+  b_series <- as.ts(merged$b)
+  lag.plot2(a_serie
