@@ -93,4 +93,8 @@ jluc.detrend <- function(data, n=5, plot=F, name=NULL) {
     normTest<-shapiro.test(as.double(final))
     wvalue=paste("W",round(normTest$statistic, digits=4), sep="=")
     pvalue=paste("p",round(normTest$p.value, digits=4), sep="=")
-    shapiroMesg=paste(wvalue, pvalue, s
+    shapiroMesg=paste(wvalue, pvalue, sep=" ")
+    
+    stationaryTest<-SuppressWarnings(adf.test(as.double(final)))
+    dvalue=paste("DF",round(stationaryTest$statistic, digits=4), sep="=")
+    p2value=paste("p",round(stationaryTest$p.value, digits=4), sep="=")
