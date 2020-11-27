@@ -98,3 +98,11 @@ jluc.detrend <- function(data, n=5, plot=F, name=NULL) {
     stationaryTest<-SuppressWarnings(adf.test(as.double(final)))
     dvalue=paste("DF",round(stationaryTest$statistic, digits=4), sep="=")
     p2value=paste("p",round(stationaryTest$p.value, digits=4), sep="=")
+    statMesg=paste(dvalue, p2value, sep=" ")
+    
+    legend("topleft", legend=shapiroMesg, text.col ="blue", bg="white", x.intersp=0)
+    legend("bottomright", legend=statMesg, text.col ="blue", bg="white", x.intersp=0)
+  }
+  
+  if (!is.null(name)) {
+    names(
