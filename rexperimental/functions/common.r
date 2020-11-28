@@ -134,4 +134,14 @@ jluc.autoLag <- function(future, past, max.lag=3, plot=F) {
                         Inf),
                  ifelse(length(past) - 1 >= 0,
                         length(past) - 1,
-                        I
+                        Inf),
+                        max.lag)
+  
+  tseries<-as.double(aa$t)
+  rseries<-as.double(aa$r)
+  
+  aa.ccf <- ccf(tseries, rseries, lag.max=max.lag, plot=plot)
+  aa.abs<-abs(aa.ccf$acf[I(max.lag+1):I(2*max.lag+1)])
+  best.lag<-max(0, which.max(aa.abs)-1)
+
+  if (plot)
