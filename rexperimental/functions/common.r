@@ -129,3 +129,9 @@ jluc.autoLag <- function(future, past, max.lag=3, plot=F) {
     par(mfrow=c(2,1)) 
     }
 
+  max.lag <- min(ifelse(length(future) - 1 >= 0,
+                        length(future) - 1,
+                        Inf),
+                 ifelse(length(past) - 1 >= 0,
+                        length(past) - 1,
+                        I
