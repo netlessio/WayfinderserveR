@@ -117,4 +117,15 @@ jluc.plag2 <- function(a,b) {
   names(merged) <- c("a", "b")
   a_series <- as.ts(merged$a)
   b_series <- as.ts(merged$b)
-  lag.plot2(a_serie
+  lag.plot2(a_series, b_series, max.lag=5, smooth=T)
+}
+
+#Attempts to find best lag for time series
+jluc.autoLag <- function(future, past, max.lag=3, plot=F) {
+  aa<-na.omit(merge(future,past))
+  names(aa)<-c("t","r")
+  
+  if (plot) { 
+    par(mfrow=c(2,1)) 
+    }
+
