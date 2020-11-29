@@ -151,4 +151,14 @@ jluc.autoLag <- function(future, past, max.lag=3, plot=F) {
     future<-as.double(result$t)
     series<-as.double(result$r)
     abline(v=(seq(-max.lag,max.lag,1)), col="gray", lty="dotted")
-    c
+    ccf(future, series, lag.max=max.lag)
+    abline(v=(seq(-max.lag,max.lag,1)), col="gray", lty="dotted")
+  }
+
+  na.omit(lag(aa$r, k=best.lag))
+  
+  return(na.omit(lag(aa$r, k=best.lag)))
+}
+
+jluc.autoPickModel <- function(model, target_name="target", debug=F, plot=F) {
+  newmodel<-jlu
