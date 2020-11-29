@@ -144,4 +144,11 @@ jluc.autoLag <- function(future, past, max.lag=3, plot=F) {
   aa.abs<-abs(aa.ccf$acf[I(max.lag+1):I(2*max.lag+1)])
   best.lag<-max(0, which.max(aa.abs)-1)
 
-  if (plot)
+  if (plot) {
+    lagged<-lag(aa$r, k=best.lag)
+    result<-na.omit(merge(future,lagged));
+    names(result) <- c("t","r")
+    future<-as.double(result$t)
+    series<-as.double(result$r)
+    abline(v=(seq(-max.lag,max.lag,1)), col="gray", lty="dotted")
+    c
