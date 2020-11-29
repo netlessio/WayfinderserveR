@@ -161,4 +161,9 @@ jluc.autoLag <- function(future, past, max.lag=3, plot=F) {
 }
 
 jluc.autoPickModel <- function(model, target_name="target", debug=F, plot=F) {
-  newmodel<-jlu
+  newmodel<-jluc.autoModel(model=model,target_name=target_name, debug=debug)
+  if (plot) {
+    variables <- names(model)
+    tnames <- variables[variables != target_name]
+    var_formula<-do.call("paste", c(as.list(tnames), sep = "+"))
+    formula <- paste(target_name, va
