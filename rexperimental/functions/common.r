@@ -166,4 +166,11 @@ jluc.autoPickModel <- function(model, target_name="target", debug=F, plot=F) {
     variables <- names(model)
     tnames <- variables[variables != target_name]
     var_formula<-do.call("paste", c(as.list(tnames), sep = "+"))
-    formula <- paste(target_name, va
+    formula <- paste(target_name, var_formula, sep="~")
+    mod.fitted<-glm(formula=formula, data=model)
+    
+    par(mfrow=c(1,1))
+    plot.ts(as.ts(model$target))
+    lines(fitted(mod.fitted), col="blue")
+    lines(fitted(newmodel), col="red")
+    legend("topleft", leg
