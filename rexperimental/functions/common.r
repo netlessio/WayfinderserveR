@@ -175,4 +175,14 @@ jluc.autoPickModel <- function(model, target_name="target", debug=F, plot=F) {
     lines(fitted(newmodel), col="red")
     legend("topleft", legend=paste(mod.fitted$formula, mod.fitted$aic,sep="="), text.col ="blue", bg="white", x.intersp=0)
     legend("bottomleft", legend=paste(newmodel$formula,newmodel$aic,sep="="), text.col ="red", bg="white", x.intersp=0)
-    lines(rep(0, times=length(model$target)), co
+    lines(rep(0, times=length(model$target)), col="green")  
+  }
+
+  return(newmodel)
+}
+
+jluc.autoModel <- function(model, target_name="target", fitfunc="glm", debug=F, maxsize=200) {
+
+  variables <- names(model)
+  tnames <- variables[variables != target_name]
+  var_formula<-
