@@ -185,4 +185,10 @@ jluc.autoModel <- function(model, target_name="target", fitfunc="glm", debug=F, 
 
   variables <- names(model)
   tnames <- variables[variables != target_name]
-  var_formula<-
+  var_formula<-do.call("paste", c(as.list(tnames), sep = "+"))
+  formula <- paste(target_name, var_formula, sep="~")  
+
+  newformula<-do.call(what="glmulti", args=list(
+                      y=formula,data=model,
+                      method="g", crit="aicc", 
+              
