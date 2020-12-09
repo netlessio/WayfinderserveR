@@ -191,4 +191,10 @@ jluc.autoModel <- function(model, target_name="target", fitfunc="glm", debug=F, 
   newformula<-do.call(what="glmulti", args=list(
                       y=formula,data=model,
                       method="g", crit="aicc", 
-              
+                      plotty=F, report=F,
+                      confsetsize=20, minsize=4, popsize=7,
+                      fitfunction=toString(fitfunc)))
+
+  call.formula<-summary(newformula)$bestmodel
+  
+  bestModel<-do.call(what=toString(fitfunc), args
