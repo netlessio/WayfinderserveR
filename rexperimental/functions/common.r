@@ -197,4 +197,10 @@ jluc.autoModel <- function(model, target_name="target", fitfunc="glm", debug=F, 
 
   call.formula<-summary(newformula)$bestmodel
   
-  bestModel<-do.call(what=toString(fitfunc), args
+  bestModel<-do.call(what=toString(fitfunc), args=list(formula=call.formula, data=model))
+  cat("Best selected model:", call.formula, " aic:", bestModel$aic, "\n");
+  return(bestModel);
+}
+
+#Depricated / replaced by glmulti
+# jluc.autoModel <- function(model, target_name="target", 
