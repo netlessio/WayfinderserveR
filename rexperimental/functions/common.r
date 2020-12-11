@@ -203,4 +203,16 @@ jluc.autoModel <- function(model, target_name="target", fitfunc="glm", debug=F, 
 }
 
 #Depricated / replaced by glmulti
-# jluc.autoModel <- function(model, target_name="target", 
+# jluc.autoModel <- function(model, target_name="target", debug=F) {
+#   bestGOF <- 1000
+#   bestModel <- ""
+#   
+#     if (debug) { 
+#       print(paste(names(model))) 
+#     }
+#     
+#     variables <- names(model)
+#     for(ignore in 1:length(variables)) {
+# 
+#       variables <- names(model)
+#       if (variable
