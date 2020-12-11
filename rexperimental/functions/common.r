@@ -215,4 +215,14 @@ jluc.autoModel <- function(model, target_name="target", fitfunc="glm", debug=F, 
 #     for(ignore in 1:length(variables)) {
 # 
 #       variables <- names(model)
-#       if (variable
+#       if (variables[ignore]!=target_name) {
+#         newmodel <- model[,!(names(model) %in% variables[ignore])]
+#       } else {
+#         newmodel <- model
+#       }
+# 
+#       if (ncol(newmodel) == 1) {
+#         next;
+#       }
+# 
+#       variables <- names(newmo
