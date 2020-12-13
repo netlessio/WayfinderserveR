@@ -225,4 +225,11 @@ jluc.autoModel <- function(model, target_name="target", fitfunc="glm", debug=F, 
 #         next;
 #       }
 # 
-#       variables <- names(newmo
+#       variables <- names(newmodel)
+#       tnames <- variables[variables != target_name]
+#     
+#       var_formula<-do.call("paste", c(as.list(tnames), sep = "+"))
+#       formula <- paste(target_name, var_formula, sep="~")
+#     
+#       if (debug) { print(formula) }
+#   
