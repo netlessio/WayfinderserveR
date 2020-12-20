@@ -239,4 +239,12 @@ jluc.autoModel <- function(model, target_name="target", fitfunc="glm", debug=F, 
 #       if (mod.fitted$aic < bestGOF) {
 #         if (debug) { print(paste("Best aic", mod.fitted$aic)) }
 #         bestGOF <- mod.fitted$aic
-#         bestModel <- mod.fit
+#         bestModel <- mod.fitted
+#         }
+#     }
+#   
+#   #FIXME:Assumes that best model is found
+#   if (ncol(model) != ncol(bestModel$data)) {
+#     recModel <- Recall(bestModel$data, target_name, debug)
+#     if (recModel$aic < bestModel$aic) {
+#       bestModel 
