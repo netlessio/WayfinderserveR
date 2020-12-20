@@ -247,4 +247,18 @@ jluc.autoModel <- function(model, target_name="target", fitfunc="glm", debug=F, 
 #   if (ncol(model) != ncol(bestModel$data)) {
 #     recModel <- Recall(bestModel$data, target_name, debug)
 #     if (recModel$aic < bestModel$aic) {
-#       bestModel 
+#       bestModel <- recModel
+#     }
+#   }
+#   
+#    return(bestModel);
+# }
+
+
+jluc.modelComparePlot <- function(model, formula, newformula) {
+
+  mod.fitted<-glm(formula=formula, data=model)
+  newmodel<-glm(formula=newformula, data=model)
+
+  par(mfrow=c(1,1))
+  
