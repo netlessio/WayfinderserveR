@@ -261,4 +261,8 @@ jluc.modelComparePlot <- function(model, formula, newformula) {
   newmodel<-glm(formula=newformula, data=model)
 
   par(mfrow=c(1,1))
-  
+  plot.ts(as.ts(model$target))
+  lines(fitted(mod.fitted), col="blue")
+  lines(fitted(newmodel), col="red")
+  legend("topleft", legend=paste(mod.fitted$formula, mod.fitted$aic,sep="="), text.col ="blue", bg="white", x.intersp=0)
+  legend("bottomleft", legend=paste(newmod
