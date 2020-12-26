@@ -272,4 +272,12 @@ jluc.modelComparePlot <- function(model, formula, newformula) {
 }
 
 jluc.predict <- function(stockName = "Metso Oyj",
-                         fromDate=as.Date(Sys.Date()
+                         fromDate=as.Date(Sys.Date()-150),
+                         toDate=Sys.Date(),
+                         modelfunc="jluc.createModel", debug=F) {
+  prediction<-NULL
+  ############# [DATA | FIT] #################
+  
+  if (debug) {
+    cat("Using model:", modelfunc,"\n")
+  }
