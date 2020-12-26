@@ -281,3 +281,11 @@ jluc.predict <- function(stockName = "Metso Oyj",
   if (debug) {
     cat("Using model:", modelfunc,"\n")
   }
+  
+  model<-do.call(what=toString(modelfunc), args=list(
+    asset=toString(stockName),
+    fromDate=fromDate, toDate=toDate, lag=1))
+
+  mod.fitted<-jluc.autoPickModel(model, "target", plot=F)
+  
+  ############# [DATA | APPLY] #################
