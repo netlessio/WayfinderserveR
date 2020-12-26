@@ -265,4 +265,11 @@ jluc.modelComparePlot <- function(model, formula, newformula) {
   lines(fitted(mod.fitted), col="blue")
   lines(fitted(newmodel), col="red")
   legend("topleft", legend=paste(mod.fitted$formula, mod.fitted$aic,sep="="), text.col ="blue", bg="white", x.intersp=0)
-  legend("bottomleft", legend=paste(newmod
+  legend("bottomleft", legend=paste(newmodel$formula,newmodel$aic,sep="="), text.col ="red", bg="white", x.intersp=0)
+  lines(rep(0, times=length(model$target)), col="green")  
+  
+  return(newmodel)
+}
+
+jluc.predict <- function(stockName = "Metso Oyj",
+                         fromDate=as.Date(Sys.Date()
