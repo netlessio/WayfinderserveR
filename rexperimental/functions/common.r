@@ -289,3 +289,11 @@ jluc.predict <- function(stockName = "Metso Oyj",
   mod.fitted<-jluc.autoPickModel(model, "target", plot=F)
   
   ############# [DATA | APPLY] #################
+  #Fetch new data for asset
+  newdata<-do.call(what=toString(modelfunc), args=list(
+    asset=toString(stockName),
+    fromDate=toDate-15, toDate=toDate, lag=0))
+  
+  if (debug) {
+    print(paste("From date:", fromDate))
+    
