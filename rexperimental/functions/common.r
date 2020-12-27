@@ -296,4 +296,12 @@ jluc.predict <- function(stockName = "Metso Oyj",
   
   if (debug) {
     print(paste("From date:", fromDate))
-    
+    print(paste("To date:", toDate))
+    print(paste("newdata",last(newdata)))
+    print(paste("model", last(model)))
+    print(paste("formula:", mod.fitted$formula))
+  }
+  
+  if (!is.null(newdata)) {
+    newvalues <- last(newdata)
+    prediction<-predict(object=mo
