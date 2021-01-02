@@ -304,4 +304,8 @@ jluc.predict <- function(stockName = "Metso Oyj",
   
   if (!is.null(newdata)) {
     newvalues <- last(newdata)
-    prediction<-predict(object=mo
+    prediction<-predict(object=mod.fitted, newdata=newvalues, n.ahead=1)
+  }
+  
+  return(prediction)
+}
