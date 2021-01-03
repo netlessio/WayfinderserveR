@@ -5,4 +5,8 @@
                         decreasing=FALSE, head=FALSE, n=5) {
     napply <- function(names, fn) sapply(names, function(x)
                                          fn(get(x, pos = pos)))
- 
+    names <- ls(pos = pos, pattern = pattern)
+    obj.class <- napply(names, function(x) as.character(class(x))[1])
+    obj.mode <- napply(names, mode)
+    obj.type <- ifelse(is.na(obj.class), obj.mode, obj.class)
+    obj.size <- napply(nam
