@@ -17,4 +17,12 @@ require(ggplot2)
 require(glmulti)
 library(TTR)
 library(MASS)
-#library(fGarch
+#library(fGarch)
+
+source("~/Dropbox/jlucrum/rexperimental/external/itall.R")
+source("~/Dropbox/jlucrum/rexperimental/tests/testCosModel.r")
+
+
+#load all functions under functions directory
+list.of.funfiles <- system("ls functions", intern=T);
+for (file in list.of.fun
