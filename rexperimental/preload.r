@@ -25,4 +25,14 @@ source("~/Dropbox/jlucrum/rexperimental/tests/testCosModel.r")
 
 #load all functions under functions directory
 list.of.funfiles <- system("ls functions", intern=T);
-for (file in list.of.fun
+for (file in list.of.funfiles) {
+  file.path <- paste(getwd(), "/functions/", file, sep="")
+  print(paste("Loading functions from: ", file.path))
+  source(file.path)
+}
+
+
+.jinit(classpath=luc.pathToClasses, force.init=T)
+
+#Load jars from directory
+command <- paste("ls ", luc.path
