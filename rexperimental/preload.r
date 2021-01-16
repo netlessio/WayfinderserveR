@@ -35,4 +35,12 @@ for (file in list.of.funfiles) {
 .jinit(classpath=luc.pathToClasses, force.init=T)
 
 #Load jars from directory
-command <- paste("ls ", luc.path
+command <- paste("ls ", luc.pathToLibs, sep="");
+list.of.files <- system(command, intern=T);
+
+for (file in list.of.files) {
+   print(paste(luc.pathToLibs, file, sep="/"))
+  .jaddClassPath(paste(luc.pathToLibs, file, sep="/"))
+}
+
+jluc.stockNames <<- c("Cargotec Oyj", "Elisa Oyj",
