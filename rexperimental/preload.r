@@ -49,4 +49,9 @@ jluc.stockNames <<- c("Cargotec Oyj", "Elisa Oyj",
 "Nokia Oyj", "Nokian Renkaat Oyj", "Nordea Bank AB", 
 "Outokumpu Oyj", "Outotec Oyj", 
 "Pohjola Bank A","Rautaruukki Oyj", 
-"Sampo Oyj A", "Sanoma Oyj", "Stora 
+"Sampo Oyj A", "Sanoma Oyj", "Stora Enso Oyj A", "TeliaSonera AB", 
+"Tieto Oyj", "UPM-Kymmene Oyj", "Wärtsilä Corporation", "YIT Oyj");
+
+DataFetcher <- J("org.jlucrum.datafetcher.DataFetcher");
+fetcher <<- new(DataFetcher);
+}
