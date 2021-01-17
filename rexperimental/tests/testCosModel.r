@@ -16,3 +16,10 @@ jluc.testModel1 <- function(asset="TESTcompany",
   targetPrice<-cos(new.data) + 3;
   
   dailyReturn<-jluc.detrend(log(targetPrice), n=1)
+  reg<-na.omit(lag(targetPrice, k=lag))
+  
+  step<-jluc.detrend(log(lag(targetPrice, k=lag)), n=1, name="step")
+  step2<-jluc.detrend(log(lag(targetPrice, k=lag+1)), n=1, name="step2")
+  step3<-jluc.detrend(log(lag(targetPrice, k=lag+2)),n=1, name="step3")
+  
+ 
