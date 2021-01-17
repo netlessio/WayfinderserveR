@@ -8,4 +8,11 @@ jluc.testModel1 <- function(asset="TESTcompany",
   
   new.data<-NULL
   for (i in start:0) {
-    new.dat
+    new.date <- toDate - i
+    new.data <-rbind(new.data, xts(as.numeric(new.date) - 10000 , new.date))
+  }
+  
+  #--------------------------------------------------------
+  targetPrice<-cos(new.data) + 3;
+  
+  dailyReturn<-jluc.detrend(log(targetPrice), n=1)
