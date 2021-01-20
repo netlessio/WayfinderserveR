@@ -22,4 +22,11 @@ jluc.testModel1 <- function(asset="TESTcompany",
   step2<-jluc.detrend(log(lag(targetPrice, k=lag+1)), n=1, name="step2")
   step3<-jluc.detrend(log(lag(targetPrice, k=lag+2)),n=1, name="step3")
   
- 
+  model<-na.omit(merge(dailyReturn,step,step2,step3))
+  
+  index <- rowSums(!is.finite(model)) >= 1 
+  pmodel <- model[!index, ]
+  smodel<-na.omit(scale(pmodel))
+  
+  if (length(smodel) != 0) {
+    names(smodel)<-c("target", "step", "ste
