@@ -29,4 +29,10 @@ jluc.testModel1 <- function(asset="TESTcompany",
   smodel<-na.omit(scale(pmodel))
   
   if (length(smodel) != 0) {
-    names(smodel)<-c("target", "step", "ste
+    names(smodel)<-c("target", "step", "step2", "step3")
+  } else {
+    return(NULL);
+  }
+  
+  return(smodel)
+}
