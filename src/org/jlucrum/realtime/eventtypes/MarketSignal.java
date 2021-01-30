@@ -191,3 +191,35 @@ public class MarketSignal {
      */
     public void setNumOfStocksForAction(int numOfStocksForAction) {
         this.numOfStocksForAction = numOfStocksForAction;
+    }
+
+    /**
+     * @return the stopLossPrice
+     */
+    public double getStopLossPrice() {
+        return stopLossPrice;
+    }
+
+    /**
+     * @param stopLossPrice the stopLossPrice to set
+     */
+    public void setStopLossPrice(double stopLossPrice) {
+        this.stopLossPrice = stopLossPrice;
+    }
+
+    /**
+     * @return the tick
+     */
+    public StockTick getTick() {
+        return tick;
+    }
+
+    /**
+     * @param tick the tick to set
+     */
+    public void setTick(StockTick tick) {
+        this.tick = tick;
+    }
+    
+
+}
