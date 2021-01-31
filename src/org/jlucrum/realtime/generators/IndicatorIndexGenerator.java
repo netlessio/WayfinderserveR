@@ -34,3 +34,67 @@ public class IndicatorIndexGenerator extends TickAnalyzer {
     private HashMap <String, Double>indicatorMap = new HashMap <String, Double>();
     private StockNames stockWeight;
     private boolean debug = false;
+
+    public IndicatorIndexGenerator() {
+        super();
+        stockWeight = new StockNames();
+    }
+
+    private void init(){
+        super.patternForEvents("every IndicatorData(indicatorName='"+indicator+"')")
+                .addListener(this);
+    }
+
+    private double calculateIndex() {
+        double sum = 0.0d;
+        double weight;
+
+        for (Entry<String, Double> entry: indicatorMap.entrySet()) {
+            weight = stockWeight.getStockWeight(entry.getKey());
+            sum += entry.getValue() * weight;
+        }
+
+        if (debug) {
+            System.out.printf("IndicatorIndex: size:%d value:%f\n", indicatorMap.size(), sum);
+        }
+        
+        return sum;
+    }
+    
+    public void update(EventBean[] ebs, EventBean[] ebs1) {
+
+        for (int i=0; i < ebs.length;i++) {
+
+            if (ebs[i].getUnderlying() instanceof IndicatorData) {
+                IndicatorData data = (IndicatorData)ebs[i].getUnderlying();
+                if (data==null) {
+                    continue;
+                }
+                indicatorMap.put(data.getStockName(), data.getIndicatorValue());
+            } else if (ebs[i].getUnderlying() instanceof StockTick) {
+                StockTick data = (StockTick)ebs[i].getUnderlying();
+                if (data==null) {
+                    continue;
+                }
+                indicatorMap.put(data.getStockName(), data.getLatestPrice());
+            }
+            
+            
+        }
+
+        IndicatorData data = new IndicatorData();
+        data.setStockName("Index"+indicator);
+        data.setIndicatorValue(calculateIndex());
+        data.setIndicatorName(getName());
+        data.type = IndicatorData.DrawType.STANDALONE_INDICATOR_TABLE;
+        getEngine().sendEvent(data);
+    }
+
+    public String getName() {
+        return "Index"+indicator;
+    }
+
+    public String getListnerInfo() {
+        return "Modified: Sum of all values in stock list for particular indicator \n";
+    }
+}
