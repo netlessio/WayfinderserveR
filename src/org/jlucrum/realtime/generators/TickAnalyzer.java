@@ -86,3 +86,27 @@ public abstract class TickAnalyzer implements TickInterface{
 
         return esperRuntime;
     }
+
+    public String getName(){
+        return this.getClass().getSimpleName();
+    }
+
+    public void sendEvent(String stockName, double value) {
+        IndicatorData data = new IndicatorData();
+        data.setStockName(stockName);
+        data.setIndicatorValue(value);
+        data.setIndicatorName(getName());
+
+        this.getEngine().sendEvent(data);
+    }
+
+    public void sendEvent(String genName, String stockName, double value) {
+        IndicatorData data = new IndicatorData();
+        data.setStockName(stockName);
+        data.setIndicatorValue(value);
+        data.setIndicatorName(genName);
+
+        this.getEngine().sendEvent(data);
+    }
+
+}
