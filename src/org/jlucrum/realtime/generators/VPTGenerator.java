@@ -12,4 +12,11 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
- 
+    along with jTotus.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+package org.jlucrum.realtime.generators;
+
+import org.jlucrum.realtime.eventtypes.StockTick;
+import org.jlucrum.realtime.indicators.SimpleTechnicalIndicators;
+import com.espertech.esper.client.Even
