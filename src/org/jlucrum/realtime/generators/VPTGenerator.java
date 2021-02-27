@@ -19,4 +19,17 @@ package org.jlucrum.realtime.generators;
 
 import org.jlucrum.realtime.eventtypes.StockTick;
 import org.jlucrum.realtime.indicators.SimpleTechnicalIndicators;
-import com.espertech.esper.client.Even
+import com.espertech.esper.client.EventBean;
+import java.util.HashMap;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class VPTGenerator extends TickAnalyzer{
+    private HashMap<String, SimpleTechnicalIndicators> stockIndec = null;
+
+
+    public VPTGenerator() {
+        super();
+        stockIndec = ne
