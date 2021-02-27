@@ -32,4 +32,11 @@ public class VPTGenerator extends TickAnalyzer{
 
     public VPTGenerator() {
         super();
-        stockIndec = ne
+        stockIndec = new HashMap<String, SimpleTechnicalIndicators>();
+    }
+
+    public void update(EventBean[] ebs, EventBean[] ebs1) {
+        SimpleTechnicalIndicators indicator = null;
+
+        StockTick tick = (StockTick) ebs[0].getUnderlying();
+        indicator =
