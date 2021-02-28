@@ -39,4 +39,11 @@ public class VPTGenerator extends TickAnalyzer{
         SimpleTechnicalIndicators indicator = null;
 
         StockTick tick = (StockTick) ebs[0].getUnderlying();
-        indicator =
+        indicator = stockIndec.get(tick.getStockName());
+        if (indicator == null) {
+            indicator = new SimpleTechnicalIndicators();
+            stockIndec.put(tick.getStockName(), indicator);
+        }
+
+        indicator.pushTick(tick);
+     
