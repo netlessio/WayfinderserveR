@@ -46,4 +46,14 @@ public class VPTGenerator extends TickAnalyzer{
         }
 
         indicator.pushTick(tick);
-     
+        double value = indicator.vptRecursive(indicator.getSize()-1);
+        sendEvent(tick.getStockName(), value);
+    }
+
+    public String getName(){
+        return "VPT";
+    }
+
+    public String getListnerInfo() {
+        return "<html>"
+                + "Price and Volum
