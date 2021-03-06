@@ -318,3 +318,47 @@ public class SimpleTechnicalIndicators extends StockIndicator<StockTick> {
                 cmd.append(c);
             } else if (c == ';') {
                 if (startToSkip) {
+                    cmd.append(c);
+                } else {
+                    cmd.append(c);
+                    listOfCmds.add(cmd.toString());
+                    cmd = new StringBuilder();
+                }
+            } else {
+                cmd.append(c);
+            }
+        }
+        listOfCmds.add(cmd.toString());
+        
+        return (String[]) listOfCmds.toArray(new String[listOfCmds.size()]);
+    }
+
+    public static REXP execute(final String command, double[]...b) throws REngineException, REXPMismatchException {
+        REXP retValue = null;
+        int counter = 0;
+        
+        if (rexec == null) {
+            rexec = new Rexecutor();
+        }
+
+
+        String[] cmds = paramParser(command);
+            for (String cmd : cmds) {
+                Matcher m = patternForAssign.matcher(cmd);
+                if (m.find()) {
+                    String name = m.group(1);
+                    System.out.printf("Assigning:%s\n", name);
+                    rexec.getConnection().assign(name, b[counter++]);
+                } else {
+                    retValue = rexec.getConnection().eval(cmd);
+                }
+            }
+
+        return retValue;
+    }
+
+    //TODO:
+    //http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
+    //http://tadoc.org/indicator/ADOSC.htm
+    //http://stockcharts.com/help/doku.php?id=chart_school:technical_indicators:force_index
+}
