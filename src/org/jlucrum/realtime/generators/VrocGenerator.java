@@ -1,3 +1,4 @@
+
 /*
     This file is part of jTotus.
 
@@ -26,11 +27,11 @@ import java.util.HashMap;
  *
  * @author Evgeni Kappinen
  */
-public class VPTGenerator extends TickAnalyzer{
+public class VrocGenerator extends TickAnalyzer {
+
     private HashMap<String, SimpleTechnicalIndicators> stockIndec = null;
 
-
-    public VPTGenerator() {
+    public VrocGenerator() {
         super();
         stockIndec = new HashMap<String, SimpleTechnicalIndicators>();
     }
@@ -46,21 +47,22 @@ public class VPTGenerator extends TickAnalyzer{
         }
 
         indicator.pushTick(tick);
-        double value = indicator.vptRecursive(indicator.getSize()-1);
-        sendEvent(tick.getStockName(), value);
+        double vroc = indicator.vrocMultPrice(indicator.getSize() - 1, config.vrocPeriod);
+        //System.out.printf("Vroc: %s:%f\n", tick.getStockName(), vroc);
+        sendEvent(tick.getStockName(), vroc);
     }
 
-    public String getName(){
-        return "VPT";
+    public String getName() {
+        return "Vroc";
     }
 
     public String getListnerInfo() {
         return "<html>"
-                + "Price and Volume Trend, for dayily data\n<br>"
-                + "vpt = ((LATESTPRICE(ithIndex) - LATESTPRICE(ithIndex - 1)) / LATESTPRICE(ithIndex - 1)) \n<br>"
-                + "/ VOLUME(ithIndex) + vptRecursive(ithIndex - 1)\n<br>"
-                + "\n<br>"
-                + "Source: http://en.wikipedia.org/wiki/Volume_Price_Trend<br>"
+                + "Modified : Volume Rate of Change (VROC) \n<br>"
+                + "volume = ((VOLUME(iIndex) - VOLUME(iIndex - n)) / VOLUME(iIndex - n)) * 100 \n<br>"
+                + "curPrice = ((LATESTPRICE(iIndex) - LATESTPRICE(iIndex - n)) / LATESTPRICE(iIndex - n)) * 100\n<br>"
+                + "vroc = volume * curPrice\n <br>"
+                + "Source: http://www.mysmp.com/technical-analysis/volume-rate-of-change.html<br>"
                 + "</html>";
     }
 }
