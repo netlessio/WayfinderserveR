@@ -157,3 +157,115 @@ public class ListenerRsiIndicator implements UpdateListener {
 
         for (EventBean eb : ebs) {
             StockTick tick = (StockTick) eb.getUnderlying();
+            ArrayList<Double> stockTicks = stockRsi.get(tick.getStockName());
+
+
+            if (stockTicks.size() > getConfig(tick.getStockName()).inputRSIPeriod + 1) {
+                double[] input = ArrayUtils.toPrimitive(stockTicks.toArray(new Double[0]));
+
+                makeTest(tick.getStockName(), input);
+
+                MInteger outBegIdx = new MInteger();
+                MInteger outNbElement = new MInteger();
+
+                double[] output = this.actionRSI(input,
+                        outBegIdx, outNbElement,
+                        getConfig(tick.getStockName()).inputRSIPeriod);
+
+
+                if (output[output.length - 1] < getConfig(tick.getStockName()).outputRSILowestThreshold) {
+                    //    System.err.printf("[%s] buy for: %f rsi:%d\n",tick.getStockName(), tick.getLatestSell(), getConfig(tick.getStockName()).outputRSILowestThreshold);
+                    getBudjetCounter(tick.getStockName()).buy(tick.getLatestSell(), -1);
+                } else if (output[output.length - 1] > getConfig(tick.getStockName()).outputRSIHigestThreshold) {
+                    getBudjetCounter(tick.getStockName()).buy(tick.getLatestBuy(), -1);
+                }
+                //System.out.printf("Size of output:%d rsi:%d\n", output.length, getConfig(tick.getStockName()).inputRSIPeriod);
+
+                EsperEventRsi rsiEvent = new EsperEventRsi();
+                rsiEvent.setStockName(tick.getStockName());
+                rsiEvent.setRsi(output[output.length - 1]);
+
+                this.getEngine().sendEvent(rsiEvent);
+
+                //Sending Indicator Data
+                IndicatorData data = new IndicatorData();
+                data.setStockName(tick.getStockName());
+                data.setIndicatorValue(output[output.length - 1]);
+                data.setIndicatorName("RSI");
+
+                this.getEngine().sendEvent(data);
+
+
+                getBudjetCounter(tick.getStockName()).dumpResults();
+            }
+        }
+    }
+
+    public void makeTest(String stockName, double[] input) {
+        EvaluateMethodSignals budjetCounter = new EvaluateMethodSignals();
+
+        for (StateIterator iter = new StateIterator()
+                .addParam("RSIpriod", getConfig(stockName).inputRSIDecisionPeriod)
+                .addParam("LowestThreshold", getConfig(stockName).inputRSILowestThreshold)
+                .addParam("HigestThreshold", getConfig(stockName).inputRSIHigestThreshold);
+                iter.hasNext() != StateIterator.END_STATE; iter.nextState()) {
+
+            budjetCounter.initialize(stockName,
+                                    "DecisionRSI",
+                                    assumedBudjet);
+
+            this.performDecisionTest(budjetCounter,
+                                    input,
+                                    iter.nextInt("RSIpriod"),
+                                    iter.nextInt("LowestThreshold"),
+                                    iter.nextInt("HigestThreshold"));
+
+            if (budjetCounter.newBest()) {
+                getConfig(stockName).inputRSIPeriod = iter.nextInt("RSIpriod");
+                getConfig(stockName).outputRSIHigestThreshold = iter.nextInt("LowestThreshold");
+                getConfig(stockName).outputRSILowestThreshold = iter.nextInt("HigestThreshold");
+            }
+        }
+
+        getConfig(stockName).outputSuccessRate = budjetCounter.getProfitInProcents();
+        //budjetCounter.dumpResults();
+    }
+
+    /************* DECISION TEST *************
+     * @param evaluator Evaluation object
+     * @param input closing price for period
+     *
+     * @return  void
+     */
+    public void performDecisionTest(EvaluateMethodSignals evaluator,
+                                    double[] input,
+                                    int decRSIPeriod,
+                                    int lowestThreshold,
+                                    int highestThreshold) {
+
+        if (input.length < decRSIPeriod) {
+            return;
+        }
+
+        boolean change=false;
+        MInteger outBegIdx = new MInteger();
+        MInteger outNbElement = new MInteger();
+
+        double[] output = this.actionRSI(input,
+                                         outBegIdx,
+                                         outNbElement,
+                                         decRSIPeriod);
+
+        for (int elem = 0; elem < outNbElement.value; elem++) {
+            if (output[elem] < lowestThreshold && change == false) {
+                evaluator.buy(input[elem + outBegIdx.value], -1);
+                change=true;
+            } else if (output[elem] > highestThreshold && change == true) {
+                evaluator.sell(input[elem + outBegIdx.value], -1);
+                change=false;
+            }
+        }
+    }
+
+
+}
