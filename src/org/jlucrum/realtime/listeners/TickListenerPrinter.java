@@ -23,3 +23,11 @@ import java.util.Calendar;
 import org.jtotus.gui.graph.GraphSender;
 
 /**
+ *
+ * @author Evgeni Kappinen
+ */
+public class TickListenerPrinter implements UpdateListener {
+
+    private boolean sendEventToGUI = false;
+    private GraphSender sender = new GraphSender(this.getClass().getSimpleName());
+    private Calendar cal = C
