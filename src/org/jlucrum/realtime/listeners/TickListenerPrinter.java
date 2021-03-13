@@ -38,4 +38,8 @@ public class TickListenerPrinter implements UpdateListener {
 
     public void update(EventBean[] ebs, EventBean[] ebs1) {
         System.out.printf("[%s] " + ebs[0].getUnderlying() + "\n",
-        
+                ebs[0].getUnderlying().getClass().getSimpleName());
+
+        if (sendEventToGUI) {
+            if (ebs[0].getUnderlying().getClass().getSimpleName().equalsIgnoreCase("HashMap")) {
+                StockTick tick = (Stoc
