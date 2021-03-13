@@ -30,4 +30,12 @@ public class TickListenerPrinter implements UpdateListener {
 
     private boolean sendEventToGUI = false;
     private GraphSender sender = new GraphSender(this.getClass().getSimpleName());
-    private Calendar cal = C
+    private Calendar cal = Calendar.getInstance();
+
+    public void sendEventsToGui() {
+        sendEventToGUI = true;
+    }
+
+    public void update(EventBean[] ebs, EventBean[] ebs1) {
+        System.out.printf("[%s] " + ebs[0].getUnderlying() + "\n",
+        
