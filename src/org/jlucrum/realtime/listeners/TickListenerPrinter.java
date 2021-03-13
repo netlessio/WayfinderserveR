@@ -14,4 +14,12 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with jTotus.  If not, see <http://www.gnu.org/licenses/>.
  */
-package
+package org.jlucrum.realtime.listeners;
+
+import org.jlucrum.realtime.eventtypes.StockTick;
+import com.espertech.esper.client.EventBean;
+import com.espertech.esper.client.UpdateListener;
+import java.util.Calendar;
+import org.jtotus.gui.graph.GraphSender;
+
+/**
