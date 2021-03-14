@@ -42,4 +42,10 @@ public class TickListenerPrinter implements UpdateListener {
 
         if (sendEventToGUI) {
             if (ebs[0].getUnderlying().getClass().getSimpleName().equalsIgnoreCase("HashMap")) {
-                StockTick tick = (Stoc
+                StockTick tick = (StockTick) ebs[0].get("tick");
+
+                sender.setSeriesName(tick.getStockName());
+                cal.add(Calendar.DATE, 1);
+                sender.addForSending(cal.getTime(), tick.getLatestPrice());
+                sender.sendAllStored();
+         
