@@ -48,4 +48,8 @@ public class TickListenerPrinter implements UpdateListener {
                 cal.add(Calendar.DATE, 1);
                 sender.addForSending(cal.getTime(), tick.getLatestPrice());
                 sender.sendAllStored();
-         
+            }
+
+        }
+    }
+}
