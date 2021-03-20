@@ -78,3 +78,56 @@ public class Rexecutor {
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(Rexecutor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Rexecutor.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stderr != null) {
+                try {
+                    stderr.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Rexecutor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return serverStarted;
+    }
+
+
+    /**
+     * @return the connection
+     */
+    public RConnection getConnection() throws RserveException {
+        
+        //FIMXE: login & password from config file!
+        if (connection == null || !connection.isConnected()) {
+            startRServe();
+            connection = new RConnection();
+        }
+
+        return connection;
+    }
+
+    /**
+     * @param connection the connection to set
+     */
+    public void setConnection(RConnection connection) {
+        this.connection = connection;
+    }
+
+    public REXP eval(String pattern, Object... arguments) {
+
+        try {
+            String cmd = String.format(pattern, arguments);
+            return getConnection().eval(cmd);
+        } catch (RserveException ex) {
+            log.error("Failure in getting connection to RServer");
+        } finally {
+            //TODO: close/shutdown connection ?
+        }
+
+        return new REXP();
+    }
+
+
+}
