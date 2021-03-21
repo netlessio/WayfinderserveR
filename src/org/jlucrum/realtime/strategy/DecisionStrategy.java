@@ -28,4 +28,6 @@ import java.util.HashMap;
 * Date: 5/3/11
 * Time: 7:48 PM
 */
-public i
+public interface DecisionStrategy {
+    MarketSignal makeDecision(HashMap<String,MethodResults> inputs);
+}
