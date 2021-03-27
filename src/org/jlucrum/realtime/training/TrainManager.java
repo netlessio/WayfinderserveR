@@ -11,4 +11,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jtotus.common.MethodResults;
 import org.jtotus.config.ConfPortfolio;
-import org.jtotus.config.ConfTrainWi
+import org.jtotus.config.ConfTrainWithLongTermIndicators;
+import org.jtotus.config.ConfigLoader;
+import org.jtotus.database.DataFetcher;
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.concurrent.ExecutorService;
+import ja
