@@ -25,4 +25,11 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.jtotus.methods.MethodEntry;
 import org.jtotus.methods.StatisticsFreqPeriod;
-import org.jtotu
+import org.jtotus.methods.TaLibRSI;
+import org.jtotus.threads.MethodFuture;
+
+/**
+ * This file is part of JTotus.
+ * <p/>
+ * jTotus is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published 
