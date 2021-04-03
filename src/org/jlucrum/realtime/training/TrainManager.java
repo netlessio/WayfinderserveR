@@ -46,4 +46,11 @@ import org.jtotus.threads.MethodFuture;
  */
 
 /*
-*
+* Created by IntelliJ IDEA.
+* Author: Evgeni Kappinen
+* Date: 5/2/11
+* Time: 6:38 PM
+*/
+public class TrainManager {
+    private final ConfPortfolio portfolio = ConfPortfolio.getPortfolioConfig();
+    private final DecisionStrategy strategy = new SimpleIndicatorsOnlyS
