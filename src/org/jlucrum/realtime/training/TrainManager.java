@@ -57,4 +57,9 @@ public class TrainManager {
     private final EPRuntime epRuntime = BrokerWatcher.getMainEngine().getEPRuntime();
     private final DataFetcher fetcher = new DataFetcher();
     private LinkedList<MethodEntry> methods = new LinkedList<MethodEntry>();
-    private Lin
+    private LinkedList<MethodFuture> indResults = new LinkedList<MethodFuture>();
+    private ConfTrainWithLongTermIndicators config = null;
+    private ExecutorService threadExecutor = Executors.newCachedThreadPool();
+    
+
+    public TrainManag
