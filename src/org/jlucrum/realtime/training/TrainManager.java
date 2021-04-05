@@ -53,4 +53,8 @@ import org.jtotus.threads.MethodFuture;
 */
 public class TrainManager {
     private final ConfPortfolio portfolio = ConfPortfolio.getPortfolioConfig();
-    private final DecisionStrategy strategy = new SimpleIndicatorsOnlyS
+    private final DecisionStrategy strategy = new SimpleIndicatorsOnlyStrategy();
+    private final EPRuntime epRuntime = BrokerWatcher.getMainEngine().getEPRuntime();
+    private final DataFetcher fetcher = new DataFetcher();
+    private LinkedList<MethodEntry> methods = new LinkedList<MethodEntry>();
+    private Lin
