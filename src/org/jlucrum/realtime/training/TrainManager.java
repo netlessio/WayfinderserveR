@@ -62,4 +62,9 @@ public class TrainManager {
     private ExecutorService threadExecutor = Executors.newCachedThreadPool();
     
 
-    public TrainManag
+    public TrainManager() {
+        ConfigLoader<ConfTrainWithLongTermIndicators> loader
+                = new ConfigLoader<ConfTrainWithLongTermIndicators>("ConfTrainWithLongTermIndicators");
+        config = loader.getConfig();
+        if (config == null) {
+   
