@@ -80,4 +80,8 @@ public class TrainManager {
         DateTime currentDate = portfolio.inputStartingDate;
         
         while (currentDate.isBefore(portfolio.inputEndingDate.minusDays(1))) {
-            final MarketData data = fetcher.prepar
+            final MarketData data = fetcher.prepareMarketData(portfolio.inputListOfStocks,
+                                                        portfolio.inputStartIndicatorDate,
+                                                        currentDate);
+
+            MethodFuture<MethodResults> f
