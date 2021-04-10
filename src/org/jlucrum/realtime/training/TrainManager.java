@@ -76,4 +76,8 @@ public class TrainManager {
     }
 
     public void train() {
-        HashMap<String, MethodR
+        HashMap<String, MethodResults> inputs = new HashMap<String, MethodResults>();
+        DateTime currentDate = portfolio.inputStartingDate;
+        
+        while (currentDate.isBefore(portfolio.inputEndingDate.minusDays(1))) {
+            final MarketData data = fetcher.prepar
