@@ -67,4 +67,13 @@ public class TrainManager {
                 = new ConfigLoader<ConfTrainWithLongTermIndicators>("ConfTrainWithLongTermIndicators");
         config = loader.getConfig();
         if (config == null) {
-   
+            config = new ConfTrainWithLongTermIndicators();
+            loader.storeConfig(config);
+        }
+        
+        methods.add(new TaLibRSI());
+        methods.add(new StatisticsFreqPeriod());
+    }
+
+    public void train() {
+        HashMap<String, MethodR
