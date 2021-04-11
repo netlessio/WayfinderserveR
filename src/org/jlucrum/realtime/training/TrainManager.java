@@ -84,4 +84,10 @@ public class TrainManager {
                                                         portfolio.inputStartIndicatorDate,
                                                         currentDate);
 
-            MethodFuture<MethodResults> f
+            MethodFuture<MethodResults> futureTask = null;
+            for (MethodEntry task : methods) {
+                if (task.isCallable()) {
+                    task.setMarketData(data);
+                    futureTask = new MethodFuture<MethodResults>(task);
+                    threadExecutor.execute(futureTask);
+            
