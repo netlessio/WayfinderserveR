@@ -90,4 +90,8 @@ public class TrainManager {
                     task.setMarketData(data);
                     futureTask = new MethodFuture<MethodResults>(task);
                     threadExecutor.execute(futureTask);
-            
+                    indResults.push(futureTask);
+                } else {
+                    //Lets support Runnable for now.
+                    System.err.printf("TrainManager support only callable indicators ! : %s\n", task.getMethName());
+      
