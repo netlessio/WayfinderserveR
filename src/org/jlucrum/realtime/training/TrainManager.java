@@ -94,4 +94,10 @@ public class TrainManager {
                 } else {
                     //Lets support Runnable for now.
                     System.err.printf("TrainManager support only callable indicators ! : %s\n", task.getMethName());
-      
+                }
+            }
+
+            MethodResults res = null;
+            while (indResults.size() > 0) {
+                for (Iterator<MethodFuture> iter = indResults.iterator(); iter.hasNext();) {
+                    MethodFuture<MethodResults> iterTask = iter
