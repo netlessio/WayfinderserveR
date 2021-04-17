@@ -100,4 +100,10 @@ public class TrainManager {
             MethodResults res = null;
             while (indResults.size() > 0) {
                 for (Iterator<MethodFuture> iter = indResults.iterator(); iter.hasNext();) {
-                    MethodFuture<MethodResults> iterTask = iter
+                    MethodFuture<MethodResults> iterTask = iter.next();
+                    if (iterTask.isDone()) {
+                        try {
+                            if ((res = iterTask.get()) != null) {
+                                iter.remove();
+                                inputs.put(res.getMethodName(), res);
+              
