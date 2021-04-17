@@ -110,4 +110,9 @@ public class TrainManager {
                         } catch (InterruptedException ex) {
                             Logger.getLogger(TrainManager.class.getName()).log(Level.SEVERE, null, ex);
                             ex.printStackTrace();
-                            System.e
+                            System.exit(-1);
+                        } catch (ExecutionException ex) {
+                            Logger.getLogger(TrainManager.class.getName()).log(Level.SEVERE, null, ex);
+                            ex.printStackTrace();
+                            System.exit(-1);
+          
