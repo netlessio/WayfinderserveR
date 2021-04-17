@@ -106,4 +106,8 @@ public class TrainManager {
                             if ((res = iterTask.get()) != null) {
                                 iter.remove();
                                 inputs.put(res.getMethodName(), res);
-              
+                            }
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(TrainManager.class.getName()).log(Level.SEVERE, null, ex);
+                            ex.printStackTrace();
+                            System.e
