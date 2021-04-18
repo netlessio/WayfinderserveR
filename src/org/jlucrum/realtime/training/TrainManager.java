@@ -115,4 +115,14 @@ public class TrainManager {
                             Logger.getLogger(TrainManager.class.getName()).log(Level.SEVERE, null, ex);
                             ex.printStackTrace();
                             System.exit(-1);
-          
+                        }
+
+                    }
+                }
+            }
+            
+            currentDate = performStrategyTest(inputs, currentDate);
+            if (currentDate == null) {
+                break;
+            }
+            System.out.printf("%s processi
