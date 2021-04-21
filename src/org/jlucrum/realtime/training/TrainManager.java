@@ -125,4 +125,11 @@ public class TrainManager {
             if (currentDate == null) {
                 break;
             }
-            System.out.printf("%s processi
+            System.out.printf("%s processing %s\n", this.getClass().getSimpleName(), currentDate.toDate().toString());
+            inputs.clear();
+        }
+    }
+
+    private DateTime performStrategyTest(HashMap<String, MethodResults> inputs, DateTime currentDate) {
+        boolean sold = false;
+        MarketSignal 
