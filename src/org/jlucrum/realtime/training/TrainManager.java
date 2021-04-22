@@ -132,4 +132,10 @@ public class TrainManager {
 
     private DateTime performStrategyTest(HashMap<String, MethodResults> inputs, DateTime currentDate) {
         boolean sold = false;
-        MarketSignal 
+        MarketSignal signal = strategy.makeDecision(inputs);
+
+        if (signal != null) {
+            epRuntime.sendEvent(signal); // Buying
+
+            BigDecimal maxWin = BigDecimal.valueOf(signal.getPriceToBuy()).multiply(BigDecimal.valueOf(config.maxWin));
+           
