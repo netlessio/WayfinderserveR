@@ -138,4 +138,8 @@ public class TrainManager {
             epRuntime.sendEvent(signal); // Buying
 
             BigDecimal maxWin = BigDecimal.valueOf(signal.getPriceToBuy()).multiply(BigDecimal.valueOf(config.maxWin));
-           
+            BigDecimal maxLoss = BigDecimal.valueOf(signal.getPriceToBuy()).multiply(BigDecimal.valueOf(config.maxLost));
+
+            while (!sold) {
+                currentDate = currentDate.plusDays(1);
+                if (currentDate.isAfter(portfolio.inputE
