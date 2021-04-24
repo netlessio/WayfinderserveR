@@ -142,4 +142,9 @@ public class TrainManager {
 
             while (!sold) {
                 currentDate = currentDate.plusDays(1);
-                if (currentDate.isAfter(portfolio.inputE
+                if (currentDate.isAfter(portfolio.inputEndingDate.minusDays(1))) {
+                    System.out.printf("%s is done!\n", this.getClass().getSimpleName());
+                    return null;
+                }
+                
+                DateTimeFormatter formatter = DateTimeFormat.f
