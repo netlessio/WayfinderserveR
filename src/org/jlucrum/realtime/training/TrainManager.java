@@ -158,4 +158,12 @@ public class TrainManager {
                 if (price.compareTo(maxWin) > 0 || price.compareTo(maxLoss) <= 0) {
                     sold = true;
                     signal.setPriceToSell(price.doubleValue());
-                    epRuntime.sendE
+                    epRuntime.sendEvent(signal); // Buying
+                }
+            }
+        }
+
+        currentDate = currentDate.plusDays(1);
+        return currentDate;
+    }
+}
