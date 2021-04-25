@@ -152,4 +152,10 @@ public class TrainManager {
                 BigDecimal price = fetcher.fetchData(signal.getStockName(), currentDate, "CLOSE");
 
                 if (price == null) {
-           
+                    continue;
+                }
+
+                if (price.compareTo(maxWin) > 0 || price.compareTo(maxLoss) <= 0) {
+                    sold = true;
+                    signal.setPriceToSell(price.doubleValue());
+                    epRuntime.sendE
