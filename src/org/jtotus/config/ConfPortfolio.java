@@ -89,3 +89,31 @@ public class ConfPortfolio {
         }
         return portfolioConfig;
     }
+
+    public boolean isAutoStarted(String methodName) {
+        return autoStartedMethods.contains(methodName);
+    }
+
+    public void setAutoStarted(String methodName) {
+        autoStartedMethods.add(methodName);
+    }
+
+
+    public static String getPathToGroovyScripts() {
+        return pathToGroovyScripts;
+    }
+
+    public static String getPathToResults() {
+        DateTime cal = new DateTime();
+        DateTimeFormatter formater = DateTimeFormat.forPattern("yyyy-MM-dd");
+
+        String path = pathToResults + File.separator
+                + formater.print(cal) + File.separator;
+
+        File dirs = new File(path);
+        if (dirs.exists()) {
+            dirs.mkdirs();
+        }
+        return path + "LongTermResults";
+    }
+}
