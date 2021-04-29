@@ -20,3 +20,10 @@ package org.jtotus.config;
 /**
  *
  * @author Evgeni Kappinen
+ */
+public class ConfSimpleTechnicalIndicators {
+    public int vrocPeriod = 25;
+    public int accDistVroc = 20;
+    public int rsiPeriod = 17;
+
+}
