@@ -12,4 +12,16 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with 
+    along with jTotus.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+package org.jtotus.config;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class ConfSimulateMarketSignals {
+    public double totalCapital = 0;
+    public double totalStocks = 0;
+}
