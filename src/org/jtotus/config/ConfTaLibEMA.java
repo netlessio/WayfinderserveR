@@ -21,4 +21,13 @@ package org.jtotus.config;
  *
  * @author Evgeni Kappinen
  */
-p
+public class ConfTaLibEMA extends MainMethodConfig {
+
+    //Basic configuration
+    public int inputEMAPeriod = 10;
+
+    //Strategy Decision
+    public String inputEMADecisionPeriod;
+
+    public ConfTaLibEMA() {
+        super();
