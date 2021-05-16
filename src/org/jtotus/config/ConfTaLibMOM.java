@@ -1,3 +1,4 @@
+
 /*
     This file is part of jTotus.
 
@@ -21,19 +22,18 @@ package org.jtotus.config;
  *
  * @author Evgeni Kappinen
  */
-public class ConfTaLibEMA extends MainMethodConfig {
+public class ConfTaLibMOM extends MainMethodConfig{
 
     //Basic configuration
-    public int inputEMAPeriod = 10;
+    public int inputMOMPeriod = 10;
 
     //Strategy Decision
-    public String inputEMADecisionPeriod;
+    public String inputMOMDecisionPeriod=null;
 
-    public ConfTaLibEMA() {
-        super();
+
+    public ConfTaLibMOM() {
         //Decision
-        inputEMADecisionPeriod = "[3-30]{1}";
-        outputSuccessRate = new Double(0.0f);
-    }
+        inputMOMDecisionPeriod = "[3-30]{1}";
 
+    }
 }

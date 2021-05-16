@@ -1,3 +1,4 @@
+
 /*
     This file is part of jTotus.
 
@@ -21,19 +22,19 @@ package org.jtotus.config;
  *
  * @author Evgeni Kappinen
  */
-public class ConfTaLibEMA extends MainMethodConfig {
+public class ConfTaLibMACD extends MainMethodConfig{
 
-    //Basic configuration
-    public int inputEMAPeriod = 10;
+    public int inputMACDFastPeriod = 12;
+    public int inputMACDSlowPeriod = 26;
+    public int inputMACDSignalPeriod = 9;
 
-    //Strategy Decision
-    public String inputEMADecisionPeriod;
 
-    public ConfTaLibEMA() {
-        super();
-        //Decision
-        inputEMADecisionPeriod = "[3-30]{1}";
-        outputSuccessRate = new Double(0.0f);
+    public String inputDecisionFastPeriod = "int[12-12]{1}";
+    public String inputDecisionSlowPeriod = "int[13-30]{1}";
+    public String inputDecisionSinal = "int[9-9]{1}";
+    
+    public ConfTaLibMACD() {
+        this.inputPerfomDecision = false;
     }
 
 }
