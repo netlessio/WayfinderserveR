@@ -24,4 +24,12 @@ public class ConfTaLibRSI extends MainMethodConfig {
 
     public int inputRSIPeriod = 14;
     public String inputRSIDecisionPeriod = null;
-    public String inputRSILowestThreshol
+    public String inputRSILowestThreshold = null;
+    public String inputRSIHigestThreshold = null;
+    public int outputRSIHigestThreshold = 0;
+    public int outputRSILowestThreshold = 0;
+
+    public ConfTaLibRSI() {
+        inputNormilizerType = "SimpleMinWins";
+        //Decision
+ 
