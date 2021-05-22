@@ -32,4 +32,8 @@ public class ConfTaLibRSI extends MainMethodConfig {
     public ConfTaLibRSI() {
         inputNormilizerType = "SimpleMinWins";
         //Decision
- 
+        inputRSIDecisionPeriod = "int[3-20]{4}";
+        inputRSILowestThreshold = "int[1-50]{5}";
+        inputRSIHigestThreshold = "int[50-99]{5}";
+    }
+}
