@@ -11,4 +11,17 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Publ
+    You should have received a copy of the GNU General Public License
+    along with jTotus.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+package org.jtotus.config;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class MainMethodConfig {
+   public String inputPortfolio=null;
+   public boolean inputPrintResults = false;
+   pu
