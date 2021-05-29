@@ -1,3 +1,4 @@
+
 /*
     This file is part of jTotus.
 
@@ -17,39 +18,23 @@
 
 package org.jtotus.config;
 
+import java.util.HashMap;
+import org.jtotus.common.MethodResults;
+
 /**
  *
  * @author Evgeni Kappinen
  */
-public class MainMethodConfig {
-   public String inputPortfolio=null;
-   public boolean inputPrintResults = false;
-   public boolean inputPerfomDecision = true;
-   private boolean autoStart = false;
-   private boolean isForTraining = false;
-   public String inputNormilizerType=null;
+public class ResultsOfLongTermMethods {
+    HashMap<String, MethodResults> results = null;
 
-    //Methods sets, if available.
-    //Should be represented in procents.
-    public Double outputSuccessRate=null;
-
-   public MainMethodConfig() {
-
-        inputPortfolio = "OMXHelsinki";
-
-   }
-
-    /**
-     * @return the autoStart
-     */
-    public boolean isAutoStart() {
-        return autoStart;
+    public ResultsOfLongTermMethods() {
+        if (results == null) {
+            results = new HashMap<String, MethodResults>();
+        }
     }
 
-    /**
-     * @param autoStart the autoStart to set
-     */
-    public void setAutoStart(boolean autoStart) {
-        this.autoStart = autoStart;
+    public void add(String method, MethodResults result) {
+        results.put(method, result);
     }
 }
