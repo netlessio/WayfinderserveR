@@ -24,4 +24,10 @@ package org.jtotus.config;
 public class MainMethodConfig {
    public String inputPortfolio=null;
    public boolean inputPrintResults = false;
-   pu
+   public boolean inputPerfomDecision = true;
+   private boolean autoStart = false;
+   private boolean isForTraining = false;
+   public String inputNormilizerType=null;
+
+    //Methods sets, if available.
+    //Should be represented in proc
