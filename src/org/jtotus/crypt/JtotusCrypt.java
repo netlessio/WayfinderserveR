@@ -70,3 +70,34 @@ public class JtotusCrypt {
         BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 
         return passwordEncryptor.encryptPassword(keyRing.getKeyRingPassword());
+    }
+
+    public boolean checkKeyRingPassword(String keyRingPassword, String digestPassword) {
+        BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
+        if (passwordEncryptor.checkPassword(keyRingPassword, digestPassword)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public String encryptWithKeyRing(String plainText, String hashedKeyRingPassword) {
+        JtotusKeyRingPassword keyRing = JtotusKeyRingPassword.getInstance();
+
+        if (this.checkKeyRingPassword(keyRing.getKeyRingPassword(), hashedKeyRingPassword)) {
+            return this.encrypt(plainText, keyRing.getKeyRingPassword());
+        }
+
+        return null;
+    }
+
+    public String decryptWithKeyRing(String encryptedText, String hashedKeyRingPassword) {
+        JtotusKeyRingPassword keyRing = JtotusKeyRingPassword.getInstance();
+
+        if (this.checkKeyRingPassword(keyRing.getKeyRingPassword(), hashedKeyRingPassword)) {
+            return this.decrypt(encryptedText, keyRing.getKeyRingPassword());
+        }
+
+        return null;
+    }
+}
