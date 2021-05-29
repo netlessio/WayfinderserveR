@@ -30,4 +30,20 @@ public class MainMethodConfig {
    public String inputNormilizerType=null;
 
     //Methods sets, if available.
-    //Should be represented in proc
+    //Should be represented in procents.
+    public Double outputSuccessRate=null;
+
+   public MainMethodConfig() {
+
+        inputPortfolio = "OMXHelsinki";
+
+   }
+
+    /**
+     * @return the autoStart
+     */
+    public boolean isAutoStart() {
+        return autoStart;
+    }
+
+    /**
