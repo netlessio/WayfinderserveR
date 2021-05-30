@@ -48,3 +48,12 @@ public class JtotusKeyRingPassword {
                     keyFound = true;
                 }else if (cancel) {
                     return null;
+                }
+            }
+
+            if (keyFound == false) {
+                try {
+                    System.out.println("Sleepings...");
+                    Thread.sleep(1000);
+                    defaultSleepingTime--;
+               
