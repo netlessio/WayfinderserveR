@@ -33,4 +33,11 @@ public class JtotusKeyRingPassword {
     private JtotusKeyRingPassword() {
     }
 
-    //FIXME:re-check if it 
+    //FIXME:re-check if it is safe to keep password in signleton ?
+    public synchronized static JtotusKeyRingPassword getInstance() {
+        return instance;
+    }
+
+    public synchronized String getKeyRingPassword() {
+        boolean keyFound = false;
+        int defaultSleepingTime = 60; //In Secon
