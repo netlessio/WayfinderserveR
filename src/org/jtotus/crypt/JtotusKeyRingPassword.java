@@ -40,4 +40,11 @@ public class JtotusKeyRingPassword {
 
     public synchronized String getKeyRingPassword() {
         boolean keyFound = false;
-        int defaultSleepingTime = 60; //In Secon
+        int defaultSleepingTime = 60; //In Seconds
+
+        while (keyFound == false && defaultSleepingTime > 0) {
+            synchronized (passLock) {
+                if (keyRingPassword != null) {
+                    keyFound = true;
+                }else if (cancel) {
+                    return null;
