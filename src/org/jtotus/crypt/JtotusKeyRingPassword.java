@@ -25,4 +25,12 @@ import java.util.logging.Logger;
  */
 public class JtotusKeyRingPassword {
 
-    private String keyRingPassword = n
+    private String keyRingPassword = null;
+    private static final JtotusKeyRingPassword instance = new JtotusKeyRingPassword();
+    private boolean cancel = false;
+    private Object passLock = new Object();
+
+    private JtotusKeyRingPassword() {
+    }
+
+    //FIXME:re-check if it 
