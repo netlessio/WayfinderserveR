@@ -65,4 +65,15 @@ public class JtotusKeyRingPassword {
         return keyRingPassword;
     }
 
-    public sync
+    public synchronized void putKeyRingPassword(String password) {
+        synchronized (passLock) {
+            keyRingPassword = password;
+        }
+    }
+
+    public synchronized void cancel() {
+        synchronized (passLock) {
+            cancel = true;
+        }
+    }
+}
