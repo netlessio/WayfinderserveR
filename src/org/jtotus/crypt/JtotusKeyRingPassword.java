@@ -56,4 +56,13 @@ public class JtotusKeyRingPassword {
                     System.out.println("Sleepings...");
                     Thread.sleep(1000);
                     defaultSleepingTime--;
-               
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(JtotusKeyRingPassword.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return keyRingPassword;
+    }
+
+    public sync
