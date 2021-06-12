@@ -31,4 +31,15 @@ public class AutoUpdateStocks implements Runnable {
     private LocalJDBC javadb = null;
     private int stepToRemove = 0;
 
-    publi
+    public AutoUpdateStocks(String tempName) {
+        stockName = tempName;
+
+    }
+
+    private int updateClosingPrice(StockType stock, LocalJDBC javadb) {
+        int counter = 0;
+
+        DateTime calendar = new DateTime();
+
+        final int failureLimit = -8;
+        fi
