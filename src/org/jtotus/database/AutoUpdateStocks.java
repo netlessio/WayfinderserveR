@@ -19,4 +19,16 @@ package org.jtotus.database;
 import java.util.Calendar;
 import org.joda.time.DateTime;
 import org.jtotus.common.Helper;
-import org.jtotus.net
+import org.jtotus.network.StockType;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class AutoUpdateStocks implements Runnable {
+
+    private String stockName = null;
+    private LocalJDBC javadb = null;
+    private int stepToRemove = 0;
+
+    publi
