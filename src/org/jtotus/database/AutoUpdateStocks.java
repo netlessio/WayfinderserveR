@@ -42,4 +42,10 @@ public class AutoUpdateStocks implements Runnable {
         DateTime calendar = new DateTime();
 
         final int failureLimit = -8;
-        fi
+        final int foundLimit = 8;
+        for (int i = 0; (failureLimit < i) && (i < foundLimit); i++) {
+            calendar = calendar.plusDays(stepToRemove);
+            stepToRemove = -1;
+
+            if (javadb.fetchClosingPrice(stockName, calendar) != null) {
+              
