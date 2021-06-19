@@ -48,4 +48,10 @@ public class AutoUpdateStocks implements Runnable {
             stepToRemove = -1;
 
             if (javadb.fetchClosingPrice(stockName, calendar) != null) {
-              
+                // Found in database
+                counter++;
+                continue;
+            } else {
+                calendar = calendar.plusDays(stepToRemove);
+                if (stock.fetchClosingPrice(calendar) != null) {
+                  
