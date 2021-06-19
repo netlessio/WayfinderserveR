@@ -54,4 +54,10 @@ public class AutoUpdateStocks implements Runnable {
             } else {
                 calendar = calendar.plusDays(stepToRemove);
                 if (stock.fetchClosingPrice(calendar) != null) {
-                  
+                    // Found somewhere in resources..
+                    // Database should be updated already.
+                    counter = 0;
+                    continue;
+                } else {
+                    // Not found int local database
+                    //nor in other resou
