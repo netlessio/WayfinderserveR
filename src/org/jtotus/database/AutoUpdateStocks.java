@@ -60,4 +60,20 @@ public class AutoUpdateStocks implements Runnable {
                     continue;
                 } else {
                     // Not found int local database
-                    //nor in other resou
+                    //nor in other resources.
+                    // Could be holiday or data simply is not available
+                    counter--;
+                }
+            }
+
+
+
+        }
+
+
+        return 1;
+    }
+
+    public void run() {
+
+        LocalJDBCFactory factory = LocalJ
