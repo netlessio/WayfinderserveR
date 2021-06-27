@@ -83,4 +83,10 @@ public class AutoUpdateStocks implements Runnable {
             return;
         }
 
-        StockType stock = new StockType(s
+        StockType stock = new StockType(stockName);
+
+
+        this.updateClosingPrice(stock, javadb);
+        return;
+    }
+}
