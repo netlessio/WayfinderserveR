@@ -18,4 +18,18 @@ package org.jtotus.database;
 
 /**
  *
- * @author E
+ * @author Evgeni Kappinen
+ */
+public class CacheFactory {
+
+    private Cache cache;
+
+    private CacheFactory() {
+    }
+
+    private static class SingletonHolder {
+
+        public static final CacheFactory instance = new CacheFactory();
+    }
+
+    publi
