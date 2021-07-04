@@ -32,4 +32,14 @@ public class CacheFactory {
         public static final CacheFactory instance = new CacheFactory();
     }
 
-    publi
+    public static CacheFactory getInstance() {
+        return SingletonHolder.instance;
+    }
+
+    public synchronized Cache getCache() {
+        if (cache == null) {
+            cache = new LRUCache();
+        }
+        return cache;
+    }
+}
