@@ -20,4 +20,14 @@ import java.util.LinkedList;
 import java.math.BigDecimal;
 import org.jlucrum.realtime.BrokerWatcher;
 import org.jlucrum.realtime.eventtypes.MarketData;
-i
+import com.espertech.esper.client.EPRuntime;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.jtotus.common.DayisHoliday;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public cla
