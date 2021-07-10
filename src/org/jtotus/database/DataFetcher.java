@@ -30,4 +30,9 @@ import org.jtotus.common.DayisHoliday;
  *
  * @author Evgeni Kappinen
  */
-public cla
+public class DataFetcher {
+
+    private LinkedList<InterfaceDataBase> listOfResources = null;
+    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
+    private Cache cache = null;
+    private LocalJDBC
