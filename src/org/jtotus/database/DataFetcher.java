@@ -43,3 +43,10 @@ public class DataFetcher {
 
         //Supported resource
         //listOfResources.add(new FileSystemFromHex());
+        listOfResources.add(new NetworkOP());
+
+        CacheFactory cFactory = CacheFactory.getInstance();
+        cache = cFactory.getCache();
+        
+        LocalJDBCFactory factory = LocalJDBCFactory.getInstance();
+        localJDB
