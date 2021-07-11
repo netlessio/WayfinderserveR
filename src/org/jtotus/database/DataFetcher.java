@@ -35,4 +35,11 @@ public class DataFetcher {
     private LinkedList<InterfaceDataBase> listOfResources = null;
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
     private Cache cache = null;
-    private LocalJDBC
+    private LocalJDBC localJDBC = null;
+    private boolean debug = false;
+
+    public DataFetcher() {
+        listOfResources = new LinkedList<InterfaceDataBase>();
+
+        //Supported resource
+        //listOfResources.add(new FileSystemFromHex());
