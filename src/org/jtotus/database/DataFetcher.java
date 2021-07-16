@@ -49,4 +49,18 @@ public class DataFetcher {
         cache = cFactory.getCache();
         
         LocalJDBCFactory factory = LocalJDBCFactory.getInstance();
-        localJDB
+        localJDBC = factory.jdbcFactory();
+
+        // listOfResources.add(new NetworkGoogle());
+
+    }
+
+    public boolean isDebug() {
+        return debug;
+    }
+
+    public void setDebug(boolean debug) {
+        this.debug = debug;
+    }
+
+    public void setDebug(
