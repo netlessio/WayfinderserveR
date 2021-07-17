@@ -93,4 +93,14 @@ public class DataFetcher {
                     localJDBC.storeData(stockName, date, result, type);
                     cache.putValue(stockName + type, date, result);
                     return result;
-  
+                }
+            }
+        } else {
+            //put to cache
+            cache.putValue(stockName + type, date, result);
+        }
+
+        return result;
+    }
+
+    public double[] fetchClosingPricePeriod(final String st
