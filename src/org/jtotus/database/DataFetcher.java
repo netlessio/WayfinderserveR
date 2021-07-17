@@ -63,4 +63,16 @@ public class DataFetcher {
         this.debug = debug;
     }
 
-    public void setDebug(
+    public void setDebug(String debug) {
+        this.debug = Boolean.parseBoolean(debug);
+    }
+
+
+    public BigDecimal fetchData(String stockName, DateTime date, String type) {
+        BigDecimal result = null;
+
+        if (DayisHoliday.isHoliday(date)) {
+            return result;
+        }
+
+ 
