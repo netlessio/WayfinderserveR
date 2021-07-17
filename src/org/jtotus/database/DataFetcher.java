@@ -88,4 +88,9 @@ public class DataFetcher {
             for (InterfaceDataBase listOfResource : listOfResources) {
                 InterfaceDataBase res = listOfResource;
 
-                result = res.f
+                result = res.fetchData(stockName, date, type);
+                if (result != null) {
+                    localJDBC.storeData(stockName, date, result, type);
+                    cache.putValue(stockName + type, date, result);
+                    return result;
+  
