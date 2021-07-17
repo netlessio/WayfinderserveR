@@ -75,4 +75,8 @@ public class DataFetcher {
             return result;
         }
 
- 
+        //Check with cache first
+        result = cache.getValue(stockName + type, date);
+        if (result != null) {
+            //System.out.printf("FROM CACHE:%s %s %f\n",stockName, date.getTime().toString(), result.floatValue());
+            retur
