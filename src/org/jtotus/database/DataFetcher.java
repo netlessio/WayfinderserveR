@@ -79,4 +79,13 @@ public class DataFetcher {
         result = cache.getValue(stockName + type, date);
         if (result != null) {
             //System.out.printf("FROM CACHE:%s %s %f\n",stockName, date.getTime().toString(), result.floatValue());
-            retur
+            return result;
+        }
+
+        result = localJDBC.fetchData(stockName, date, type);
+        if (result == null) {
+
+            for (InterfaceDataBase listOfResource : listOfResources) {
+                InterfaceDataBase res = listOfResource;
+
+                result = res.f
