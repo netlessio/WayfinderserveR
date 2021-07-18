@@ -103,4 +103,10 @@ public class DataFetcher {
         return result;
     }
 
-    public double[] fetchClosingPricePeriod(final String st
+    public double[] fetchClosingPricePeriod(final String stockName, 
+                                            final DateTime startDate,
+                                            final DateTime endDate) {
+
+        if (debug) {
+            System.out.printf("Fetching data for: %s\n", stockName);
+        
