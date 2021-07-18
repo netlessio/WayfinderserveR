@@ -117,4 +117,11 @@ public class DataFetcher {
 
         localJDBC.setFetcher(this);
         return localJDBC.fetchPeriod(stockName,
-                                     sta
+                                     startDate,
+                                     endDate,
+                                     "CLOSE");
+    }
+    
+    public double[] fetchVolumePeriod(final String stockName, 
+                                      final DateTime startDate,
+           
