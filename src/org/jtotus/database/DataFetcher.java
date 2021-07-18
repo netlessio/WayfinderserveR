@@ -109,4 +109,12 @@ public class DataFetcher {
 
         if (debug) {
             System.out.printf("Fetching data for: %s\n", stockName);
-        
+        }
+
+        if (endDate.isBefore(startDate)) {
+            throw new RuntimeException("End day should be before start");
+        }
+
+        localJDBC.setFetcher(this);
+        return localJDBC.fetchPeriod(stockName,
+                                     sta
