@@ -124,4 +124,11 @@ public class DataFetcher {
     
     public double[] fetchVolumePeriod(final String stockName, 
                                       final DateTime startDate,
-           
+                                      final DateTime endDate) {
+
+        if (debug) {
+            System.out.printf("Fetching data for: %s\n", stockName);
+        }
+
+        if (endDate.isBefore(startDate)) {
+            throw new RuntimeException("End day should be before s
