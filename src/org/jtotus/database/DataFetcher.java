@@ -131,4 +131,15 @@ public class DataFetcher {
         }
 
         if (endDate.isBefore(startDate)) {
-            throw new RuntimeException("End day should be before s
+            throw new RuntimeException("End day should be before start");
+        }
+
+        localJDBC.setFetcher(this);
+        return localJDBC.fetchPeriod(stockName,
+                startDate,
+                endDate,
+                "VOLUME");
+    }
+
+    public double[] fetchPeriodByString(final String stockName, 
+                
