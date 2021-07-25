@@ -155,4 +155,10 @@ public class DataFetcher {
         localJDBC.setFetcher(this);
         return localJDBC.fetchPeriod(stockName,
                                     start,
-          
+                                    end,
+                                    type);
+    }
+
+    public double[] fetchPeriod(final String stockName, 
+                                final String fromDate,
+                                final String toDate, String t
