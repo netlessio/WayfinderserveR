@@ -142,4 +142,11 @@ public class DataFetcher {
     }
 
     public double[] fetchPeriodByString(final String stockName, 
-                
+                                        final String fromDate,
+                                        final String toDate, String type) {
+
+        if (debug) {
+            System.out.printf("Fetching data for: %s\n", stockName);
+        }
+
+        DateTi
