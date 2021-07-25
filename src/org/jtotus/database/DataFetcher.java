@@ -149,4 +149,10 @@ public class DataFetcher {
             System.out.printf("Fetching data for: %s\n", stockName);
         }
 
-        DateTi
+        DateTime start = formatter.parseDateTime(fromDate);
+        DateTime end = formatter.parseDateTime(toDate);
+        
+        localJDBC.setFetcher(this);
+        return localJDBC.fetchPeriod(stockName,
+                                    start,
+          
