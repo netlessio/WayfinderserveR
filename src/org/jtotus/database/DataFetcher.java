@@ -161,4 +161,13 @@ public class DataFetcher {
 
     public double[] fetchPeriod(final String stockName, 
                                 final String fromDate,
-                                final String toDate, String t
+                                final String toDate, String type) {
+
+        double[] retValue = null;
+        
+        if (debug) {
+            System.out.printf("Fetching2 data for: %s\n", stockName);
+        }
+
+        DateTime from = formatter.parseDateTime(fromDate);
+        DateTime to = formatter.parseDateTime(toDat
