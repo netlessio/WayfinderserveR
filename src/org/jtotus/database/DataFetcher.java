@@ -170,4 +170,12 @@ public class DataFetcher {
         }
 
         DateTime from = formatter.parseDateTime(fromDate);
-        DateTime to = formatter.parseDateTime(toDat
+        DateTime to = formatter.parseDateTime(toDate);
+        
+        localJDBC.setFetcher(this);
+        for (InterfaceDataBase listOfResource : listOfResources) {
+            retValue = listOfResource.fetchDataPeriod(stockName, from, to, type);
+            if (retValue != null) {
+                return retValue;
+            }
+      
