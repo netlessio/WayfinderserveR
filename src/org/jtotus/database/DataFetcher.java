@@ -178,4 +178,13 @@ public class DataFetcher {
             if (retValue != null) {
                 return retValue;
             }
-      
+        }
+
+        return retValue;
+    }
+
+    public boolean sendMarketData(final String[] listOfStocks, final DateTime startDate, final DateTime endDate) {
+
+        final MarketData marketData = new MarketData().setAsClosingPrice();
+
+    
