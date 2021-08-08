@@ -187,4 +187,8 @@ public class DataFetcher {
 
         final MarketData marketData = new MarketData().setAsClosingPrice();
 
-    
+        for (String stockName : listOfStocks) {
+//            final Thread thread = new Thread() {
+//                public void run() {
+            if (debug) {
+                System.out.printf("Fetching data for: %s\n", stockNa
