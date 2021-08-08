@@ -191,4 +191,10 @@ public class DataFetcher {
 //            final Thread thread = new Thread() {
 //                public void run() {
             if (debug) {
-                System.out.printf("Fetching data for: %s\n", stockNa
+                System.out.printf("Fetching data for: %s\n", stockName);
+            }
+
+            LocalJDBCFactory factory = LocalJDBCFactory.getInstance();
+            LocalJDBC locJDBC = factory.jdbcFactory();
+            locJDBC.setFetcher(new DataFetcher());
+            double[] data = locJDBC.fetchPeriod(stockName
