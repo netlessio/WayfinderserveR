@@ -207,4 +207,11 @@ public class DataFetcher {
             }
 
             marketData.data.put(stockName, data);
-            ma
+            marketData.setDate(endDate);
+//                }
+//            };
+//            thread.start();
+        }
+
+        if (debug) {
+            System.out.printf("Sending market data : %d\n", marketData.data.size());
