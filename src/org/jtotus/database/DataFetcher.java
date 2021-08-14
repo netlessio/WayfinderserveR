@@ -223,4 +223,11 @@ public class DataFetcher {
     }
 
     public MarketData prepareMarketData(final String[] listOfStocks, 
-                                        final Date
+                                        final DateTime startDate,
+                                        final DateTime endDate) {
+
+        final MarketData marketData = new MarketData().setAsClosingPrice();
+
+        for (String stockName : listOfStocks) {
+//            final Thread thread = new Thread() {
+//            
