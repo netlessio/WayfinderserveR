@@ -215,3 +215,12 @@ public class DataFetcher {
 
         if (debug) {
             System.out.printf("Sending market data : %d\n", marketData.data.size());
+        }
+        EPRuntime runtime = BrokerWatcher.getMainEngine().getEPRuntime();
+        runtime.sendEvent(marketData);
+
+        return true;
+    }
+
+    public MarketData prepareMarketData(final String[] listOfStocks, 
+                                        final Date
