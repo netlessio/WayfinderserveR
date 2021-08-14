@@ -230,4 +230,10 @@ public class DataFetcher {
 
         for (String stockName : listOfStocks) {
 //            final Thread thread = new Thread() {
-//            
+//                public void run() {
+            if (debug) {
+                System.out.printf("Fetching data for: %s\n", stockName);
+            }
+
+            LocalJDBCFactory factory = LocalJDBCFactory.getInstance();
+            LocalJDBC locJDBC = factory.jd
