@@ -255,4 +255,13 @@ public class DataFetcher {
         }
 
         if (debug) {
-  
+            System.out.printf("Sending market data : %d\n", marketData.data.size());
+        }
+
+        return marketData;
+    }
+
+    public static void main(String[] arv) {
+        DataFetcher data = new DataFetcher();
+
+        dat
