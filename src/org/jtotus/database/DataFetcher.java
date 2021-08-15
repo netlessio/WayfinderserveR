@@ -244,4 +244,15 @@ public class DataFetcher {
                     "CLOSE");
 
             if (data == null) {
-        
+                return null;
+            }
+
+            marketData.data.put(stockName, data);
+            marketData.setDate(endDate);
+//                }
+//            };
+//            thread.start();
+        }
+
+        if (debug) {
+  
