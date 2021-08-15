@@ -236,4 +236,12 @@ public class DataFetcher {
             }
 
             LocalJDBCFactory factory = LocalJDBCFactory.getInstance();
-            LocalJDBC locJDBC = factory.jd
+            LocalJDBC locJDBC = factory.jdbcFactory();
+            locJDBC.setFetcher(new DataFetcher());
+            double[] data = locJDBC.fetchPeriod(stockName,
+                    startDate,
+                    endDate,
+                    "CLOSE");
+
+            if (data == null) {
+        
