@@ -276,4 +276,9 @@ public class DataFetcher {
             }
         }
     }
-//        LocalJDBCFactory factory = LocalJDB
+//        LocalJDBCFactory factory = LocalJDBCFactory.getInstance();
+//        LocalJDBC localJDBC = factory.jdbcFactory();
+//        System.out.printf("Fetching data..\n");
+//        DataFetcher fetcher = new DataFetcher();
+//        localJDBC.setFetcher(fetcher);
+//        localJDBC.setDebug(t
