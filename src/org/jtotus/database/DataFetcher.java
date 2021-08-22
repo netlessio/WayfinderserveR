@@ -268,4 +268,12 @@ public class DataFetcher {
         //double []vo = data.fetchPeriod("Pohjola Bank A", "01-01-2009","30-07-2011", "VOLUME");
         double []vo = data.fetchPeriod("Wärtsilä Corporation", "01-01-2011","30-07-2011", "CLOSE");
 
-        System.out.printf("The size
+        System.out.printf("The size is : %d\n", vo.length);
+        for( int i =0; i < vo.length;i++) {
+            System.out.printf("%f, ",vo[i]);
+            if (i % 10 == 0) { 
+                System.out.printf("\n"); 
+            }
+        }
+    }
+//        LocalJDBCFactory factory = LocalJDB
