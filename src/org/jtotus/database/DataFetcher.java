@@ -287,4 +287,12 @@ public class DataFetcher {
 //        DateTime startDate = new DateTime().minusDays(25);
 ////        localJDBC.fetchPeriod("Outokumpu Oyj", startDate, endDate);
 //        String[] list;
-//        list = new String[]{
+//        list = new String[]{"Outokumpu Oyj", "Metso Oyj", "Nokia Oyj"};
+////        list = new String[]{"Outokumpu Oyj"};
+//
+//        fetcher.sendMarketData(list, startDate, endDate);
+//
+//
+//    }
+
+}
