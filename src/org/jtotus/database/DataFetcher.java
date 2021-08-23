@@ -281,4 +281,10 @@ public class DataFetcher {
 //        System.out.printf("Fetching data..\n");
 //        DataFetcher fetcher = new DataFetcher();
 //        localJDBC.setFetcher(fetcher);
-//        localJDBC.setDebug(t
+//        localJDBC.setDebug(true);
+//
+//        DateTime endDate = new DateTime();
+//        DateTime startDate = new DateTime().minusDays(25);
+////        localJDBC.fetchPeriod("Outokumpu Oyj", startDate, endDate);
+//        String[] list;
+//        list = new String[]{
