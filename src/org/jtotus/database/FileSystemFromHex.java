@@ -33,4 +33,15 @@ import java.math.BigDecimal;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Cell;
-import org.joda.time.D
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class FileSystemFromHex implements InterfaceDataBase {
+
+    String pathToDataB
