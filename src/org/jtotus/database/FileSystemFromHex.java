@@ -51,4 +51,12 @@ public class FileSystemFromHex implements InterfaceDataBase {
 
     private int columnHighestPrice = 1;
     private int columnLowestPrice = 2;
-    private int columnClosingPrice
+    private int columnClosingPrice = 3;
+    private int columnAvrPrice = 4;
+    private int columnTotalVolume = 5;
+    private int columnTurnOver = 6;
+    private int columnTrades = 7;
+
+
+    //TODO:find column* values by reading first line in file,
+    // if contains string whi
