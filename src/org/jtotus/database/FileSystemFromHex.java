@@ -44,4 +44,11 @@ import org.joda.time.format.DateTimeFormatter;
  */
 public class FileSystemFromHex implements InterfaceDataBase {
 
-    String pathToDataB
+    String pathToDataBaseDir = "OMXNordic/";
+    String filePattern = "yyyy-MM-dd";
+    private final DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(filePattern);
+
+
+    private int columnHighestPrice = 1;
+    private int columnLowestPrice = 2;
+    private int columnClosingPrice
