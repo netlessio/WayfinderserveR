@@ -59,4 +59,11 @@ public class FileSystemFromHex implements InterfaceDataBase {
 
 
     //TODO:find column* values by reading first line in file,
-    // if contains string whi
+    // if contains string which indicates value type change value.
+
+    private FileFilter filterForDir()
+    {
+       FileFilter fileFilter = new FileFilter() {
+           public boolean accept(File file)
+           {
+                if(!file.isFile()
