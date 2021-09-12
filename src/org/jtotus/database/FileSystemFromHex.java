@@ -92,4 +92,11 @@ public BigDecimal fetchLowestPrice(String stockName, DateTime calendar){
 }
 
 public BigDecimal fetchClosingPrice(String stockName, DateTime calendar){
-    return this.fetchVal
+    return this.fetchValue(stockName, calendar, columnClosingPrice);
+}
+
+public BigDecimal fetchAveragePrice(String stockName, DateTime calendar){
+    return this.fetchValue(stockName, calendar, columnAvrPrice);
+}
+
+public BigDecimal fetchTurnOver(String stock
