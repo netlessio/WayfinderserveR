@@ -84,4 +84,12 @@ public class FileSystemFromHex implements InterfaceDataBase {
     
     
 public BigDecimal fetchHighestPrice(String stockName, DateTime calendar){
-    return this.fetchValue(stockName, calendar, columnHighestPric
+    return this.fetchValue(stockName, calendar, columnHighestPrice);
+}
+
+public BigDecimal fetchLowestPrice(String stockName, DateTime calendar){
+    return this.fetchValue(stockName, calendar, columnLowestPrice);
+}
+
+public BigDecimal fetchClosingPrice(String stockName, DateTime calendar){
+    return this.fetchVal
