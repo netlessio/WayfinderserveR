@@ -66,4 +66,12 @@ public class FileSystemFromHex implements InterfaceDataBase {
        FileFilter fileFilter = new FileFilter() {
            public boolean accept(File file)
            {
-                if(!file.isFile()
+                if(!file.isFile() || !file.canRead()) {
+                    return false;
+                }
+
+                String name = file.getName();
+                if (!name.endsWith(".xls"))
+                {
+                    return false;
+            
