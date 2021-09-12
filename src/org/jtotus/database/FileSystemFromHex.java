@@ -74,4 +74,14 @@ public class FileSystemFromHex implements InterfaceDataBase {
                 if (!name.endsWith(".xls"))
                 {
                     return false;
-            
+                }
+               return true;
+           }
+       };
+       return fileFilter;
+    }
+
+    
+    
+public BigDecimal fetchHighestPrice(String stockName, DateTime calendar){
+    return this.fetchValue(stockName, calendar, columnHighestPric
