@@ -107,4 +107,9 @@ public BigDecimal fetchTrades(String stockName, DateTime calendar){
     return this.fetchValue(stockName, calendar, columnTrades);
 }
 
-    public BigDecimal fet
+    public BigDecimal fetchData(String stockName, DateTime date, String type) {
+
+        if (type.compareTo("HIGH") == 0) {
+            return this.fetchValue(stockName, date, columnHighestPrice);
+        } else if (type.compareTo("LOW") == 0) {
+            return this.fetchValue(stockNam
