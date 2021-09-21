@@ -99,4 +99,12 @@ public BigDecimal fetchAveragePrice(String stockName, DateTime calendar){
     return this.fetchValue(stockName, calendar, columnAvrPrice);
 }
 
-public BigDecimal fetchTurnOver(String stock
+public BigDecimal fetchTurnOver(String stockName, DateTime calendar){
+    return this.fetchValue(stockName, calendar, columnTurnOver);
+}
+
+public BigDecimal fetchTrades(String stockName, DateTime calendar){
+    return this.fetchValue(stockName, calendar, columnTrades);
+}
+
+    public BigDecimal fet
