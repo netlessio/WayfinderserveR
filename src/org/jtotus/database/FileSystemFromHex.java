@@ -116,4 +116,9 @@ public BigDecimal fetchTrades(String stockName, DateTime calendar){
         } else if (type.compareTo("CLOSE") == 0) {
             return this.fetchValue(stockName, date, columnClosingPrice);
         } else if (type.compareTo("VOLUME") == 0) {
-            return this.fetchValue(stockName,
+            return this.fetchValue(stockName, date, columnTotalVolume);
+        } else if (type.compareTo("AVRG") == 0) {
+            return this.fetchValue(stockName, date, columnAvrPrice);
+        } else if (type.compareTo("TRADES") == 0) {
+            return this.fetchValue(stockName, date, columnTrades);
+  
