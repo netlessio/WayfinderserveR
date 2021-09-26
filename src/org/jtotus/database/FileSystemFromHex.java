@@ -112,4 +112,8 @@ public BigDecimal fetchTrades(String stockName, DateTime calendar){
         if (type.compareTo("HIGH") == 0) {
             return this.fetchValue(stockName, date, columnHighestPrice);
         } else if (type.compareTo("LOW") == 0) {
-            return this.fetchValue(stockNam
+            return this.fetchValue(stockName, date, columnLowestPrice);
+        } else if (type.compareTo("CLOSE") == 0) {
+            return this.fetchValue(stockName, date, columnClosingPrice);
+        } else if (type.compareTo("VOLUME") == 0) {
+            return this.fetchValue(stockName,
