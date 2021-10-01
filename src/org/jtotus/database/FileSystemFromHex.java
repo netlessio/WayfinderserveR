@@ -121,4 +121,12 @@ public BigDecimal fetchTrades(String stockName, DateTime calendar){
             return this.fetchValue(stockName, date, columnAvrPrice);
         } else if (type.compareTo("TRADES") == 0) {
             return this.fetchValue(stockName, date, columnTrades);
-  
+        } else if (type.compareTo("TURNOVER") == 0) {
+            return this.fetchValue(stockName, date, columnTurnOver);
+        }
+        return null;
+    }
+    
+private BigDecimal fetchValue(String stockName, DateTime date, int row)
+{
+    BigD
