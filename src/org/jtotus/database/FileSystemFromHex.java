@@ -129,4 +129,11 @@ public BigDecimal fetchTrades(String stockName, DateTime calendar){
     
 private BigDecimal fetchValue(String stockName, DateTime date, int row)
 {
-    BigD
+    BigDecimal result = null;
+    
+//    System.out.printf("Reading file system !:%d time:%s\n", row, date.getTime().toString());
+
+    File dir = new File("./" + pathToDataBaseDir);
+    FileFilter filter = filterForDir();
+
+    File[] listOfFiles = dir.listFiles(fil
