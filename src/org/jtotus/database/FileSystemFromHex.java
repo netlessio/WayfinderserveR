@@ -136,4 +136,14 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
     File dir = new File("./" + pathToDataBaseDir);
     FileFilter filter = filterForDir();
 
-    File[] listOfFiles = dir.listFiles(fil
+    File[] listOfFiles = dir.listFiles(filter);
+
+    if (listOfFiles == null) {
+        return null;
+    }
+    
+    for (int i = 0; i < listOfFiles.length ; i++) {
+        String nameOfFile = listOfFiles[i].getName();
+
+        if (nameOfFile.indexOf(stockName) != -1) {
+           
