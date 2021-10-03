@@ -154,4 +154,14 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
         }
     }
     
-    System.out.pr
+    System.out.printf("FileSystemFromHex", "Not found value for:%s\n", stockName);
+    
+    return result;
+}
+
+    public BigDecimal omxNordicFile(String fileName, DateTime calendar, int row) {
+        BigDecimal result = null;
+
+        try {
+
+            POIF
