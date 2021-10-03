@@ -146,4 +146,12 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
         String nameOfFile = listOfFiles[i].getName();
 
         if (nameOfFile.indexOf(stockName) != -1) {
-           
+            System.out.printf("FileSystemFromHex","Found File:%s\n", nameOfFile);
+            result = this.omxNordicFile(nameOfFile, date, row);
+            if (result != null) {
+               return result;
+            }
+        }
+    }
+    
+    System.out.pr
