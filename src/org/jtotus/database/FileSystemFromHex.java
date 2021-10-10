@@ -164,4 +164,10 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
 
         try {
 
-            POIF
+            POIFSFileSystem fs = new POIFSFileSystem(
+                new FileInputStream(pathToDataBaseDir+fileName));
+
+            HSSFWorkbook workbook = new HSSFWorkbook(fs);
+
+            HSSFSheet worksheet = workbook.getSheetAt(0);
+            //HSSFRow
