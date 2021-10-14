@@ -178,4 +178,8 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
 
             while(rowIter.hasNext())
             {
-                HSSFRow rows = (HSSFRow)row
+                HSSFRow rows = (HSSFRow)rowIter.next();
+                HSSFCell cell = rows.getCell(0);
+                String dateString = null;
+                if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
+                    dateString = cell.getStringCe
