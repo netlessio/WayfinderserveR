@@ -170,4 +170,12 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
             HSSFWorkbook workbook = new HSSFWorkbook(fs);
 
             HSSFSheet worksheet = workbook.getSheetAt(0);
-            //HSSFRow
+            //HSSFRow row1 = worksheet.getRow(0);
+
+            
+            String correctTime = dateFormatter.print(calendar);
+            Iterator rowIter = worksheet.rowIterator();
+
+            while(rowIter.hasNext())
+            {
+                HSSFRow rows = (HSSFRow)row
