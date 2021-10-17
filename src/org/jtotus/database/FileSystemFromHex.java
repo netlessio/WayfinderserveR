@@ -182,4 +182,8 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
                 HSSFCell cell = rows.getCell(0);
                 String dateString = null;
                 if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
-                    dateString = cell.getStringCe
+                    dateString = cell.getStringCellValue();
+                } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
+                    Date date = cell.getDateCellValue();
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            
