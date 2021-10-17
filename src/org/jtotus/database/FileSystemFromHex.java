@@ -191,4 +191,10 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
 //                    System.err.printf("File (%s) is corrucped ? type:%s\n", fileName, dateString);
                     
                 } else {
-                    System.err.printf("File (%s) is corrucped ? t
+                    System.err.printf("File (%s) is corrucped ? type:%d formula:%d\n", fileName, cell.getCellType(), Cell.CELL_TYPE_FORMULA);
+                    return null;
+                }
+              
+
+              //  help.debug("FileSystemFromHex","Searching:%s from:%s\n", correctTime, temp);
+                if (correctTi
