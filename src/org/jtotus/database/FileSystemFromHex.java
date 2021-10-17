@@ -197,4 +197,10 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
               
 
               //  help.debug("FileSystemFromHex","Searching:%s from:%s\n", correctTime, temp);
-                if (correctTi
+                if (correctTime.compareTo(dateString) == 0)
+                {
+                    HSSFCell closingPrice = rows.getCell(row);
+                    if (closingPrice == null)
+                        return null;
+                    
+                    float
