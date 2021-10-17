@@ -186,4 +186,9 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
                 } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
                     Date date = cell.getDateCellValue();
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            
+                    dateString = format.format(date);
+                    
+//                    System.err.printf("File (%s) is corrucped ? type:%s\n", fileName, dateString);
+                    
+                } else {
+                    System.err.printf("File (%s) is corrucped ? t
