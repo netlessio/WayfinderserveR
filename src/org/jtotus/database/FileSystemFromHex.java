@@ -203,4 +203,7 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
                     if (closingPrice == null)
                         return null;
                     
-                    float
+                    float floatTemp = (float)closingPrice.getNumericCellValue();
+                    System.out.printf("FileSystemFromHex",
+                            "Closing price at:%d f:%.4f Time:%s\n",
+                            cell.getRowIndex(), floatTemp,
