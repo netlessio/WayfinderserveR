@@ -215,4 +215,13 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
              
         } catch (IOException ex) {
             Logger.getLogger(FileSystemFromHex.class.getName()).log(Level.SEVERE, null, ex);
- 
+        }
+
+        return result;
+    }
+
+    public BigDecimal fetchVolume(String stockName, DateTime calendar) {
+        return this.fetchValue(stockName, calendar, columnTotalVolume);
+    }
+
+    public void storeClosingPrice(String stockName, DateTime date, BigD
