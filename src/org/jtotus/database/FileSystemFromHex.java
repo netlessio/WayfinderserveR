@@ -206,4 +206,13 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
                     float floatTemp = (float)closingPrice.getNumericCellValue();
                     System.out.printf("FileSystemFromHex",
                             "Closing price at:%d f:%.4f Time:%s\n",
-                            cell.getRowIndex(), floatTemp,
+                            cell.getRowIndex(), floatTemp, correctTime);
+                    
+                    return new BigDecimal(floatTemp);
+                }
+            }
+
+             
+        } catch (IOException ex) {
+            Logger.getLogger(FileSystemFromHex.class.getName()).log(Level.SEVERE, null, ex);
+ 
