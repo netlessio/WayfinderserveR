@@ -224,4 +224,9 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
         return this.fetchValue(stockName, calendar, columnTotalVolume);
     }
 
-    public void storeClosingPrice(String stockName, DateTime date, BigD
+    public void storeClosingPrice(String stockName, DateTime date, BigDecimal value) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void storeVolume(String stockName, DateTime date, BigDecimal value) {
+        throw new UnsupportedOperationException("Not supported yet."
