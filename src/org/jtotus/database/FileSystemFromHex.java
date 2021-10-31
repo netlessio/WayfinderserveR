@@ -229,4 +229,12 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
     }
 
     public void storeVolume(String stockName, DateTime date, BigDecimal value) {
-        throw new UnsupportedOperationException("Not supported yet."
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void storeData(String stockName, DateTime date, BigDecimal value, String type) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public double[] fetchDataPeriod(String stockName, DateTime fromDa
