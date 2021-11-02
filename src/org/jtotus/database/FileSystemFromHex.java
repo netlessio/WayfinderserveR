@@ -237,4 +237,7 @@ private BigDecimal fetchValue(String stockName, DateTime date, int row)
     }
 
     @Override
-    public double[] fetchDataPeriod(String stockName, DateTime fromDa
+    public double[] fetchDataPeriod(String stockName, DateTime fromDate, DateTime toDate, String type) {
+        return null;
+    }
+}
