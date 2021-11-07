@@ -33,4 +33,10 @@ public interface InterfaceDataBase {
 
     public BigDecimal fetchVolume(String stockName, DateTime date);
 
-    public BigDecimal fetchData(String stockName, DateTime date, S
+    public BigDecimal fetchData(String stockName, DateTime date, String type);
+    
+    public void storeClosingPrice(String stockName, DateTime date, BigDecimal value);
+
+    public void storeVolume(String stockName, DateTime date, BigDecimal value);
+
+    public void storeData(String stockName, DateT
