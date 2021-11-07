@@ -27,4 +27,10 @@ import org.joda.time.DateTime;
  *
  * @author Evgeni Kappinen
  */
-public interface Inter
+public interface InterfaceDataBase {
+
+    public BigDecimal fetchClosingPrice(String stockName, DateTime date);
+
+    public BigDecimal fetchVolume(String stockName, DateTime date);
+
+    public BigDecimal fetchData(String stockName, DateTime date, S
