@@ -28,4 +28,12 @@ import org.joda.time.DateTime;
  * Reference: http://stackoverflow.com/questions/221525/how-would-you-implement-an-lru-cache-in-java-6
  */
 public class LRUCache implements Cache {
-    private LruCache<String, BigDecimal> cache= ne
+    private LruCache<String, BigDecimal> cache= new LruCache<String, BigDecimal>(3000);
+    
+    @Override
+    public void putValue(String stockName, DateTime date, BigDecimal value) {
+        cache.put(stockName + date.toString(), value);
+    }
+
+    @Override
+    public BigD
