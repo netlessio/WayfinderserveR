@@ -19,4 +19,13 @@ package org.jtotus.database;
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import org.jod
+import org.joda.time.DateTime;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ * 
+ * Reference: http://stackoverflow.com/questions/221525/how-would-you-implement-an-lru-cache-in-java-6
+ */
+public class LRUCache implements Cache {
+    private LruCache<String, BigDecimal> cache= ne
