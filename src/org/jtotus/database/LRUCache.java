@@ -36,4 +36,11 @@ public class LRUCache implements Cache {
     }
 
     @Override
-    public BigD
+    public BigDecimal getValue(String stockName, DateTime date) {
+        return cache.get(stockName + date.toString());
+    }
+
+    private class LruCache<A, B> extends LinkedHashMap<A, B> {
+        private final int maxEntries;
+
+        public LruCache(final int max
