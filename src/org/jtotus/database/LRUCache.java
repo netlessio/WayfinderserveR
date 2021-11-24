@@ -51,4 +51,6 @@ public class LRUCache implements Cache {
         @Override
         protected boolean removeEldestEntry(final Map.Entry<A, B> eldest) {
             return super.size() > maxEntries;
-     
+        }
+    }
+}
