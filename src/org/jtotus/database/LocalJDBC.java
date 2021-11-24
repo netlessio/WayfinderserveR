@@ -209,3 +209,235 @@ public class LocalJDBC implements InterfaceDataBase {
                 }
             }
             
+
+        } catch (SQLException ex) {
+            System.err.printf("LocalJDBC Unable to find date for:'%s' from'%s' Time" + startDate.toDate() + "\n", "Cosing Price", tableName);
+            ex.printStackTrace();
+            SQLException xp = null;
+            while((xp = ex.getNextException()) != null) {
+                xp.printStackTrace();
+            }
+
+        } finally {
+            try {
+                if (results != null) results.close();
+                if (pstm != null) pstm.close();
+                if (connection != null) connection.close();
+//                System.out.printf("Max connect:%d in use:%d\n",mainPool.getMaxConnections(), mainPool.getActiveConnections());
+//                mainPool.dispose();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(LocalJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return ArrayUtils.toPrimitive(closingPrices.toArray(new Double[0]));
+    }
+
+
+    public BigDecimal fetchVolume(String stockName, DateTime date) {
+        return this.fetchData(this.normTableName(stockName), date, "VOLUME");
+    }
+
+    public void storeData(String stockName, DateTime date, BigDecimal value, String type) {
+        PreparedStatement pstm = null;
+        Connection connection = null;
+        try {
+
+            String table = this.normTableName(stockName);
+            connection = this.getConnection();
+            //upsert
+            this.createTable(connection, table);
+
+            String query = "MERGE INTO " + table + " (ID,DATE," + type + ") VALUES((SELECT ID FROM " + table + " ID WHERE DATE=?), ?, ?)";
+            pstm = connection.prepareStatement(query);
+
+            java.sql.Date sqlDate = new java.sql.Date(date.getMillis());
+            pstm.setDate(1, sqlDate);
+            pstm.setDate(2, sqlDate);
+
+            System.out.printf("Inserting :%f :%s time:%s\n", value.doubleValue(), stockName, date.toDate().toString());
+            pstm.setDouble(3, value.doubleValue());
+            pstm.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LocalJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(LocalJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+    }
+
+    public HashMap<String, Double> fetchPeriodAsMap(String tableName, DateTime startDate, DateTime endDate) {
+
+        HashMap<String, Double> retMap = new HashMap<String, Double>();
+        BigDecimal retValue = null;
+        PreparedStatement pstm = null;
+        java.sql.Date retDate = null;
+        ResultSet results = null;
+        Connection connection = null;
+
+        try {
+            String query = "SELECT CLOSE, DATE FROM " + this.normTableName(tableName) + " WHERE DATE>=? AND DATE<=? ORDER BY DATE ASC";
+            // this.createTable(connection, this.normTableName(tableName));
+
+            connection = this.getConnection();
+            pstm = connection.prepareStatement(query);
+
+            java.sql.Date startSqlDate = new java.sql.Date(startDate.getMillis());
+            pstm.setDate(1, startSqlDate);
+
+            java.sql.Date endSqlDate = new java.sql.Date(endDate.getMillis());
+            pstm.setDate(2, endSqlDate);
+
+            System.out.printf("fetchPeriod : %s : %s\n", startSqlDate, endSqlDate);
+            DateIterator iter = new DateIterator(startDate, endDate);
+            results = pstm.executeQuery();
+            DateTime dateCheck;
+
+            while (results.next()) {
+                retValue = results.getBigDecimal(1);
+                retDate = results.getDate(2);
+
+                if (retValue == null || retDate == null) {
+                    System.err.println("Database is corrupted!");
+                    System.exit(-1);
+                }
+
+                if (iter.hasNext()) {
+                    dateCheck = iter.nextInCalendar();
+
+                    DateTime compCal = new DateTime(retDate.getTime());
+
+                    if (debug) {
+                        if (retValue != null) {
+                            System.out.printf("Fetched:\'%s\' from \'%s\' : value:%f date:%s\n",
+                                    "Closing Price", tableName, retValue.doubleValue(), retDate.toString());
+                        } else {
+                            System.out.printf("Fetched:\'%s\' from \'%s\' : value:%s date:%s\n",
+                                    "Closing Price", tableName, "is null", retDate.toString());
+                        }
+                    }
+
+                    if (compCal.getDayOfMonth() == dateCheck.getDayOfMonth()
+                            && compCal.getMonthOfYear() == dateCheck.getMonthOfYear()
+                            && compCal.getYear() == dateCheck.getYear()) {
+                        retMap.put(formatter.print(compCal), retValue.doubleValue());
+                        continue;
+                    }
+                    
+                    while (((compCal.getDayOfMonth() != dateCheck.getDayOfMonth())
+                            || (compCal.getMonthOfYear() != dateCheck.getMonthOfYear())
+                            || (compCal.getYear() != dateCheck.getYear())) &&
+                            dateCheck.isBefore(compCal)) {
+                        if (fetcher != null) {
+                            BigDecimal failOverValue = getFetcher().fetchData(tableName, dateCheck, "CLOSE");
+                            if (failOverValue != null) {
+                                retMap.put(formatter.print(dateCheck), retValue.doubleValue());
+                            }
+
+                            if (iter.hasNext()) {
+                                System.err.printf("Warning : Miss matching dates for: %s - %s\n",
+                                        retDate.toString(), dateCheck.toString());
+                                dateCheck = iter.nextInCalendar();
+                                continue;
+                            }
+                        } else {
+                            System.err.printf("Fatal missing fetcher : Miss matching dates: %s - %s\n", retDate.toString(), dateCheck.toString());
+                            return null;
+                        }
+                    }
+                }
+            }
+
+            while (iter.hasNext()) {
+                retValue = getFetcher().fetchData(tableName, iter.nextInCalendar(), "CLOSE");
+                if (retValue != null) {
+                    retMap.put(formatter.print(iter.getCurrentAsCalendar()), retValue.doubleValue());
+                }
+            }
+
+
+
+        } catch (SQLException ex) {
+            System.err.printf("LocalJDBC Unable to find date for:'%s' from'%s' Time" + startDate.toDate() + "\n", "Cosing Price", tableName);
+//            ex.printStackTrace();
+//            SQLException xp = null;
+//            while((xp = ex.getNextException()) != null) {
+//                xp.printStackTrace();
+//            }
+
+        } finally {
+            try {
+                if (results != null) results.close();
+                if (pstm != null) pstm.close();
+                if (connection != null) connection.close();
+//                System.out.printf("Max connect:%d in use:%d\n",mainPool.getMaxConnections(), mainPool.getActiveConnections());
+//                mainPool.dispose();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(LocalJDBC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return retMap;
+    }
+    
+    
+    
+    
+    public static String normTableName(String name) {
+        return name.replace(" ", "").replace("-", "");
+    }
+
+    public void storeClosingPrice(String stockName, DateTime date, BigDecimal value) {
+        this.storeData(stockName, date, value, "CLOSE");
+    }
+
+    public void storeVolume(String stockName, DateTime date, BigDecimal value) {
+        this.storeData(stockName, date, value, "VOLUME");
+    }
+
+    public long entryExists(Connection con, String stockName, DateTime date) {
+        long retValue = 0;
+        PreparedStatement pstm = null;
+        try {
+            String statement = "SELECT ID FROM " + this.normTableName(stockName) + " WHERE DATE=?";
+
+            pstm = con.prepareStatement(statement);
+
+            java.sql.Date sqlDate = new java.sql.Date(date.getMillis());
+
+            pstm.setDate(1, sqlDate);
+
+            ResultSet results = pstm.executeQuery();
+            if (results.next()) {
+                retValue = results.getLong(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LocalJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (pstm != null) {
+                try {
+                    pstm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LocalJDBC.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+        return retValue;
+    }
+}
