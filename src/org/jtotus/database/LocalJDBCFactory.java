@@ -19,4 +19,14 @@ package org.jtotus.database;
 
 import java.util.Properties;
 import java.util.logging.Level;
-import
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import org.h2.jdbcx.JdbcConnectionPool;
+import org.h2.jdbcx.JdbcDataSource;
+
+
+/**
+ *
+ * @author Evgeni Kappinen
