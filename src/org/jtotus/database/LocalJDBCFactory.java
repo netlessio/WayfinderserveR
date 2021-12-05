@@ -38,4 +38,8 @@ public class LocalJDBCFactory {
     private LocalJDBCFactory() {
 //        try {
 //            Class.forName("org.h2.Driver").newInstance();
-//        } cat
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(LocalJDBCFactory.class.getName()).log(Level.SEVERE, null, ex);
+//            return;
+//        } catch (InstantiationException ex) {
+//            Logger.getLogger(LocalJDBCFactory.class.ge
