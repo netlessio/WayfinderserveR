@@ -30,3 +30,12 @@ import org.h2.jdbcx.JdbcDataSource;
 /**
  *
  * @author Evgeni Kappinen
+ */
+public class LocalJDBCFactory {
+    private static final LocalJDBCFactory localFactory = new LocalJDBCFactory();
+    private static JdbcConnectionPool pool;
+
+    private LocalJDBCFactory() {
+//        try {
+//            Class.forName("org.h2.Driver").newInstance();
+//        } cat
