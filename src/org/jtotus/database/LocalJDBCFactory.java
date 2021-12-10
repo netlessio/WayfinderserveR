@@ -42,4 +42,10 @@ public class LocalJDBCFactory {
 //            Logger.getLogger(LocalJDBCFactory.class.getName()).log(Level.SEVERE, null, ex);
 //            return;
 //        } catch (InstantiationException ex) {
-//            Logger.getLogger(LocalJDBCFactory.class.ge
+//            Logger.getLogger(LocalJDBCFactory.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            Logger.getLogger(LocalJDBCFactory.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        if (pool == null) {
+//              
