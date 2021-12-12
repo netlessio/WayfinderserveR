@@ -48,4 +48,10 @@ public class LocalJDBCFactory {
 //        }
 //
 //        if (pool == null) {
-//              
+//                JdbcDataSource ds = new JdbcDataSource();
+//                ds.setURL("jdbc:h2:~/.jtotus/local_database");
+//                ds.setUser("sa");
+//                ds.setPassword("sa");
+//
+////                Properties env = new Properties();
+//// 
