@@ -57,4 +57,14 @@ public class LocalJDBCFactory {
 ////                env.put("java.naming.factory.initial", "com.sun.jndi.cosnaming.CNCtxFactory");
 ////                Context ctx = new InitialContext(env);
 ////                ctx.bind("org.h2.jdbcx.JdbcDataSource", ds);
-//     
+//                pool = JdbcConnectionPool.create(ds);
+//                pool.setMaxConnections(200);
+//
+//        }
+    }
+
+    public synchronized static LocalJDBCFactory getInstance() {
+        return localFactory;
+    }
+
+    public synch
