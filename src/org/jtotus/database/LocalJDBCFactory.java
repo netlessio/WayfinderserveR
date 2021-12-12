@@ -54,4 +54,7 @@ public class LocalJDBCFactory {
 //                ds.setPassword("sa");
 //
 ////                Properties env = new Properties();
-//// 
+////                env.put("java.naming.factory.initial", "com.sun.jndi.cosnaming.CNCtxFactory");
+////                Context ctx = new InitialContext(env);
+////                ctx.bind("org.h2.jdbcx.JdbcDataSource", ds);
+//     
