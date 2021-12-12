@@ -67,4 +67,10 @@ public class LocalJDBCFactory {
         return localFactory;
     }
 
-    public synch
+    public synchronized LocalJDBC jdbcFactory() {
+        LocalJDBC localJDBC = new LocalJDBC();
+
+        return localJDBC;
+    }
+
+}
