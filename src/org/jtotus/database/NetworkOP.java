@@ -169,3 +169,80 @@ public class NetworkOP implements InterfaceDataBase {
 
         return result;
     }
+    
+    public double[] fetchDataPeriod(String stockName, DateTime fromDate, DateTime toDate, String type) {
+       if (type.compareTo("CLOSE") == 0) {
+            return this.fetchDataPeriod(stockName, fromDate, toDate, 1);
+        } else if (type.compareTo("VOLUME") == 0) {
+            return this.fetchDataPeriod(stockName, fromDate, toDate, 2);
+        } else if (type.compareTo("AVRG") == 0) {
+            return this.fetchDataPeriod(stockName, fromDate, toDate, 4);
+        }
+
+       return null;
+    }
+    
+    private double[] fetchDataPeriod(String stockName, DateTime fromDate, DateTime toDate, int col) {
+        List<Double> values = new ArrayList<Double>();
+        URL url;
+
+        System.out.printf("NetworkOP fetchData(%s,hex:%s, date:%s-%s col:%d)\n", 
+                stockName, new StockType(stockName).getHexName(), fromDate.toString(), toDate.toString(), col);
+
+        try {
+            url = new URL(this.buildRequest(fromDate, toDate, stockName));
+
+            Document doc = Jsoup.parse(url, 2 * 1000);
+
+            Elements elems = doc.select("td");
+
+            DateIterator dateIter = new DateIterator(fromDate, toDate);
+            while (dateIter.hasNext()) {
+                Iterator<Element> iter = elems.iterator();
+                String datePattern = dateFormatter.print(dateIter.nextInCalendar());
+                
+                while (iter.hasNext()) {
+                    Element elem = iter.next();
+                    String data = elem.html();
+                    
+                    //System.out.printf("Fetching.. :%s\n", dateFormatter.print(dateIter.getCurrentAsCalendar()));
+                    //String formatHttp = "<div class=\"Ensimmainen\">\n" + datePattern + "\n</div>";
+                    if (data.indexOf(datePattern) != -1) {
+
+                        for (int i = 0; i < col; i++) {
+                            elem = iter.next();
+                        }
+
+                        data = elem.text();
+                        String fdata = data.replace(',', '.');
+
+                        if (debug) {
+                            System.out.printf("Fetched value from OP bank ->:%s for date:%s\n", fdata, datePattern);
+                        }
+
+                        values.add(Double.valueOf(fdata));
+                        break;
+                    }
+                }
+            }
+
+        } catch (IOException ex) {
+            System.out.printf("Failed in :%s\n", "NetworkOP");
+            //Logger.getLogger(NetworkGoogle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return ArrayUtils.toPrimitive(values.toArray(new Double[0]));
+    }
+
+    public void storeClosingPrice(String stockName, DateTime date, BigDecimal value) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void storeVolume(String stockName, DateTime date, BigDecimal value) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void storeData(String stockName, DateTime date, BigDecimal value, String type) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+}
