@@ -17,4 +17,16 @@ along with jTotus.  If not, see <http://www.gnu.org/licenses/>.
 package org.jtotus.database;
 
 import java.sql.*;
-import 
+import java.sql.Connection;
+import java.util.HashMap;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.jtotus.common.DateIterator;
+
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+pub
