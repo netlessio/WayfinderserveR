@@ -29,4 +29,7 @@ import org.jtotus.common.DateIterator;
  *
  * @author Evgeni Kappinen
  */
-pub
+public class StockMerger {
+    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
+    private static final LocalJDBC fetcher = new LocalJDBC();
+    private static final NetworkGoogle google = new NetworkG
