@@ -32,4 +32,14 @@ import org.jtotus.common.DateIterator;
 public class StockMerger {
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
     private static final LocalJDBC fetcher = new LocalJDBC();
-    private static final NetworkGoogle google = new NetworkG
+    private static final NetworkGoogle google = new NetworkGoogle();
+    private static final boolean debug = true;
+
+    public StockMerger() {
+        DataFetcher fetch = new DataFetcher();
+        fetcher.setFetcher(fetch);
+    }
+
+    
+    private Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(
