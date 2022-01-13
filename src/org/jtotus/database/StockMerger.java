@@ -42,4 +42,10 @@ public class StockMerger {
 
     
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(
+        return DriverManager.getConnection("jdbc:h2:~/.jtotus/local_database", "sa", "sa");
+    }
+
+    public double[][] mergedPeriods(String stockA, String stockB, DateTime startDate, DateTime endDate) {
+        int matched = 0;
+        HashMap<String, Double> aRet;
+        HashMap<String, Dou
