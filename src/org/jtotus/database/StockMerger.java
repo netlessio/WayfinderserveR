@@ -48,4 +48,12 @@ public class StockMerger {
     public double[][] mergedPeriods(String stockA, String stockB, DateTime startDate, DateTime endDate) {
         int matched = 0;
         HashMap<String, Double> aRet;
-        HashMap<String, Dou
+        HashMap<String, Double> bRet;
+        
+        
+        aRet = fetcher.fetchPeriodAsMap(stockA, startDate, endDate);
+        if (aRet.isEmpty()) {
+            aRet = google.fetchPeriodAsMap(stockA, startDate, endDate);
+        }
+        
+        bRet = fetcher.fetchPeriodAsMap(stockB, startDate,
