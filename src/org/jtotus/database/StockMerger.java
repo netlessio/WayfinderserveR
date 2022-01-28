@@ -76,4 +76,11 @@ public class StockMerger {
             }
         }
         
-        double ret[][] =
+        double ret[][] = new double[2][matched];
+
+        System.arraycopy(retMatrix[0], 0, ret[0], 0, matched);
+        System.arraycopy(retMatrix[1], 0, ret[1], 0, matched);
+        return ret;
+    }
+
+}
