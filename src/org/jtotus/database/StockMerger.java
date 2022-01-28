@@ -56,4 +56,12 @@ public class StockMerger {
             aRet = google.fetchPeriodAsMap(stockA, startDate, endDate);
         }
         
-        bRet = fetcher.fetchPeriodAsMap(stockB, startDate,
+        bRet = fetcher.fetchPeriodAsMap(stockB, startDate, endDate);
+        if (bRet.isEmpty()) {
+            bRet = google.fetchPeriodAsMap(stockB, startDate, endDate);
+        }
+        
+        int size = Math.min(aRet.size(), bRet.size());
+        double retMatrix[][] = new double[2][size];
+        
+        DateIterator iter = new Date
