@@ -64,4 +64,8 @@ public class StockMerger {
         int size = Math.min(aRet.size(), bRet.size());
         double retMatrix[][] = new double[2][size];
         
-        DateIterator iter = new Date
+        DateIterator iter = new DateIterator(startDate, endDate);
+        while(iter.hasNext()) {
+            DateTime date = iter.nextInCalendar();
+            Double aValue = aRet.get(formatter.print(date));
+            Double bValue = bRet.get(formatt
