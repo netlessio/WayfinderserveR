@@ -68,4 +68,12 @@ public class StockMerger {
         while(iter.hasNext()) {
             DateTime date = iter.nextInCalendar();
             Double aValue = aRet.get(formatter.print(date));
-            Double bValue = bRet.get(formatt
+            Double bValue = bRet.get(formatter.print(date));
+            if (aValue != null && bValue != null) {
+                retMatrix[0][matched] = aValue;
+                retMatrix[1][matched] = bValue;
+                matched++;
+            }
+        }
+        
+        double ret[][] =
