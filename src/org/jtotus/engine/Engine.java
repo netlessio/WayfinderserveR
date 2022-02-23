@@ -112,3 +112,77 @@ public class Engine {
 
     public void setGUI(JtotusView tempView) {
         mainWindow = tempView;
+    }
+
+    public synchronized LinkedList<MethodEntry> getMethods() {
+        return portfolioDecision.getMethodList();
+    }
+
+    public void run() {
+
+        log.info("Engine is started");
+        portfolioDecision.checkForAutoStartIndicators();
+        //Update market data
+        portfolioConfig = ConfPortfolio.getPortfolioConfig();
+        String[] stocks = portfolioConfig.inputListOfStocks;
+        for (int i = stocks.length - 1; i >= 0; i--) {
+            Thread updateThread = new Thread(new AutoUpdateStocks(stocks[i]));
+            updateThread.start();
+        }
+
+        testRun();
+    }
+
+    private void addGeneratorToList(String stmt, TickInterface ticker) {
+        HashMap<String, TickInterface> tickerMap = new HashMap<String, TickInterface>();
+        tickerMap.put(stmt, ticker);
+        listOfGenerators.put(ticker.getName(), tickerMap);
+    }
+
+    private void testRun() {
+
+        //TickListenerPrinter printer = new TickListenerPrinter();
+
+        //printer.sendEventsToGui();
+        //watcher.addPattern("every tick=StockTick(stockName='Kemira')", printer);
+        //watcher.addStatement("select * from StockTick", new TickListenerPrinter());
+        //watcher.addStatement("select * from EsperEventRsi", new TickListenerPrinter());
+
+        //addGeneratorToList("select * from StockTick", new ListenerRsiIndicator());
+        addGeneratorToList("select * from StockTick", new VrocGenerator());
+        addGeneratorToList("select * from StockTick", new AccdistGenerator());
+        addGeneratorToList("select * from StockTick", new VPTGenerator());
+        addGeneratorToList("select * from StockTick", new RsiGenerator());
+        addGeneratorToList("select * from StockTick", new IndicatorIndexGenerator());
+        watcher.addStatement("select * from StockTick", new TicksToFile());
+        watcher.addStatement("select * from MarketSignal", new MarketBrokerSimulator());
+        List<String> array = new ArrayList<String>();
+        
+        mainWindow.fetchGeneratorList();
+       // watcher.call();
+    }
+
+    public void train() {
+        LinkedList<String> methodNames = mainWindow.getMethodList();
+        portfolioDecision.startLongTermMethods(methodNames);
+    }
+
+    public synchronized void registerResultsPrinter(MethodResultsPrinter printer) {
+        System.out.printf("Registering result printer\n");
+        resultsPrinter = printer;
+
+        return;
+    }
+
+    public synchronized MethodResultsPrinter getResultsPrinter() {
+        return resultsPrinter;
+    }
+
+    public void startHistorySimulator() {
+        watcher.startHistoryGenerator();
+    }
+
+    public void startMarketTicker() {
+        watcher.startTicker();
+    }
+}
