@@ -39,4 +39,13 @@ public class StartUpLoader {
     }
 
 
-    public synchronized static StartUp
+    public synchronized static StartUpLoader getInstance() {
+        if (loader==null) {
+            loader = new StartUpLoader();
+
+            BasicConfigurator.configure();
+            Logger.getRootLogger().setLevel(Level.INFO);
+            //DOMConfigurator.configure("log4j.xml");
+        }
+
+   
