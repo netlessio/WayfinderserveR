@@ -29,4 +29,14 @@ import org.apache.log4j.Logger;
  *
  * @author Evgeni Kappinen
  */
-public cla
+public class StartUpLoader {
+    protected static StartUpLoader loader = null;
+    private ScriptEngineManager mgr = null;
+    private ScriptEngine engine = null;
+
+    protected StartUpLoader() {
+        
+    }
+
+
+    public synchronized static StartUp
