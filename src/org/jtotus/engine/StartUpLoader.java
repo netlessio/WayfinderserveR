@@ -17,4 +17,16 @@
 
 package org.jtotus.engine;
 
-import java.util.L
+import java.util.List;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineFactory;
+import javax.script.ScriptEngineManager;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public cla
