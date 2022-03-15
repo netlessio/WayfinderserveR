@@ -48,4 +48,14 @@ public class StartUpLoader {
             //DOMConfigurator.configure("log4j.xml");
         }
 
-   
+        return loader;
+    }
+
+
+    // js/JavaScript/Groovy
+    public ScriptEngine load(String name) {
+        if (mgr == null) {
+            mgr = new ScriptEngineManager();
+        }
+        
+        engine = mgr.getEngineBy
