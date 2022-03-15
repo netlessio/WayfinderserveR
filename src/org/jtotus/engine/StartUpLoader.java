@@ -58,4 +58,18 @@ public class StartUpLoader {
             mgr = new ScriptEngineManager();
         }
         
-        engine = mgr.getEngineBy
+        engine = mgr.getEngineByName(name);
+        return engine;
+    }
+
+    public ScriptEngine getLoadedEngine() {
+        return engine;
+    }
+    
+    public ScriptEngineManager getLoadedScriptManager() {
+        return mgr;
+    }
+
+
+
+    void scriptEngineInfo (ScriptE
