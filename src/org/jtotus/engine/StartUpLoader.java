@@ -72,4 +72,9 @@ public class StartUpLoader {
 
 
 
-    void scriptEngineInfo (ScriptE
+    void scriptEngineInfo (ScriptEngineManager mgr) {
+        List<ScriptEngineFactory> factories =
+                mgr.getEngineFactories();
+        for (ScriptEngineFactory factory : factories) {
+            System.out.println("ScriptEngineFactory Info");
+      
