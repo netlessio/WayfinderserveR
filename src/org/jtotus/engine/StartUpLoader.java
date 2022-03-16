@@ -77,4 +77,8 @@ public class StartUpLoader {
                 mgr.getEngineFactories();
         for (ScriptEngineFactory factory : factories) {
             System.out.println("ScriptEngineFactory Info");
+            String engName = factory.getEngineName();
+            String engVersion = factory.getEngineVersion();
+            String langName = factory.getLanguageName();
+            String langVersion = factory.getLanguageVersion();
       
