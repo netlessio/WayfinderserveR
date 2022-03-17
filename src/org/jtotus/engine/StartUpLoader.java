@@ -81,4 +81,8 @@ public class StartUpLoader {
             String engVersion = factory.getEngineVersion();
             String langName = factory.getLanguageName();
             String langVersion = factory.getLanguageVersion();
-      
+            System.out.printf("\tScript Engine: %s (%s)\n",
+                    engName, engVersion);
+            List<String> engNames = factory.getNames();
+            for (String name : engNames) {
+                System.out.printf("\tEngine Alias
