@@ -85,4 +85,12 @@ public class StartUpLoader {
                     engName, engVersion);
             List<String> engNames = factory.getNames();
             for (String name : engNames) {
-                System.out.printf("\tEngine Alias
+                System.out.printf("\tEngine Alias: %s\n", name);
+            }
+            System.out.printf("\tLanguage: %s (%s)\n",
+                    langName, langVersion);
+        }
+
+    }
+    
+}
