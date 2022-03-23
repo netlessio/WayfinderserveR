@@ -384,3 +384,64 @@ public class ConfigView extends javax.swing.JDialog {
                 String paramName = param.toString();
                 for(int y=0;y<fields.length;y++) {   
                     System.out.printf("Param name:%s fields:%s\n",paramName, fields[y].getName());
+                    if(paramName.compareTo(fields[y].getName())==0){
+                        try {
+                            Object newValue = model.getValueAt(i, 1);
+                       //     System.out.printf("Type name:%s fields:%s\n",fields[y].getType().getName(), newValue.getClass().getName());
+                            if (newValue == null)
+                                continue;
+                            
+                            if(fields[y].getType() == newValue.getClass()){
+                                 System.out.printf("Writtign name:%s fields:%s\n",fields[y].getType().getName(), newValue.getClass().getName());
+                                fields[y].set(config, newValue);
+                            }else if (fields[y].getType() == int.class){
+                                fields[y].setInt(config, Integer.parseInt(newValue.toString()));
+                            }else if(fields[y].getType() == boolean.class){
+                                fields[y].setBoolean(config, Boolean.parseBoolean(newValue.toString()));
+                            }
+                        } catch (IllegalArgumentException ex) {
+                            Logger.getLogger(ConfigView.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IllegalAccessException ex) {
+                            Logger.getLogger(ConfigView.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+            }
+
+            loader.writeObj(config, currentFile);
+            
+       
+    }//GEN-LAST:event_saveButtonMouseClicked
+
+    /**
+    * @param args the command line arguments
+    */
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                ConfigView dialog = new ConfigView(new javax.swing.JFrame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
+//            }
+//        });
+//    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel confLabel;
+    private javax.swing.JTable confTable;
+    private javax.swing.JTree configTree;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JButton saveAndRunButton;
+    private javax.swing.JButton saveButton;
+    // End of variables declaration//GEN-END:variables
+
+}
