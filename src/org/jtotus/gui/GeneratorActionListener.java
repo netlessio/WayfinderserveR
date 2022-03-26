@@ -21,4 +21,15 @@ along with jTotus.  If not, see <http://www.gnu.org/licenses/>.
 package org.jtotus.gui;
 
 import org.jlucrum.realtime.generators.TickInterface;
-import jav
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Iterator;
+import javax.swing.AbstractButton;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+
+//http://www.java2s.com/Tutorial/Java/024
