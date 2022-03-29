@@ -35,4 +35,12 @@ import javax.swing.AbstractButton;
 //http://www.java2s.com/Tutorial/Java/0240__Swing/ListeningtoJCheckBoxMenuItemEventswithanActionListener.htm
 public class GeneratorActionListener implements  ActionListener{
     HashMap<String, TickInterface> listeners = null;
-    public GeneratorActionListener(HashMap<String, TickInterface> listeners
+    public GeneratorActionListener(HashMap<String, TickInterface> listeners) {
+        this.listeners = listeners;
+    }
+
+    private void addListeners() {
+        Iterator <String> stmts = listeners.keySet().iterator();
+           while(stmts.hasNext()) {
+               String stringStmt = stmts.next();
+               
