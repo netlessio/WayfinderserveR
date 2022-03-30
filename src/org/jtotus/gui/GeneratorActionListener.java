@@ -43,4 +43,11 @@ public class GeneratorActionListener implements  ActionListener{
         Iterator <String> stmts = listeners.keySet().iterator();
            while(stmts.hasNext()) {
                String stringStmt = stmts.next();
-               
+               TickInterface ticker = listeners.get(stringStmt);
+               ticker.statementForEvents(stringStmt);
+               //ticker.subscribeForTicks();
+           }
+    }
+
+    public void actionPerformed(ActionEvent event) {
+        Abst
