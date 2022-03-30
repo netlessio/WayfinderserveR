@@ -50,4 +50,11 @@ public class GeneratorActionListener implements  ActionListener{
     }
 
     public void actionPerformed(ActionEvent event) {
-        Abst
+        AbstractButton aButton = (AbstractButton) event.getSource();
+        boolean selected = aButton.getModel().isSelected();
+        
+        if (selected) {
+            addListeners();
+            aButton.setSelected(true);
+        } else {
+            aButton.setSe
