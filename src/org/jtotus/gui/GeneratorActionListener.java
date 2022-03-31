@@ -57,4 +57,7 @@ public class GeneratorActionListener implements  ActionListener{
             addListeners();
             aButton.setSelected(true);
         } else {
-            aButton.setSe
+            aButton.setSelected(false);
+        }
+    }
+}
