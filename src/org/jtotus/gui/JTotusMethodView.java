@@ -47,4 +47,13 @@ import org.jtotus.common.MethodResults;
 import org.jtotus.config.ConfPortfolio;
 import org.jtotus.config.ConfigLoader;
 import org.jtotus.config.GUIConfig;
-import org.jtotus.config.M
+import org.jtotus.config.MainMethodConfig;
+import org.jtotus.engine.Engine;
+import org.jtotus.gui.mail.JtotusGmailClient;
+import org.jtotus.methods.MethodEntry;
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinter, UpdateL
