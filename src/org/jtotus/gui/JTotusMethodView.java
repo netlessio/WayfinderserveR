@@ -56,4 +56,12 @@ import org.jtotus.methods.MethodEntry;
  *
  * @author Evgeni Kappinen
  */
-public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinter, UpdateL
+public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinter, UpdateListener {
+
+    private JScrollPane jScrollPane1 = null;
+    private JDesktopPane drawDesktopPane = null;
+    private JTable methodTable = null;
+    private Helper help = Helper.getInstance();
+
+    @Override
+    public void update(EventBean[] eventBeans,
