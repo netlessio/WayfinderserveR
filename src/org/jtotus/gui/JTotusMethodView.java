@@ -64,4 +64,9 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
     private Helper help = Helper.getInstance();
 
     @Override
-    public void update(EventBean[] eventBeans,
+    public void update(EventBean[] eventBeans, EventBean[] eventBeans1) {
+
+        for (EventBean eventBean : eventBeans) {
+            if (eventBean.getUnderlying() instanceof MethodResults) {
+                MethodResults results = (MethodResults) eventBean.getUnderlying();
+              
