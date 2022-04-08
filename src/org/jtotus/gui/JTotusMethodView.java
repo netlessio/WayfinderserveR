@@ -69,4 +69,12 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         for (EventBean eventBean : eventBeans) {
             if (eventBean.getUnderlying() instanceof MethodResults) {
                 MethodResults results = (MethodResults) eventBean.getUnderlying();
-              
+                this.drawResults(results);
+            }
+        }
+    }
+
+    class methodTableListener implements TableModelListener {
+
+        public void tableChanged(TableModelEvent event) {
+            DefaultTableModel source = (DefaultTableModel) event.getSource();
