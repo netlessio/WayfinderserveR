@@ -88,3 +88,9 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                     String[] data = new String[source.getColumnCount()];
                     data[0] = "Sum";
                     source.addRow(data);
+                }
+
+                //TODO: calculate sum, TableModelEvent.ALL_COLUMNS
+                //TODO: summ only when Normilizer is used.
+                int col = event.getColumn();
+                if (col == TableModelEvent.ALL_C
