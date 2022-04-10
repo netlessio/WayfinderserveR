@@ -83,4 +83,8 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                     || event.getType() == TableModelEvent.INSERT) {
                 String type = (String) source.getValueAt(source.getRowCount() - 1, 0);
 
-                //If sum column 
+                //If sum column does not exists create one
+                if (type.compareTo("Sum") != 0 && source.getRowCount() != 0) {
+                    String[] data = new String[source.getColumnCount()];
+                    data[0] = "Sum";
+                    source.addRow(data);
