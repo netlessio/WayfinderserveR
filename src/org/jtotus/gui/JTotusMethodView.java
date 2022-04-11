@@ -101,4 +101,8 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
                 Double sum = new Double(0.0f);
                 int count = 0;
-                for (int row = sour
+                for (int row = source.getRowCount() - 2; row > 0; row--) {
+                    String rowValue = (String) source.getValueAt(row, col);
+                    if (rowValue != null) {
+                        sum += Double.valueOf(rowValue);
+                        c
