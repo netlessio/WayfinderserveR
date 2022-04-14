@@ -112,4 +112,13 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                 sum /= Double.valueOf(count);
                 String sumValue = sum.toString();
                 String value = (String) source.getValueAt(source.getRowCount() - 1, col);
-          
+                if (value == null || value.compareTo(sumValue) != 0) {
+                    source.setValueAt(sumValue, source.getRowCount() - 1, col);
+                }
+
+            }
+
+        }
+    }
+
+    private class PopupListener extends MouseA
