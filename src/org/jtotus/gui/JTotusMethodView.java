@@ -121,4 +121,10 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         }
     }
 
-    private class PopupListener extends MouseA
+    private class PopupListener extends MouseAdapter {
+        JTable table = null;
+        JPopupMenu popup = null;
+        JCheckBoxMenuItem item = null;
+        JCheckBoxMenuItem auto = null;
+        ConfigLoader<MainMethodConfig> configFile = null;
+        MainMethodConfig config = null;
