@@ -128,3 +128,12 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         JCheckBoxMenuItem auto = null;
         ConfigLoader<MainMethodConfig> configFile = null;
         MainMethodConfig config = null;
+        
+        public PopupListener(JTable table) {
+            this.table =  table;
+        }
+
+        public JPopupMenu getPopupMenu() {
+            if (popup != null) {
+                return popup;
+            
