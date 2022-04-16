@@ -136,4 +136,12 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         public JPopupMenu getPopupMenu() {
             if (popup != null) {
                 return popup;
-            
+            }
+
+            popup = new JPopupMenu();
+            item = new JCheckBoxMenuItem("Draw");
+            auto = new JCheckBoxMenuItem("Auto-start");
+            popup.add(item);
+            popup.add(auto);
+
+            item.addActionListener(new ActionListene
