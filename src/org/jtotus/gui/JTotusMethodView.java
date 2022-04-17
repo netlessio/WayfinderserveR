@@ -144,4 +144,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
             popup.add(item);
             popup.add(auto);
 
-            item.addActionListener(new ActionListene
+            item.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+                    config.inputPrintResults = !config.inputPrintResults;
+                    configFile.storeConfig(config);
+                }
+      
