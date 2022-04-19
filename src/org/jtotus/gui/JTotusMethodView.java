@@ -151,4 +151,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                     config.inputPrintResults = !config.inputPrintResults;
                     configFile.storeConfig(config);
                 }
-      
+            });
+
+            auto.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+                    int[] selectedRows = table.getSelectedRows();
+                    ConfPor
