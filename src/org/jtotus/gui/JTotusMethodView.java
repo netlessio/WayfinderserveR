@@ -158,4 +158,10 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                 @Override
                 public void actionPerformed(ActionEvent evt) {
                     int[] selectedRows = table.getSelectedRows();
-                    ConfPor
+                    ConfPortfolio portfolioConfig;
+
+                    ConfigLoader<ConfPortfolio> configPortfolio =
+                            new ConfigLoader<ConfPortfolio>("OMXHelsinki");
+
+                    portfolioConfig = configPortfolio.getConfig();
+                    if (por
