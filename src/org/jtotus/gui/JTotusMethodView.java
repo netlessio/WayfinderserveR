@@ -170,4 +170,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                     }
 
                     for (int selectedRow : selectedRows) {
-                        String method = table
+                        String method = table.getModel().getValueAt(selectedRow, 0).toString();
+                        portfolioConfig.setAutoStarted(method);
+                    }
+                    configPortfolio.storeConfig(portfolioConfig);
+                }
+            });
+
+            return
