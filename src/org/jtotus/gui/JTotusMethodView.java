@@ -189,4 +189,12 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         }
 
         private void maybeShowPopup(MouseEvent e) {
-            if (e.is
+            if (e.isPopupTrigger()) {
+                final JPopupMenu popupMenu = getPopupMenu();
+
+                ConfPortfolio portfolioConfig;
+
+                ConfigLoader<ConfPortfolio> configPortfolio =
+                        new ConfigLoader<ConfPortfolio>("OMXHelsinki");
+
+                por
