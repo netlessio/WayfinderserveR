@@ -197,4 +197,10 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                 ConfigLoader<ConfPortfolio> configPortfolio =
                         new ConfigLoader<ConfPortfolio>("OMXHelsinki");
 
-                por
+                portfolioConfig = configPortfolio.getConfig();
+                if (portfolioConfig == null) {
+                    //Load default values
+                    portfolioConfig = new ConfPortfolio();
+                }
+
+                int[] selectedRows = table.getSe
