@@ -214,4 +214,8 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                     }
                     
                     int[] selectedColumns = table.getSelectedColumns();
-       
+                    for (int selectedColumn : selectedColumns) {
+                        if (!table.isCellSelected(selectedRows[row], selectedColumn)
+                                || selectedColumn == 0) {
+                            continue;
+            
