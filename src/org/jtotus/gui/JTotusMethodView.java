@@ -207,4 +207,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
                 for (int row = 0; row < selectedRows.length; row++) {
                     String method = table.getModel().getValueAt(selectedRows[row], 0).toString();
-                    if (portfolioConfig.isAutoStarted
+                    if (portfolioConfig.isAutoStarted(method)) {
+                        auto.setSelected(true);
+                    } else {
+                        auto.setSelected(false);
+                    }
+                    
+                    int[] selectedColumns = table.getSelectedColumns();
+       
