@@ -218,4 +218,9 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                         if (!table.isCellSelected(selectedRows[row], selectedColumn)
                                 || selectedColumn == 0) {
                             continue;
-            
+                        }
+                        //
+                        String name = table.getValueAt(selectedRows[row], 0).toString();
+
+                        configFile = new ConfigLoader<MainMethodConfig>("OMXHelsinki"
+                             
