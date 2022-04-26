@@ -223,4 +223,9 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                         String name = table.getValueAt(selectedRows[row], 0).toString();
 
                         configFile = new ConfigLoader<MainMethodConfig>("OMXHelsinki"
-                             
+                                    + File.separator
+                                    + table.getColumnModel().getColumn(selectedColumn).getHeaderValue()
+                                    + File.separator
+                                    + name);
+
+                        config = configFil
