@@ -234,4 +234,19 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                         } else {
                             item.setSelected(false);
                         }
-             
+                    }
+                }
+
+                
+                
+
+                popupMenu.show(e.getComponent(),
+                        e.getX(), e.getY());
+            }
+        }
+    }
+
+    public JDesktopPane getMainPane() {
+        return drawDesktopPane;
+    }
+
