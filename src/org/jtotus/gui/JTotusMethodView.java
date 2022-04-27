@@ -228,4 +228,10 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                                     + File.separator
                                     + name);
 
-                        config = configFil
+                        config = configFile.getConfig();
+                        if (config != null && config.inputPrintResults) {
+                            item.setSelected(true);
+                        } else {
+                            item.setSelected(false);
+                        }
+             
