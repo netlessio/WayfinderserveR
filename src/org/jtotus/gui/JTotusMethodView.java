@@ -250,3 +250,10 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         return drawDesktopPane;
     }
 
+    public JInternalFrame addComponentToInternalWindow(JComponent component, String title) {
+
+        JInternalFrame tempGraph = new JInternalFrame();
+
+        tempGraph.setClosable(true);
+        tempGraph.setIconifiable(true);
+        tempGraph.se
