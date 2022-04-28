@@ -256,4 +256,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
         tempGraph.setClosable(true);
         tempGraph.setIconifiable(true);
-        tempGraph.se
+        tempGraph.setMaximizable(true);
+        tempGraph.setDoubleBuffered(true);
+        tempGraph.setInheritsPopupMenu(true);
+        tempGraph.setLayer(5);
+        tempGraph.setName("tempFrameGraph"); // NOI18N
+        tempGraph.setOpaque(false);
+        tempGraph.setVisible(true);
+        tempGraph.setBounds(
