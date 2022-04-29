@@ -263,4 +263,13 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         tempGraph.setName("tempFrameGraph"); // NOI18N
         tempGraph.setOpaque(false);
         tempGraph.setVisible(true);
-        tempGraph.setBounds(
+        tempGraph.setBounds(10, 10, 590, 460);
+        tempGraph.setResizable(true);
+
+        if(component != null) {
+            tempGraph.getContentPane().add(component);
+        }
+        
+        tempGraph.setTitle(title);
+
+        drawDesktopPane.add(tempGrap
