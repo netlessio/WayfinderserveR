@@ -272,4 +272,14 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         
         tempGraph.setTitle(title);
 
-        drawDesktopPane.add(tempGrap
+        drawDesktopPane.add(tempGraph, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        return tempGraph;
+    }
+
+
+
+    public LinkedList<String> getSelectedMethods() {
+        LinkedList<String> selectedRows = new LinkedList<String>();
+
+        int[] selRow = methodTable.getSelectedRow
