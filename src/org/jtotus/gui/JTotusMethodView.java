@@ -282,4 +282,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
     public LinkedList<String> getSelectedMethods() {
         LinkedList<String> selectedRows = new LinkedList<String>();
 
-        int[] selRow = methodTable.getSelectedRow
+        int[] selRow = methodTable.getSelectedRows();
+        help.debug("jtotusMethodView",
+                "Selected total:%d\n",
+                selRow.length);
+
+        DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel();
+
+        for (int i = 0; i < selRow.length; i
