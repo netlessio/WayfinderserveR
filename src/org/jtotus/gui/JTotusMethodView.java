@@ -289,4 +289,14 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
         DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel();
 
-        for (int i = 0; i < selRow.length; i
+        for (int i = 0; i < selRow.length; i++) {
+            help.debug("jtotusMethodView",
+                    "Selected:%s\n", (String) methodModel.getValueAt(selRow[i], 0));
+
+            selectedRows.add((String) methodModel.getValueAt(selRow[i], 0));
+        }
+
+        return selectedRows;
+    }
+
+    private 
