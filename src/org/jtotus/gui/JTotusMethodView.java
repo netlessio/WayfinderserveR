@@ -299,4 +299,12 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         return selectedRows;
     }
 
-    private 
+    private JTable createMethodTable() {
+        JTable retValue = new JTable();
+
+        DefaultTableModel methodModel = new DefaultTableModel();
+        methodModel.addColumn("");
+
+
+        GUIConfig uiConfig = new GUIConfig();
+        String list
