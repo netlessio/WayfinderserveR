@@ -314,4 +314,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         }
 
         LinkedList<MethodEntry> methods = uiConfig.getSupportedMethodsList();
-    
+        for (MethodEntry method : methods) {
+            MethodEntry next = method;
+            String rowsValues[] = new String[listOfStocks.length + 1];
+            rowsValues[0] = next.getMethName();
+            methodModel.addRow(rowsValues);
+        }
+
+        metho
