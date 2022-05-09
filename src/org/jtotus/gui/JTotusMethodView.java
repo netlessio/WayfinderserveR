@@ -326,4 +326,13 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
         retValue.setModel(methodModel);
         retValue.setUpdateSelectionOnSort(true);
-        retValue.addMouseListener(new Popu
+        retValue.addMouseListener(new PopupListener(retValue));
+//        retValue.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+
+        return retValue;
+    }
+
+    private void configureMethodTab() {
+
+        this.setTabLayoutPolicy(javax.swing.JTabbedPane.SC
