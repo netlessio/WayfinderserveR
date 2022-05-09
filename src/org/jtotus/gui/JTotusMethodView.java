@@ -321,4 +321,9 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
             methodModel.addRow(rowsValues);
         }
 
-        metho
+        methodTableListener methTableLister = new methodTableListener();
+        methodModel.addTableModelListener(methTableLister);
+
+        retValue.setModel(methodModel);
+        retValue.setUpdateSelectionOnSort(true);
+        retValue.addMouseListener(new Popu
