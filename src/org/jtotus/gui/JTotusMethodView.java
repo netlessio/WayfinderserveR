@@ -335,4 +335,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
     private void configureMethodTab() {
 
-        this.setTabLayoutPolicy(javax.swing.JTabbedPane.SC
+        this.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        this.setAutoscrolls(false);
+        this.setName("methodTabbedPane"); // NOI18N
+
+
+        jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrol
