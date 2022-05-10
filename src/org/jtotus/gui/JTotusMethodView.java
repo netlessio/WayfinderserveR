@@ -342,4 +342,15 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
         jScrollPane1.setAutoscrolls(true);
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrol
+        jScrollPane1.setName("jScrollPane1");
+        
+
+        methodTable = createMethodTable();
+        jScrollPane1.setViewportView(methodTable);
+
+        //First tab - Method result
+        this.setAutoscrolls(false);
+
+        jScrollPane1.setBorder(null);
+        
+        this.ad
