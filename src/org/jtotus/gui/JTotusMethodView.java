@@ -353,4 +353,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
         jScrollPane1.setBorder(null);
         
-        this.ad
+        this.addTab("Methods", jScrollPane1);
+
+        //Second tab - Graphs
+        this.addTab("Desktop", drawDesktopPane);
+
+        drawDesktopPane.setAutoscrolls(false);
+        drawDesktopPane.setName("drawDesktopPane");
+        methodTable.
