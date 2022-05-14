@@ -369,4 +369,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         drawDesktopPane = new JDesktopPane();
         //Register Method Results printer
         //TODO:remove from engine !!!
-        Engine engine = Engin
+        Engine engine = Engine.getInstance();
+        engine.registerResultsPrinter(this);
+
+        EPServiceProvider cepEngine = BrokerWatcher.getMainEngine();
+        EPAdministrator cepAdm = cepEngine.getEPAdministrator();
+
+        EPStatement eps = cepAdm.createEPL("select * from MethodResults");
+        eps
