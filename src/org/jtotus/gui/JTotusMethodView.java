@@ -360,4 +360,13 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
         drawDesktopPane.setAutoscrolls(false);
         drawDesktopPane.setName("drawDesktopPane");
-        methodTable.
+        methodTable.setShowGrid(true);
+
+    }
+
+    public void initialize() {
+        jScrollPane1 = new JScrollPane();
+        drawDesktopPane = new JDesktopPane();
+        //Register Method Results printer
+        //TODO:remove from engine !!!
+        Engine engine = Engin
