@@ -382,4 +382,9 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
     }
 
     public void drawResults(MethodResults results) {
-        DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel(
+        DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel();
+        int method_idx = this.getRowIndex(results.getMethodName());
+
+        HashMap<String, Double> result = results.getResults();
+        Set<Entry<String, Double>> stockNameSet = result.entrySet();
+        Iterator<Entry<String, Double>> entryIter = stockNameSet.iterator
