@@ -376,4 +376,10 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         EPAdministrator cepAdm = cepEngine.getEPAdministrator();
 
         EPStatement eps = cepAdm.createEPL("select * from MethodResults");
-        eps
+        eps.addListener(this);
+        this.configureMethodTab();
+        jScrollPane1.setHorizontalScrollBarPolicy(jScrollPane1.HORIZONTAL_SCROLLBAR_ALWAYS);
+    }
+
+    public void drawResults(MethodResults results) {
+        DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel(
