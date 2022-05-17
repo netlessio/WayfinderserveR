@@ -387,4 +387,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
 
         HashMap<String, Double> result = results.getResults();
         Set<Entry<String, Double>> stockNameSet = result.entrySet();
-        Iterator<Entry<String, Double>> entryIter = stockNameSet.iterator
+        Iterator<Entry<String, Double>> entryIter = stockNameSet.iterator();
+        int stock_idx = 0;
+        Double resultDoubleToString = null;
+        while (entryIter.hasNext()) {
+            Entry<String, Double> entry = entryIter.next();
+            stock_idx = this.getColumnIndex(entry.getKey());
+            resultDoubleToString = entry.getValue();
+ 
