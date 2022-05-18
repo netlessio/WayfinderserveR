@@ -399,4 +399,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                         String.valueOf(resultDoubleToString.doubleValue()),
                         method_idx, stock_idx);
             } else {
-             
+                System.err.printf("Warning could not find '%s' for '%s' method\n", entry.getKey(), results.getMethodName());
+            }
+
+        }
+    }
+
+    private int getRowIndex(String methodName) {
+        DefaultTableModel methodModel = (DefaultTable
