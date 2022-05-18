@@ -394,4 +394,9 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
             Entry<String, Double> entry = entryIter.next();
             stock_idx = this.getColumnIndex(entry.getKey());
             resultDoubleToString = entry.getValue();
- 
+            if (method_idx != -1 && stock_idx != -1) {
+                methodModel.setValueAt(
+                        String.valueOf(resultDoubleToString.doubleValue()),
+                        method_idx, stock_idx);
+            } else {
+             
