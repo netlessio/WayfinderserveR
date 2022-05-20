@@ -406,4 +406,10 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
     }
 
     private int getRowIndex(String methodName) {
-        DefaultTableModel methodModel = (DefaultTable
+        DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel();
+
+        int i = 0;
+        while (i < methodModel.getRowCount()) {
+            help.debug(this.getClass().getName(),
+                    "From columns Searching:%s:%s\n", methodName,
+                    (String) methodM
