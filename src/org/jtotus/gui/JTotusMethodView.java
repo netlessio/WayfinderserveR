@@ -421,3 +421,10 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
             i++;
         }
         return -1;
+    }
+
+    private int getColumnIndex(String stockName) {
+        DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel();
+
+        for (int i = 0; i < methodModel.getColumnCount(); i++) {
+            help.debug(this.getClass().
