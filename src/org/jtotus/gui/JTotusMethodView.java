@@ -412,4 +412,12 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         while (i < methodModel.getRowCount()) {
             help.debug(this.getClass().getName(),
                     "From columns Searching:%s:%s\n", methodName,
-                    (String) methodM
+                    (String) methodModel.getValueAt(i, 0));
+
+            String method = (String) methodModel.getValueAt(i, 0);
+            if (method.compareTo(methodName) == 0) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
