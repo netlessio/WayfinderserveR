@@ -427,4 +427,10 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel();
 
         for (int i = 0; i < methodModel.getColumnCount(); i++) {
-            help.debug(this.getClass().
+            help.debug(this.getClass().getName(),
+                    "From rows Searching:%s:%s\n", stockName,
+                    (String) methodModel.getColumnName(i));
+
+            String stock = methodModel.getColumnName(i);
+            if (stockName.compareTo(stock) == 0) {
+                return i;
