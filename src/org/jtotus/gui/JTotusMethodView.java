@@ -434,3 +434,13 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
             String stock = methodModel.getColumnName(i);
             if (stockName.compareTo(stock) == 0) {
                 return i;
+            }
+        }
+        return -1;
+    }
+
+    public void sendReport() {
+        JtotusGmailClient gmailClient = new JtotusGmailClient();
+
+        ConfigLoader<GUIConfig> loader = new ConfigLoader<GUIConfig>("GUIConfig");
+        GUIConfig config = loader
