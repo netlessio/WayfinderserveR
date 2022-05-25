@@ -443,4 +443,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         JtotusGmailClient gmailClient = new JtotusGmailClient();
 
         ConfigLoader<GUIConfig> loader = new ConfigLoader<GUIConfig>("GUIConfig");
-        GUIConfig config = loader
+        GUIConfig config = loader.getConfig();
+
+        gmailClient.setDefaultLogin(config.getGmailLogin());
+        gmailClient.setDefaultPassword(config.getGmailPassword());
+        
+        DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel();
+
+        for(int column = 1;col
