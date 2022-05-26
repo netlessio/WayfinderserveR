@@ -450,4 +450,7 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
         
         DefaultTableModel methodModel = (DefaultTableModel) methodTable.getModel();
 
-        for(int column = 1;col
+        for(int column = 1;column <methodModel.getColumnCount();column++) {
+            gmailClient.pushText("Stock: " + methodModel.getColumnName(column) + "\n");
+            for(int row = 1; row < methodModel.getRowCount();row++) {
+                Object value = metho
