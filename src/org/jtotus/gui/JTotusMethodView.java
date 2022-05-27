@@ -458,4 +458,11 @@ public class JTotusMethodView extends JTabbedPane implements MethodResultsPrinte
                     Object method = methodModel.getValueAt(row, 0);
                     gmailClient.pushText( method.toString() +"=" + value.toString()+"\n");
                 }
-         
+            }
+            gmailClient.pushText("\n");
+        }
+
+        gmailClient.sendThreaded();
+    }
+
+}
