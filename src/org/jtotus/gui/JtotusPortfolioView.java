@@ -71,3 +71,258 @@ public class JtotusPortfolioView extends JTabbedPane implements UpdateListener {
             }
         }
     }
+
+    
+    public void createPortfolioTable() {
+
+        //Load configuration for GUI
+        loadStoredView();
+        String listOfStocks[] = uiConfig.fetchStockNames();
+        
+        for (int i = 0; i < listOfStocks.length; i++) {
+            insertRow(portfolioTable, listOfStocks[i]);
+        }
+
+//            portfolioModel.setValueAt(listOfStocks[i], i, 0);
+//            stock.setStockName(listOfStocks[i]);
+//            portfolioModel.setValueAt(stock.fetchCurrentClosingPrice().toString(), i, 1);
+//            portfolioModel.setValueAt(stock.fetchCurrentVolume(), i, 3);
+//        }
+     
+
+//        portfolioTable.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("portfolioTable.columnModel.title0")); // NOI18N
+//        portfolioTable.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("portfolioTable.columnModel.title1")); // NOI18N
+
+        return;
+    }
+
+    private void update(StockTick tick) {
+
+        upsertValue(portfolioTable, tick.getStockName(), "Price", tick.getLatestPrice());
+        upsertValue(portfolioTable, tick.getStockName(), "Buy", tick.getLatestBuy());
+        upsertValue(portfolioTable, tick.getStockName(), "Sell", tick.getLatestSell());
+        upsertValue(portfolioTable, tick.getStockName(), "High", tick.getLatestHighest());
+        upsertValue(portfolioTable, tick.getStockName(), "Low", tick.getLatestLowest());
+        upsertValue(portfolioTable, tick.getStockName(), "Volume", tick.getVolume());
+        upsertValue(portfolioTable, tick.getStockName(), "TradeSum", tick.getTradesSum());
+        upsertValue(portfolioTable, tick.getStockName(), "Time", tick.getTime());
+
+    }
+
+   private int insertRow(JTable table, String columnHeader) {
+       if (debug) {
+            System.out.printf("Inserting row:%s row count:%d\n",
+                    columnHeader, table.getRowCount());
+        }
+
+//       Object []row = new Object[table.getColumnCount()+1];
+//       row[0] = columnHeader;
+
+       DefaultTableModel tableModel= (DefaultTableModel) table.getModel();
+       Vector<String> vector = new Vector<String>();
+       vector.addElement(columnHeader);
+       
+       tableModel.addRow(vector);
+
+       if (debug) {
+            System.out.printf("After inserting row:%s row count:%d\n",
+                    columnHeader, table.getRowCount());
+        }
+       return table.getRowCount() - 1;
+   }
+
+
+    private int insertColumn(JTable table, String columnHeader) {
+
+        if (debug) {
+            System.out.printf("Inserting column:%s\n", columnHeader);
+        }
+
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        TableColumn column = new TableColumn(model.getColumnCount());
+
+        if (table.getAutoCreateColumnsFromModel()) {
+            throw new IllegalStateException();
+        }
+
+        column.setHeaderValue(columnHeader);
+        table.addColumn(column);
+        model.addColumn(column);
+
+//        Vector vector = model.getDataVector();
+//        vector.addElement(columnHeader);
+
+        return table.getColumnModel().getColumnIndex(columnHeader);
+    }
+
+    private void upsertValue(JTable table, String stockName, String columnName, Object value) {
+        int columnIndex = -1;
+        int rowIndex = -1;
+
+        for (int count = table.getRowCount(), i = 0; i < count; i++) {
+            Object rowValue = table.getModel().getValueAt(i, 0);
+            if (rowValue != null && rowValue.toString().equalsIgnoreCase(stockName)) {
+                rowIndex = i;
+                break;
+            }
+        }
+
+        if (rowIndex == -1) {
+            rowIndex = insertRow(table, stockName);
+        }
+
+        try {
+            columnIndex = table.getColumnModel().getColumnIndex(columnName);
+        } catch (IllegalArgumentException ex) {
+            columnIndex = insertColumn(table, columnName);
+        }
+
+        table.addNotify();
+        table.getModel().setValueAt(value, rowIndex, columnIndex);
+    }
+
+    protected void monitorStock(JTable table) {
+        
+        int[] selectedRows = table.getSelectedRows();
+
+        for (int row = 0; row < selectedRows.length; row++) {
+            int[] selectedColumns = table.getSelectedColumns();
+            for (int col = 0; col < selectedColumns.length; col++) {
+                
+                if (!table.isCellSelected(selectedRows[row], selectedColumns[col]) ||
+                    selectedColumns[col] == 0) {
+                    continue;
+                }
+
+                String stockName = table.getModel().getValueAt(selectedRows[row], 0).toString();
+                JInternalFrame interFrame = new JInternalFrame();
+                interFrame.setClosable(true);
+                interFrame.setIconifiable(true);
+                interFrame.setMaximizable(true);
+                interFrame.setDoubleBuffered(true);
+                interFrame.setInheritsPopupMenu(true);
+                interFrame.setLayer(5);
+                interFrame.setName(stockName); // NOI18N
+                interFrame.setOpaque(false);
+                interFrame.setBounds(10, 10, 590, 460);
+                interFrame.setResizable(true);
+
+                interFrame.setVisible(true);
+
+                DynamicCharting dynChart = new DynamicCharting();
+
+                String colName = (String) table.getColumnModel().getColumn(selectedColumns[col]).getHeaderValue();
+                String valueType = titleMap.get(colName);
+                
+
+                if (valueType != null) {
+                    dynChart.registerForEvents("select " + valueType + " as valueForGUI from StockTick where stockName='" + stockName + "'");
+                }else {
+                    dynChart.registerForEvents("select indicatorValue as valueForGUI from IndicatorData where stockName='" + stockName + "' and indicatorName='"+colName+"'");
+                }
+
+                interFrame.setTitle(stockName + " (" + colName + ")");
+                interFrame.getContentPane().add(dynChart);
+                desktopPane.add(interFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
+            }
+        }
+    }
+
+    void setMainPane(JDesktopPane mainPane) {
+        desktopPane = mainPane;
+    }
+
+    //http://download.oracle.com/javase/tutorial/uiswing/components/menu.html
+    private class PopupListener extends MouseAdapter {
+        JTable table = null;
+        JPopupMenu popup = null;
+
+        public PopupListener(JTable table) {
+            this.table =  table;
+        }
+
+        public JPopupMenu getStockPortfolioPopupMenu() {
+            if (popup != null) {
+                return popup;
+            }
+
+            popup = new JPopupMenu();
+            JMenuItem item = new JMenuItem("Monitor");
+            popup.add(item);
+
+            item.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+                    monitorStock(table);
+                }
+            });
+
+            return popup;
+        }
+
+        public void mousePressed(MouseEvent e) {
+            maybeShowPopup(e);
+        }
+
+        public void mouseReleased(MouseEvent e) {
+            maybeShowPopup(e);
+        }
+
+        private void maybeShowPopup(MouseEvent e) {
+            if (e.isPopupTrigger()) {
+                final JPopupMenu popupMenu = getStockPortfolioPopupMenu();
+                popupMenu.show(e.getComponent(),
+                        e.getX(), e.getY());
+            }
+        }
+    }
+
+    private void initStandAloneTable() {
+
+        if (standAloneTable != null) {
+            return;
+        }
+
+        
+        DefaultTableModel standAloneTableModel = null;
+        standAloneTable = new JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        standAloneTableModel = new DefaultTableModel(0,1);
+
+        standAloneTable.setModel(standAloneTableModel);
+        standAloneTable.setName("Indicators");
+        standAloneTable.setColumnSelectionAllowed(true);
+        standAloneTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        standAloneTable.setAutoCreateColumnsFromModel(false);
+        standAloneTable.setVisible(true);
+        standAloneTable.addMouseListener(new PopupListener(standAloneTable));
+
+        standAloneFrame.setClosable(true);
+        standAloneFrame.setIconifiable(true);
+        standAloneFrame.setMaximizable(true);
+        standAloneFrame.setDoubleBuffered(true);
+        standAloneFrame.setInheritsPopupMenu(true);
+        standAloneFrame.setLayer(5);
+        standAloneFrame.setName("Stand-Alone Indicators"); // NOI18N
+        standAloneFrame.setOpaque(false);
+        standAloneFrame.setBounds(10, 10, 250, 150);
+        standAloneFrame.setResizable(true);
+
+        standAloneFrame.setVisible(true);
+        standAloneFrame.setTitle("Stand-Alone Indicators");
+
+        jScrollPane4.setViewportView(standAloneTable);
+        standAloneFrame.add(jScrollPane4);
+
+        standAloneFrame.setVisible(true);
+        
+        desktopPane.add(standAloneFrame, javax.swing.JLayeredPane.POPUP_LAYER);
+    }
+
+
+    public void initialize() {
+        jScrollPane4 = new javax.swing.JScrollPane();
+        portfolioTable = new JTable();
+        
+        portfolioModel = new DefaultTableModel(0,1);
