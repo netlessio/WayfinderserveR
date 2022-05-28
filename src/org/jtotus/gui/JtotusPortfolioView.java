@@ -326,3 +326,99 @@ public class JtotusPortfolioView extends JTabbedPane implements UpdateListener {
         portfolioTable = new JTable();
         
         portfolioModel = new DefaultTableModel(0,1);
+        
+        portfolioTable.setModel(portfolioModel);
+        portfolioTable.setName("portfolioTable"); // NOI18N
+        portfolioTable.setColumnSelectionAllowed(true);
+        portfolioTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        portfolioTable.addMouseListener(new PopupListener(portfolioTable));
+        portfolioTable.setAutoCreateColumnsFromModel(false);
+
+        createPortfolioTable();
+
+        //FIXME:name from config
+        this.addTab("OMXHelsinki", jScrollPane4);
+
+        jScrollPane4.setViewportView(portfolioTable);
+
+        titleMap = new HashMap<String, String>();
+        
+        titleMap.put("Stock", "StockName");
+        titleMap.put("Price", "latestPrice");
+        titleMap.put("Buy", "latestBuy");
+        titleMap.put("Sell", "latestSell");
+        titleMap.put("High", "latestHighest");
+        titleMap.put("Low", "latestLowest");
+        titleMap.put("Volume", "volume");
+        titleMap.put("TradeSum", "tradesSum");
+        titleMap.put("Time", "time");
+
+        EPServiceProvider provider = BrokerWatcher.getMainEngine();
+        EPStatement eps = provider.getEPAdministrator().createEPL("select * from StockTick");
+        EPStatement eps2 = provider.getEPAdministrator().createEPL("select * from IndicatorData");
+        EPStatement eps3 = provider.getEPAdministrator().createEPL("select * from GraphPacket");
+
+        eps.addListener(this);
+        eps2.addListener(this);
+        eps3.addListener(this);
+        
+        //insertColumn("testing");
+    }
+
+    private void drawJFreeChart(GraphPacket packet) {
+                JInternalFrame interFrame = new JInternalFrame();
+
+                interFrame.setClosable(true);
+                interFrame.setIconifiable(true);
+                interFrame.setMaximizable(true);
+                interFrame.setDoubleBuffered(true);
+                interFrame.setInheritsPopupMenu(true);
+                interFrame.setLayer(5);
+                interFrame.setName(packet.plotName); // NOI18N
+                interFrame.setOpaque(false);
+                interFrame.setBounds(10, 10, 590, 460);
+                interFrame.setResizable(true);
+
+                interFrame.setVisible(true);
+
+                interFrame.setTitle(packet.plotName + " (" + packet.seriesTitle + ")");
+
+                GraphPrinter graphPrinter = new GraphPrinter(packet.seriesTitle);
+                interFrame.setContentPane(graphPrinter.getContainer());
+                desktopPane.add(interFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
+                graphPrinter.drawSeries(packet);
+    }
+
+    public void update(EventBean[] ebs, EventBean[] ebs1) {
+        JTable tableToUpdate = null;
+
+        for (int i = 0; i < ebs.length; i++) {
+            if (ebs[i].getEventType().getName().equals("StockTick")) {
+                StockTick tick = (StockTick) ebs[i].getUnderlying();
+                if (tick != null) {
+                    update(tick);
+                }
+            }else if (ebs[i].getEventType().getName().equals("IndicatorData")){
+                IndicatorData data = (IndicatorData) ebs[i].getUnderlying();
+                switch(data.type) {
+                    case STANDALONE_INDICATOR_TABLE:
+                        initStandAloneTable();
+                        tableToUpdate = standAloneTable;
+                        break;
+                     case PORTFOLIO_TABLE:
+                     default:
+                        tableToUpdate = portfolioTable;
+                        break;
+                }
+                
+                upsertValue(tableToUpdate, data.getStockName(),
+                            data.getIndicatorName(), data.getIndicatorValue());
+            } else if (ebs[i].getEventType().getName().equals("GraphPacket")){
+                GraphPacket data = (GraphPacket) ebs[i].getUnderlying();
+              
+                drawJFreeChart(data);
+            }
+        }
+
+    }
+}
