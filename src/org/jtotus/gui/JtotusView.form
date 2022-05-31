@@ -15,4 +15,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-           
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jSplitPane1" min="-2" pref="204" max="-2" attributes="2"/>
+                  <EmptySpace pref="481" max="32767" attributes="0"/>
+              </Group>
+ 
