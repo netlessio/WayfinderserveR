@@ -19,4 +19,9 @@
                   <Component id="jSplitPane1" min="-2" pref="204" max="-2" attributes="2"/>
                   <EmptySpace pref="481" max="32767" attributes="0"/>
               </Group>
- 
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Component id="methodTabbedPane" alignment="1" pref="685" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        
