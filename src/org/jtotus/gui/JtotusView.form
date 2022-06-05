@@ -37,4 +37,10 @@
                   </Group>
               </Group>
           </Group>
-        </DimensionLayou
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JSplitPane" name="jSplitPane1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="jSplitPane1" noResource="true"/>
+    
