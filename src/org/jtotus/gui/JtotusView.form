@@ -84,4 +84,9 @@
                 <MatteColorBorder/>
               </Border>
             </Property>
-            <Property name="tabLayoutPolicy" typ
+            <Property name="tabLayoutPolicy" type="int" value="1"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
+            <Property name="name" type="java.lang.String" value="methodTabbedPane" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name=
