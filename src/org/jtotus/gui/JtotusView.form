@@ -141,4 +141,8 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="configMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="configMenu.te
+            <Property name="text" type="java.lang.String" resourceKey="configMenu.text"/>
+            <Property name="name" type="java.lang.String" value="configMenu" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.
