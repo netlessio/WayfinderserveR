@@ -153,4 +153,9 @@
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="org.jtotus.gui.JtotusView" id="showConfigView" methodName="showConfigView"/>
-            
+                </Property>
+                <Property name="text" type="java.lang.String" resourceKey="configMenuItem.text"/>
+                <Property name="name" type="java.lang.String" value="configMenuItem" noResource="true"/>
+              </Properties>
+              <Events>
+                
