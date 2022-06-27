@@ -150,4 +150,7 @@
           </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="configMenuItem">
-       
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="org.jtotus.gui.JtotusView" id="showConfigView" methodName="showConfigView"/>
+            
