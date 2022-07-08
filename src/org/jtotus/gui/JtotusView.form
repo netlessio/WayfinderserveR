@@ -199,4 +199,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="statusPanel">
-      <Prop
+      <Properties>
+        <Property name="name" type="java.lang.String" value="statusPanel" noResource="true"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+           
