@@ -250,4 +250,8 @@
       <SubComponents>
         <Component class="javax.swing.JSeparator" name="statusPanelSeparator">
           <Properties>
-            <Property name="name" type="java.lang.St
+            <Property name="name" type="java.lang.String" value="statusPanelSeparator" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+            <AuxValue name=
