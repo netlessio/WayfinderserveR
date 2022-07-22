@@ -268,4 +268,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="statusAnimationLabel">
           <Properties>
-  
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="name" type="java.lang.String" value="statusAnimationLabel" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name
