@@ -272,4 +272,8 @@
             <Property name="name" type="java.lang.String" value="statusAnimationLabel" noResource="true"/>
           </Properties>
           <AuxValues>
-            <AuxValue name
+            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JP
