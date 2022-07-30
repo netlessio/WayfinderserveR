@@ -291,4 +291,10 @@
             <Property name="name" type="java.lang.String" value="infoLable" noResource="true"/>
           </Properties>
         </Component>
-    
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="component" type="javax.swing.JComponent" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="mainPanel"/>
+    </
