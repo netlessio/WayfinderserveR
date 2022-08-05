@@ -308,3 +308,225 @@ public class JtotusView extends FrameView {
                 jMenuItem2MouseReleased(evt);
             }
         });
+        configMenu.add(jMenuItem2);
+
+        menuBar.add(configMenu);
+
+        indicatorsMenu.setText(resourceMap.getString("indicatorsMenu.text")); // NOI18N
+        indicatorsMenu.setName("indicatorsMenu"); // NOI18N
+        indicatorsMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                indicatorsMenuMousePressed(evt);
+            }
+        });
+        menuBar.add(indicatorsMenu);
+
+        statusPanel.setName("statusPanel"); // NOI18N
+
+        statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
+
+        statusMessageLabel.setName("statusMessageLabel"); // NOI18N
+
+        statusAnimationLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statusAnimationLabel.setName("statusAnimationLabel"); // NOI18N
+
+        progressBar.setName("progressBar"); // NOI18N
+
+        infoLable.setText(resourceMap.getString("infoLable.text")); // NOI18N
+        infoLable.setName("infoLable"); // NOI18N
+
+        javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
+        statusPanel.setLayout(statusPanelLayout);
+        statusPanelLayout.setHorizontalGroup(
+                statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+                        .addGroup(statusPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(statusMessageLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 507, Short.MAX_VALUE)
+                                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(statusAnimationLabel)
+                                .addContainerGap())
+                        .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(statusPanelLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(infoLable, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(254, Short.MAX_VALUE)))
+        );
+        statusPanelLayout.setVerticalGroup(
+                statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(statusPanelLayout.createSequentialGroup()
+                                .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(statusMessageLabel)
+                                        .addComponent(statusAnimationLabel)
+                                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12))
+                        .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(statusPanelLayout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(infoLable)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        setComponent(mainPanel);
+        setMenuBar(menuBar);
+        setStatusBar(statusPanel);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Engine engine = Engine.getInstance();
+        engine.train();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButtonRunScriptsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRunScriptsMousePressed
+//        ConfPortfolio portfolio = ConfPortfolio.getPortfolioConfig();
+//        DataFetcher fetcher = new DataFetcher();
+//        fetcher.sendMarketData(portfolio.inputListOfStocks, portfolio.inputStartingDate, portfolio.inputEndingDate);
+
+        System.err.printf("Starting training...\n");
+        Thread thread = new Thread() {
+
+            public void run() {
+                TrainManager manager = new TrainManager();
+                manager.train();
+            }
+        };
+        thread.start();
+
+    }//GEN-LAST:event_jButtonRunScriptsMousePressed
+
+    private void configMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configMenuItemMouseClicked
+        System.out.printf("Stdsaring config view\n");
+        ConfigView configView = new ConfigView(mainFrame, true);
+        configView.setVisible(true);
+    }//GEN-LAST:event_configMenuItemMouseClicked
+
+    private void configMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configMenuItemMousePressed
+        // TODO add your handling code here:
+        System.out.printf("Staring config view2\n");
+        ConfigView configView = new ConfigView(mainFrame, true);
+        configView.setVisible(true);
+    }//GEN-LAST:event_configMenuItemMousePressed
+
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        MethodResultsPrinter printer = (MethodResultsPrinter) methodTabbedPane;
+        printer.sendReport();
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
+    private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
+    }//GEN-LAST:event_jMenuItem2MousePressed
+
+    private void jMenuItem2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseReleased
+
+        JtotusSetPasswordsGUI passwords = new JtotusSetPasswordsGUI(mainFrame, false);
+        passwords.doShow();
+    }//GEN-LAST:event_jMenuItem2MouseReleased
+
+    public void fetchGeneratorList() {
+        this.indicatorsMenuMousePressed(null);
+    }
+
+    private void indicatorsMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_indicatorsMenuMousePressed
+
+        Engine engine = Engine.getInstance();
+        Map<String, HashMap<String, TickInterface>> listOfGen = engine.getListOfGenerators();
+
+        for (Map.Entry<String, HashMap<String, TickInterface>> entry : listOfGen.entrySet()) {
+            String itemName = entry.getKey();
+            boolean itemFound = false;
+            int count = indicatorsMenu.getItemCount();
+            for (int i = 0; i < count; i++) {
+                JMenuItem item = indicatorsMenu.getItem(i);
+                if (item.getText().equalsIgnoreCase(itemName)) {
+                    itemFound = true;
+                    break;
+                }
+            }
+
+            if (itemFound) {
+                continue;
+            }
+
+            HashMap<String, TickInterface> generator = entry.getValue();
+
+            //FIXME: add other statements
+            Iterator<String> stmts = generator.keySet().iterator();
+            TickInterface tickGen = generator.get(stmts.next());
+
+            JCheckBoxMenuItem menu = new JCheckBoxMenuItem();
+            ActionListener aListener = new GeneratorActionListener(generator);
+
+            menu.setSelected(false);
+            menu.setText(itemName);
+            menu.setToolTipText(tickGen.getListnerInfo());
+
+            menu.addActionListener(aListener);
+            indicatorsMenu.add(menu);
+        }
+    }//GEN-LAST:event_indicatorsMenuMousePressed
+
+    private void jCheckBoxMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1MouseReleased
+        Engine engine = Engine.getInstance();
+        if (jCheckBoxMenuItem1.isSelected()) {
+            engine.startHistorySimulator();
+        } else {
+            engine.startMarketTicker();
+        }
+    }//GEN-LAST:event_jCheckBoxMenuItem1MouseReleased
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu indicatorsMenu;
+    private javax.swing.JLabel infoLable;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonRunScripts;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JTabbedPane methodTabbedPane;
+    private javax.swing.JProgressBar progressBar;
+    private javax.swing.JLabel statusAnimationLabel;
+    private javax.swing.JLabel statusMessageLabel;
+    private javax.swing.JPanel statusPanel;
+    // End of variables declaration//GEN-END:variables
+
+    private final Timer messageTimer;
+    private final Timer busyIconTimer;
+    private final Icon idleIcon;
+    private final Icon[] busyIcons = new Icon[15];
+    private int busyIconIndex = 0;
+
+
+    public Task configMenuItemMouseClicked() {
+        return new ConfigMenuItemMouseClickedTask(getApplication());
+    }
+
+    private class ConfigMenuItemMouseClickedTask extends org.jdesktop.application.Task<Object, Void> {
+        ConfigMenuItemMouseClickedTask(org.jdesktop.application.Application app) {
+            // Runs on the EDT.  Copy GUI state that
+            // doInBackground() depends on from parameters
+            // to ConfigMenuItemMouseClickedTask fields, here.
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground() {
+            // Your Task's code here.  This method runs
+            // on a background thread, so don't reference
+            // the Swing GUI from here.
+            return null;  // return your result
+        }
+
+        @Override
+        protected void succeeded(Object result) {
+            // Runs on the EDT.  Update the GUI based on
+            // the result computed by doInBackground().
+        }
+    }
+}
