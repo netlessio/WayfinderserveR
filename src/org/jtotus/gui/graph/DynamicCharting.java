@@ -59,3 +59,33 @@ public class DynamicCharting extends Chart2D implements UpdateListener{
     public ITrace2D getTrace() {
         return trace;
     }
+
+    public void setTrace(ITrace2D trace) {
+        this.trace = trace;
+    }
+    
+    
+    public DynamicCharting() {
+        trace.setColor(Color.RED);
+        
+        this.addTrace(trace);
+        this.setVisible(true);
+        provider = org.jlucrum.realtime.BrokerWatcher.getMainEngine();
+    }
+
+    public void registerForEvents(String epStatment) {
+        org.jlucrum.realtime.BrokerWatcher.addStatement(provider, epStatment, this);
+    }
+
+    public void update(EventBean[] ebs, EventBean[] ebs1) {
+
+        for(int i=0;i<ebs.length;i++) {
+            Double value = (Double) ebs[i].get("valueForGUI");
+            if (value != null) {
+                TracePoint2D point = new TracePoint2D(((double) System.currentTimeMillis() - this.m_starttime), value);
+                trace.addPoint(point);
+            }
+        }
+    }
+    
+}
