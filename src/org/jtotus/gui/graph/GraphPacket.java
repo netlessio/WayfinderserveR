@@ -28,4 +28,11 @@ public class GraphPacket implements Serializable {
     //Optional, needed only then new timeseries are created.
     public String plotName = null;
     
-    //Sh
+    //Should be unique for ReviewTarget (Window)
+    public String seriesTitle = null;
+    //Series Type
+    public GraphSeriesType type = null;
+
+    public ArrayList<StockUnit> results = null;
+    
+}
