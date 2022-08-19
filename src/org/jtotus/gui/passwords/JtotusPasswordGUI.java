@@ -169,3 +169,75 @@ public class JtotusPasswordGUI extends javax.swing.JDialog {
         if (firstClickCleanUp) {
             firstClickCleanUp = false;
             jPasswordField1.setText("");
+        }
+        
+    }//GEN-LAST:event_jPasswordField1MouseClicked
+
+    private void cancelButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMousePressed
+        // TODO add your handling code here:
+         this.processWindowEvent(
+            new WindowEvent(
+                  this, WindowEvent.WINDOW_CLOSING));
+
+         //FIXME: if closed, other way to notify that password is not provided
+         JtotusKeyRingPassword pass =  JtotusKeyRingPassword.getInstance();
+         pass.cancel();
+
+    }//GEN-LAST:event_cancelButtonMousePressed
+
+    private void okButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okButtonMousePressed
+        JtotusKeyRingPassword pass =  JtotusKeyRingPassword.getInstance();
+        pass.putKeyRingPassword(new String(jPasswordField1.getPassword()).trim());
+    }//GEN-LAST:event_okButtonMousePressed
+
+    private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
+        
+    }//GEN-LAST:event_jPasswordField1FocusGained
+
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+        
+        if (evt.getKeyCode() == 10) {
+            JtotusKeyRingPassword pass =  JtotusKeyRingPassword.getInstance();
+            pass.putKeyRingPassword(new String(jPasswordField1.getPassword()).trim());
+            doClose(RET_OK);
+        }
+    }//GEN-LAST:event_jPasswordField1KeyPressed
+
+    private void doClose(int retStatus) {
+        returnStatus = retStatus;
+        setVisible(false);
+        dispose();
+    }
+
+    /**
+    * @param args the command line arguments
+    */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JtotusPasswordGUI dialog = new JtotusPasswordGUI(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JButton okButton;
+    // End of variables declaration//GEN-END:variables
+
+    private int returnStatus = RET_CANCEL;
+
+    public void askForKeyRing() {
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+    }
+}
