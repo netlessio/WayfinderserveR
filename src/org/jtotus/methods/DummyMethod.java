@@ -20,4 +20,17 @@ package org.jtotus.methods;
 
 import org.jlucrum.realtime.eventtypes.MarketData;
 import java.util.Random;
-im
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.espertech.esper.client.EventBean;
+import org.jtotus.common.Helper;
+import org.jtotus.common.MethodResults;
+
+/**
+ *
+ * @author kappiev
+ */
+public class DummyMethod implements MethodEntry {
+
+    private
