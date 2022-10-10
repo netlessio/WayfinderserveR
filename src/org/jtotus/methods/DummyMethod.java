@@ -50,4 +50,14 @@ public class DummyMethod implements MethodEntry {
         return methodName;
     }
 
-  
+    public boolean isCallable() {
+       return false;
+    }
+
+    public MethodResults call() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+
+    @Override
+    public void update(EventBean[] eventBeans, Event
