@@ -40,4 +40,14 @@ public class DummyMethod implements MethodEntry {
     public void run() {
         try {
             Thread.sleep(1000+genNum.nextInt(3000));
-            help.debug(1, "%s i
+            help.debug(1, "%s is running\n",methodName);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(DummyMethod.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public String getMethName() {
+        return methodName;
+    }
+
+  
