@@ -33,4 +33,11 @@ import org.jtotus.common.MethodResults;
  */
 public class DummyMethod implements MethodEntry {
 
-    private
+    private Helper help = Helper.getInstance();
+    private static Random genNum = new Random();
+    private String methodName = "DummyMethod";
+
+    public void run() {
+        try {
+            Thread.sleep(1000+genNum.nextInt(3000));
+            help.debug(1, "%s i
