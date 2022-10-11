@@ -68,4 +68,11 @@ public class DummyMethod implements MethodEntry {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public MethodRes
+    public MethodResults runCalculation(MarketData data) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void setMarketData(MarketData data) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+}
