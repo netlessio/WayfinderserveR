@@ -13,4 +13,5 @@ import java.util.LinkedList;
  */
 public interface GroovyScipts {
 
-    public void loadScripts(LinkedList<MethodEntry
+    public void loadScripts(LinkedList<MethodEntry> list);
+}
