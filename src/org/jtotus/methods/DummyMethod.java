@@ -60,4 +60,12 @@ public class DummyMethod implements MethodEntry {
 
 
     @Override
-    public void update(EventBean[] eventBeans, Event
+    public void update(EventBean[] eventBeans, EventBean[] eventBeans1) {
+        throw new RuntimeException("This feature not yet supported.");
+    }
+
+    public MethodResults runCalculation() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public MethodRes
