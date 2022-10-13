@@ -30,4 +30,12 @@ import org.jtotus.common.MethodResults;
  * @author Evgeni Kappinen
  */
 public interface MethodEntry extends Runnable, Callable<MethodResults>, UpdateListener {
- 
+    
+    public String getMethName();
+
+    //If Method supports return value this
+    // method will return true
+    public boolean isCallable();
+    public MethodResults runCalculation();
+    public MethodResults runCalculation(MarketData data);
+    public
