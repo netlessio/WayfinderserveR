@@ -1,3 +1,4 @@
+
 /*
     This file is part of jTotus.
 
@@ -13,30 +14,31 @@
 
     You should have received a copy of the GNU General Public License
     along with jTotus.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
+ */
 
 package org.jtotus.methods;
 
 import org.jlucrum.realtime.eventtypes.MarketData;
-import java.util.concurrent.Callable;
-
-import com.espertech.esper.client.UpdateListener;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map.Entry;
+import java.util.Set;
+import com.espertech.esper.client.EventBean;
+import org.jtotus.common.Helper;
 import org.jtotus.common.MethodResults;
-
+import org.jtotus.network.StockType;
+import org.jtotus.config.ConfPortfolio;
 
 /**
  *
  * @author Evgeni Kappinen
  */
-public interface MethodEntry extends Runnable, Callable<MethodResults>, UpdateListener {
-    
-    public String getMethName();
+public class PotentialWithIn implements MethodEntry {
+    private HashMap<String,Integer> voteCounter = null;
+    private ArrayList<PeriodClosingPrice> periodList = null;
+    private Helper help = Helper.getInstance();
 
-    //If Method supports return value this
-    // method will return true
-    public boolean isCallable();
-    public MethodResults runCalculation();
-    public MethodResults runCalculation(MarketData data);
-    public void setMarketData(MarketData data);
-}
+    public String getMethName() {
