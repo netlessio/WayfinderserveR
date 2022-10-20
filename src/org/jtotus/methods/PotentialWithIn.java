@@ -294,3 +294,10 @@ public class PotentialWithIn implements MethodEntry {
     }
 
     public MethodResults runCalculation(MarketData data) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void setMarketData(MarketData data) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+}
