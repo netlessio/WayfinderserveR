@@ -132,3 +132,135 @@ public class TaLibRSI extends TaLibAbstract implements MethodEntry {
                     evaluator.buy(input[elem + outBegIdx.value], -1);
                     change = true;
                 } else if (output[elem] > highestThreshold && change == true) {
+                    evaluator.sell(input[elem + outBegIdx.value], -1);
+                    change = false;
+                }
+            }
+        }
+    }
+ 
+    public double[] actionRSI(double[] input,
+            MInteger outBegIdxDec,
+            MInteger outNbElementDec,
+            int decRSIPeriod) {
+
+        int intput_size = input.length - 1;
+        final Core core = new Core();
+        final int allocationSizeDecision = intput_size - core.rsiLookback(decRSIPeriod);
+
+
+        if (allocationSizeDecision <= 0) {
+            System.err.printf("No data for period (%d)\n", allocationSizeDecision);
+            return null;
+        }
+
+        double[] outputDec = new double[allocationSizeDecision];
+
+
+        RetCode decCode = core.rsi(0, intput_size - 1,
+                input, decRSIPeriod,
+                outBegIdxDec, outNbElementDec,
+                outputDec);
+
+        if (decCode.compareTo(RetCode.Success) != 0) {
+            //Error return empty method results
+            throw new java.lang.IllegalStateException("RSI failed:" + decRSIPeriod
+                    + " Begin:" + outBegIdxDec.value
+                    + " NumElem:" + outNbElementDec.value + "\n");
+        }
+
+        return outputDec;
+    }
+    
+
+    public MethodResults performRSI(String stockName, double[] input) {
+
+        this.loadInputs(stockName);
+
+        if (debug) {
+            System.out.printf("RSI period:%d\n", config.inputRSIPeriod);
+        }
+        //************* DECISION TEST *************//
+
+        MInteger outBegIdx = new MInteger();
+        MInteger outNbElement = new MInteger();
+
+        double[] output = this.actionRSI(input,
+                outBegIdx, outNbElement,
+                config.inputRSIPeriod);
+
+
+        methodResults.putResult(stockName, output[output.length - 1]);
+
+        if (config.inputPrintResults) {
+            sender = new GraphSender(stockName);
+            sender.setPlotName("RSI");
+            sender.setSeriesName(this.getMethName());
+
+            DateIterator dateIterator = new DateIterator(portfolioConfig.inputStartingDate,
+                                                         portfolioConfig.inputEndingDate);
+            dateIterator.move(outBegIdx.value);
+            for (int i = 0; i < outNbElement.value && dateIterator.hasNext(); i++) {
+                Date stockDate = dateIterator.next();
+                sender.addForSending(stockDate, output[i]);
+            }
+            sender.sendAllStored();
+        }
+
+        if (debug) {
+            System.out.printf("%s (%s) has %d successrate\n", this.getMethName(),
+                    stockName, methodResults.getSuccessRate().intValue());
+        }
+
+        return methodResults;
+
+    }
+    
+
+    @Override
+    public MethodResults performMethod(String stockName, double [] input) {
+
+        //Load config for a stock
+        this.loadInputs(stockName);
+
+
+        //Perform testing if it is asked
+        if (config.inputPerfomDecision) {
+            EvaluateMethodSignals budjetCounter = new EvaluateMethodSignals();
+
+            for (StateIterator iter = new StateIterator()
+                    .addParam("RSIpriod", config.inputRSIDecisionPeriod)
+                    .addParam("LowestThreshold", config.inputRSILowestThreshold)
+                    .addParam("HigestThreshold", config.inputRSIHigestThreshold);
+                    iter.hasNext() != StateIterator.END_STATE; iter.nextState()) {
+
+                budjetCounter.initialize(stockName,
+                                        "DecisionRSI",
+                                        portfolioConfig.inputAssumedBudjet);
+
+                this.performDecisionTest(budjetCounter,
+                                        stockName,
+                                        input,
+                                        iter.nextInt("RSIpriod"),
+                                        iter.nextInt("LowestThreshold"),
+                                        iter.nextInt("HigestThreshold"));
+
+                if(budjetCounter.newBest()) {
+                    config.inputRSIPeriod = iter.nextInt("RSIpriod");
+                }
+            }
+
+            this.config.outputSuccessRate = budjetCounter.getProfitInProcents();
+            methodResults.putSuccessRate(stockName, budjetCounter.getProfitInProcents());
+            this.configFile.storeConfig(config);
+            if (debug) {
+                budjetCounter.printBestResults();
+                budjetCounter.dumpResults();
+            }
+        }
+
+        //Perform method
+        return this.performRSI(stockName, input);
+    }
+
+}
