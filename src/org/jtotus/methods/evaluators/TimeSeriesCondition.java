@@ -63,3 +63,123 @@ public class TimeSeriesCondition {
      }
 
      public boolean asmallerb(){
+        TimeSeriesFunction aFunc = funcList.get(0);
+        TimeSeriesFunction bFunc = funcList.get(1);
+
+         return aFunc.get(getA()) < bFunc.get(getB());
+     }
+
+    private boolean crossing(){
+        TimeSeriesFunction aFunc = funcList.get(0);
+        TimeSeriesFunction bFunc = funcList.get(1);
+
+
+        if (((aFunc.get(getA()-1) - bFunc.get(getB()-1)) >= 0) &&
+            ((aFunc.get(getA()) - bFunc.get(getB())) <= 0)) {
+            return true;
+        }
+
+        if (((aFunc.get(getA()-1) - bFunc.get(getB()-1)) <= 0) &&
+            ((aFunc.get(getA()) - bFunc.get(getB())) >= 0)) {
+            return true;
+        }
+        
+        return false;
+    }
+
+
+    public boolean isTrue(){
+        boolean result = false;
+
+        switch (getOp()) {
+            case 0:
+                result = crossing();
+                break;
+            case 1:
+                result = abiggerb();
+                break;
+             case 2:
+                result = asmallerb();
+                break;
+        }
+
+        if (and) {
+            result = (previous && result);
+            and = false;
+        }
+
+        return result;
+    }
+
+    /**
+     * @return the a
+     */
+    public int getA() {
+        return a;
+    }
+
+    /**
+     * @param a the a to set
+     */
+    public TimeSeriesCondition setA(int a) {
+        this.a = a;
+        return this;
+    }
+
+    /**
+     * @return the op
+     */
+    public int getOp() {
+        return op;
+    }
+
+    /**
+     * @param op the op to set
+     */
+    public TimeSeriesCondition setOp(int op) {
+        this.op = op;
+        return this;
+    }
+
+    /**
+     * @return the b
+     */
+    public int getB() {
+        return b;
+    }
+
+    /**
+     * @param b the b to set
+     */
+    public TimeSeriesCondition setB(int b) {
+        this.b = b;
+        return this;
+    }
+
+    public TimeSeriesCondition crosses() {
+        this.op = this.CROSSING;
+        return this;
+    }
+
+    public TimeSeriesCondition bigger() {
+        this.op = this.BIGGER;
+        return this;
+    }
+
+    public TimeSeriesCondition smaller() {
+        this.op = this.SMALLER;
+        return this;
+    }
+
+    public TimeSeriesCondition and() {
+        previous = this.isTrue();
+        this.and = true;
+        return this;
+    }
+
+    public void reset() {
+        funcList.clear();
+        a = op = b;
+    }
+
+}
