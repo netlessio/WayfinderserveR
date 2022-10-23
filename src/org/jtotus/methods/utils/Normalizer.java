@@ -82,3 +82,46 @@ public class Normalizer {
                 Entry<String, Double> tmpEntry = entryIter.next();
 
                 if (tmpEntry.getValue() == results[i]) {
+                    tmpEntry.setValue(Double.valueOf(i));
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public MethodResults perform(NormilizerType type, MethodResults result) {
+        MethodResults results = null;
+
+
+        switch (type) {
+            case SIMPLEMAX_WINS:
+                return simpleMaxWins(result);
+            case SIMPLEMIN_WINS:
+                return simpleMinWins(result);
+        }
+
+        return null;
+    }
+
+    public MethodResults perform(String type, MethodResults result) {
+        NormilizerType typeNum = null;
+
+        if (type.compareTo("SimpleMaxWins") == 0) {
+            typeNum = NormilizerType.SIMPLEMAX_WINS;
+        } else if (type.compareTo("SimpleMinWins") == 0) {
+            typeNum = NormilizerType.SIMPLEMIN_WINS;
+        }else {
+            return null;
+        }
+
+        switch (typeNum) {
+            case SIMPLEMAX_WINS:
+                return simpleMaxWins(result);
+            case SIMPLEMIN_WINS:
+                return simpleMinWins(result);
+        }
+
+        return null;
+    }
+}
