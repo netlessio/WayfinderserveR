@@ -141,3 +141,121 @@ public class EvaluateMethodSignals {
         return this;
     }
 
+
+    public EvaluateMethodSignals sell(double price, int amount) {
+
+        if (stockCount <= 0) {
+            return this;
+        }
+
+        if (amount == -1) {//ALL-in
+            setCurrentCapital(BigDecimal.valueOf(price).multiply(BigDecimal.valueOf(stockCount)));
+            setCurrentCapital(getCurrentCapital().subtract(this.brockerExpensePerAction(getCurrentCapital())));
+
+            if (getPreviousCapital().compareTo(getCurrentCapital()) >= 0) {
+                this.numberOfLosingTrades++;
+            } else {
+                this.numberOfWinningTrades++;
+            }
+
+            //Best Capital is found
+            if (getCurrentBestCapital().compareTo(getCurrentCapital()) < 0) {
+                setCurrentBestCapital(getCurrentCapital());
+                bestResultsGraph = graphSender;
+                bestNumberOfWinningTrades = numberOfWinningTrades;
+                bestNumberOfLosingTrades = numberOfLosingTrades;
+                newBestIsFound = true;
+            }
+
+            stockCount = 0;
+        }
+        return this;
+    }
+
+
+    public EvaluateMethodSignals sell(double price, int amount, Date date) {
+
+        this.sell(price, amount);
+
+        String annotation = "Sell";
+        graphSender.addForSending(date, price, annotation);
+
+        return this;
+    }
+
+    public BigDecimal getCurrentBestCapital() {
+        return currentBestCapital;
+    }
+
+    /**
+     * @param currentBestCapital the currentBestCapital to set
+     */
+    public void setCurrentBestCapital(BigDecimal currentBestCapital) {
+        this.currentBestCapital = currentBestCapital;
+    }
+
+
+    public void printBestResults() {
+        bestResultsGraph.sendAllStored();
+    }
+
+
+    public Double getProfitInProcents() {
+        Double tmp = currentBestCapital.doubleValue();
+        return ((tmp / this.assumedCapital.doubleValue()) - 1) * 100;
+    }
+
+    /**
+     * @return the currentCapital
+     */
+    public BigDecimal getCurrentCapital() {
+        return currentCapital;
+    }
+
+    /**
+     * @param currentCapital the currentCapital to set
+     */
+    public void setCurrentCapital(BigDecimal currentCapital) {
+        this.currentCapital = currentCapital;
+    }
+
+    /**
+     * @return the previousCapital
+     */
+    public BigDecimal getPreviousCapital() {
+        return previousCapital;
+    }
+
+    /**
+     * @param previousCapital the previousCapital to set
+     */
+    public void setPreviousCapital(BigDecimal previousCapital) {
+        this.previousCapital = previousCapital;
+    }
+
+
+    public double getWinRatio() {
+        return this.bestNumberOfWinningTrades / this.bestNumberOfLosingTrades;
+
+    }
+
+    public void dumpResults() {
+
+        System.out.printf("[----------\n");
+        System.out.printf("%s : BestCapital:%f WinRatio:%f\n",
+                graphSender == null ? "None" : graphSender.getMainReviewTarget(),
+                currentBestCapital.doubleValue(),
+                this.getWinRatio());
+
+        System.out.printf("wining trades:%f losing trades:%f\n",
+                this.bestNumberOfWinningTrades,
+                this.bestNumberOfLosingTrades);
+
+        System.out.printf("-----------]\n");
+    }
+
+
+    public boolean newBest() {
+        return newBestIsFound;
+    }
+}
