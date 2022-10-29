@@ -10,4 +10,11 @@ package org.jtotus.network;
  * @author house
  */
 public interface BrokerConnector {
-    public Con
+    public ConnectorState state = ConnectorState.INITIAL;
+    
+    public String getPage(String pattern, Object... arg);
+
+    public String authenticate(String _LOGIN_URL_,
+                               String userToken,
+                               String user,
+                   
