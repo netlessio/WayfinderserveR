@@ -11,4 +11,5 @@ package org.jtotus.network;
  */
 public interface BrokerController {
 
-    public boolean conne
+    public boolean connect();
+}
