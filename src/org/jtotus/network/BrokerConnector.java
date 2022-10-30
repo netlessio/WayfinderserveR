@@ -17,4 +17,13 @@ public interface BrokerConnector {
     public String authenticate(String _LOGIN_URL_,
                                String userToken,
                                String user,
-                   
+                               String passToken,
+                               String encryptedPassword);
+
+    public void close();
+
+    public enum ConnectorState {
+                INITIAL,
+                CONNECTION_FAILURE,
+                CONNECTED,
+                A
