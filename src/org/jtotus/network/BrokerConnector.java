@@ -26,4 +26,7 @@ public interface BrokerConnector {
                 INITIAL,
                 CONNECTION_FAILURE,
                 CONNECTED,
-                A
+                AUTHENTICATED
+    };
+
+}
