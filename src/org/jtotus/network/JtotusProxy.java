@@ -28,4 +28,9 @@ public class JtotusProxy {
 
         System.out.printf("host:%s:%s isSet:%s host:%s:%s user:%s pass:%s use:%s\n",
                 prop.getProperty("http.proxyHost"),
-                prop.getPrope
+                prop.getProperty("http.proxyPort"),
+                prop.getProperty("proxySet"),
+                prop.getProperty("ProxyHost"),
+                prop.getProperty("ProxyPort"),
+                prop.getProperty("http.proxyUser"),
+                prop.
