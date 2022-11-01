@@ -33,4 +33,12 @@ public class JtotusProxy {
                 prop.getProperty("ProxyHost"),
                 prop.getProperty("ProxyPort"),
                 prop.getProperty("http.proxyUser"),
-                prop.
+                prop.getProperty("http.proxyPassword"),
+                System.getProperty("java.net.useSystemProxies"));
+
+        return null;
+    }
+
+
+//        System.setProperty("socksProxyHost", proxyAddress);
+//        System.setProperty("socksProxyPort", String.valueOf(proxyPort));
