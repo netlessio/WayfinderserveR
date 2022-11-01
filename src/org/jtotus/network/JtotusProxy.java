@@ -21,3 +21,11 @@ public class JtotusProxy {
 
     private String httpProxyURL = null;
     private int httpProxyPort = 8080;
+
+    public String dumpSystemProxy() {
+
+        Properties prop = System.getProperties();
+
+        System.out.printf("host:%s:%s isSet:%s host:%s:%s user:%s pass:%s use:%s\n",
+                prop.getProperty("http.proxyHost"),
+                prop.getPrope
