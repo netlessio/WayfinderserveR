@@ -42,3 +42,10 @@ public class JtotusProxy {
 
 //        System.setProperty("socksProxyHost", proxyAddress);
 //        System.setProperty("socksProxyPort", String.valueOf(proxyPort));
+
+    public void setSystemProxy(String proxyAddress, int proxyPort,
+                               String user, String password) {
+        final String authUser = user;
+        final String authPassword = password;
+
+        System.setPrope
