@@ -65,4 +65,15 @@ public class JtotusProxy {
                 new Authenticator() {
                     @Override
                     public PasswordAuthentication getPasswordAuthentication() {
-                        return new Pa
+                        return new PasswordAuthentication(authUser, authPassword.toCharArray());
+                    }
+                });
+
+    }
+
+    public int getHttpProxyPort() {
+        return httpProxyPort;
+    }
+
+    public void setHttpProxyPort(int httpProxyPort) {
+       
