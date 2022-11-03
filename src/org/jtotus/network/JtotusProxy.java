@@ -53,4 +53,10 @@ public class JtotusProxy {
         System.setProperty("ProxyPort", String.valueOf(proxyPort));
         
         System.setProperty("http.proxyHost", proxyAddress);
-        System.setProperty("http.proxyP
+        System.setProperty("http.proxyPort", String.valueOf(proxyPort));
+
+        System.setProperty("http.proxyHost", proxyAddress);
+        System.setProperty("http.proxyPort", String.valueOf(proxyPort));
+
+        System.setProperty("http.proxyUser", authUser);
+        System.setProperty("ht
