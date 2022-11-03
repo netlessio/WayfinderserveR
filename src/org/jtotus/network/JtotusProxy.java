@@ -59,4 +59,10 @@ public class JtotusProxy {
         System.setProperty("http.proxyPort", String.valueOf(proxyPort));
 
         System.setProperty("http.proxyUser", authUser);
-        System.setProperty("ht
+        System.setProperty("http.proxyPassword", authPassword);
+
+        Authenticator.setDefault(
+                new Authenticator() {
+                    @Override
+                    public PasswordAuthentication getPasswordAuthentication() {
+                        return new Pa
