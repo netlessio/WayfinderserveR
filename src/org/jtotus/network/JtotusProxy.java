@@ -76,4 +76,14 @@ public class JtotusProxy {
     }
 
     public void setHttpProxyPort(int httpProxyPort) {
-       
+        this.httpProxyPort = httpProxyPort;
+    }
+
+    public String getHttpProxyURL() {
+        return httpProxyURL;
+    }
+
+    public void setHttpProxyURL(String httpProxyURL) {
+        this.httpProxyURL = httpProxyURL;
+    }
+}
