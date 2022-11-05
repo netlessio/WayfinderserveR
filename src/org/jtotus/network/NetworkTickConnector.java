@@ -14,4 +14,5 @@ import org.jlucrum.realtime.eventtypes.StockTick;
 public interface NetworkTickConnector {
     public boolean connect();
 
-    public StockTic
+    public StockTick getTick(String stockName);
+}
