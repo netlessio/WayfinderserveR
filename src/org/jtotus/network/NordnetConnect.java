@@ -27,4 +27,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.jlucrum.real
+import org.jlucrum.realtime.eventtypes.StockTick;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import javax.script.Bindings;
+import javax.script.ScriptContext;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+import org.apache.commons.loggin
