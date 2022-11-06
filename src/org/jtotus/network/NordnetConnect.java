@@ -19,4 +19,12 @@ package org.jtotus.network;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-i
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.jlucrum.real
