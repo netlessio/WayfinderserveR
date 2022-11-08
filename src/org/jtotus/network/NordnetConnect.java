@@ -41,4 +41,10 @@ import org.jtotus.config.GUIConfig;
 import org.jtotus.engine.StartUpLoader;
 import org.jtotus.network.BrokerConnector.ConnectorState;
 
-/
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class NordnetConnect implements NetworkTickConnector {
+    ConnectorState state = BrokerConnector.state.INITIAL;
+    //private static final String _LOGIN_URL_ = "https://www.nordnet.fi/mux/l
