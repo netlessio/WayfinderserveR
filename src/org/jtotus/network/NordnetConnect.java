@@ -50,4 +50,6 @@ public class NordnetConnect implements NetworkTickConnector {
     //private static final String _LOGIN_URL_ = "https://www.nordnet.fi/mux/login/login.html";
     //private static final String _LOGIN_URL_ = "https://www.nordnet.fi/mux/login/start.html";
     private static final String _LOGIN_URL_ = "https://www.nordnet.fi/mux/login/startFI.html";
-    private static final 
+    private static final String _LOGININPUT_URL_ = "https://www.nordnet.fi//mux/login/login.html";
+    //private static final String _PORTFOLIO_URL_ = "https://www.nordnet.fi/mux/web/depa/mindepa/depaoversikt.html";
+    private static final String _PORTFOLIO_URL_ = "https://www.n
