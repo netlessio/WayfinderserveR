@@ -52,4 +52,6 @@ public class NordnetConnect implements NetworkTickConnector {
     private static final String _LOGIN_URL_ = "https://www.nordnet.fi/mux/login/startFI.html";
     private static final String _LOGININPUT_URL_ = "https://www.nordnet.fi//mux/login/login.html";
     //private static final String _PORTFOLIO_URL_ = "https://www.nordnet.fi/mux/web/depa/mindepa/depaoversikt.html";
-    private static final String _PORTFOLIO_URL_ = "https://www.n
+    private static final String _PORTFOLIO_URL_ = "https://www.nordnet.fi/mux/web/user/overview.html";
+    private static final String _STOCK_INFO_URL_ = "https://www.nordnet.fi/mux/web/marknaden/aktiehemsidan/index.html";
+    private static final String _ECRYPT_JS_ = "https://www.nordnet.fi/now/js
