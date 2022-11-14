@@ -71,4 +71,8 @@ public class NordnetConnect implements NetworkTickConnector {
 
         stockNameToIndex = new HashMap<String, Integer>();
 
-     
+        stockNameToIndex.put("Cargotec Oyj", 29983);
+        //stockNameToIndex.put("Elisa Oyj","ELI1V.HSE");
+        stockNameToIndex.put("Fortum Oyj", 24271);
+        stockNameToIndex.put("Kemira Oyj", 24292);
+        stockNameToIndex.put("KONE Oyj"
