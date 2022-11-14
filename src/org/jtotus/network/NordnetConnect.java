@@ -75,4 +75,9 @@ public class NordnetConnect implements NetworkTickConnector {
         //stockNameToIndex.put("Elisa Oyj","ELI1V.HSE");
         stockNameToIndex.put("Fortum Oyj", 24271);
         stockNameToIndex.put("Kemira Oyj", 24292);
-        stockNameToIndex.put("KONE Oyj"
+        stockNameToIndex.put("KONE Oyj", 75061);
+        stockNameToIndex.put("Konecranes Oyj", 24284);
+        stockNameToIndex.put("Metso Oyj", 24302);
+        stockNameToIndex.put("Neste Oil", 29375);
+        stockNameToIndex.put("Nokia Oyj", 24311);
+        //stockNameToIndex.put("Nokia
