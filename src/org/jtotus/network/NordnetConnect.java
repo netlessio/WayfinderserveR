@@ -61,4 +61,14 @@ public class NordnetConnect implements NetworkTickConnector {
     private final static Log log = LogFactory.getLog( NordnetConnect.class );
     
 
-    // Connects to login page, get see
+    // Connects to login page, get seeds for user and password
+    // POST data to server, by calling NordnetConnector
+    private void fillStockNamesConverter() {
+
+        if (stockNameToIndex != null) {
+            return;
+        }
+
+        stockNameToIndex = new HashMap<String, Integer>();
+
+     
