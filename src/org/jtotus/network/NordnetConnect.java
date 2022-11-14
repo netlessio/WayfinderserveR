@@ -54,4 +54,11 @@ public class NordnetConnect implements NetworkTickConnector {
     //private static final String _PORTFOLIO_URL_ = "https://www.nordnet.fi/mux/web/depa/mindepa/depaoversikt.html";
     private static final String _PORTFOLIO_URL_ = "https://www.nordnet.fi/mux/web/user/overview.html";
     private static final String _STOCK_INFO_URL_ = "https://www.nordnet.fi/mux/web/marknaden/aktiehemsidan/index.html";
-    private static final String _ECRYPT_JS_ = "https://www.nordnet.fi/now/js
+    private static final String _ECRYPT_JS_ = "https://www.nordnet.fi/now/js/encrypt.js";
+
+    private HashMap<String, Integer> stockNameToIndex = null;
+    private BrokerConnector connector = null;
+    private final static Log log = LogFactory.getLog( NordnetConnect.class );
+    
+
+    // Connects to login page, get see
