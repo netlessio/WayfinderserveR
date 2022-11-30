@@ -97,4 +97,12 @@ public class NordnetConnect implements NetworkTickConnector {
 
     }
 
- 
+    public boolean authenticated() {
+        String loginPage = null;
+
+        if (connector == null) {
+            System.err.printf("Failure connector is empty\n");
+            return false;
+        }
+
+        loginPage = connector.getPage(_POR
