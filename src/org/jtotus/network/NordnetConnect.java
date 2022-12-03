@@ -112,4 +112,10 @@ public class NordnetConnect implements NetworkTickConnector {
         }
 
         Document doc = Jsoup.parse(loginPage);
-        Elements element
+        Elements elements = doc.select("title");
+
+        //FIXME: UTF-8 for httpclient!
+        if (elements.html().equals("Yleisn&auml;kym&auml; - Nordnet")) {
+            return true;
+        } else {
+            System.err.printf("Failure in match for : %s \n", elements.html());
