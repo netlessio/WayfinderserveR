@@ -105,4 +105,11 @@ public class NordnetConnect implements NetworkTickConnector {
             return false;
         }
 
-        loginPage = connector.getPage(_POR
+        loginPage = connector.getPage(_PORTFOLIO_URL_);
+        if (loginPage == null) {
+            System.err.printf("Failure unable to fetch portfolio\n");
+            return false;
+        }
+
+        Document doc = Jsoup.parse(loginPage);
+        Elements element
