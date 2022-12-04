@@ -119,3 +119,14 @@ public class NordnetConnect implements NetworkTickConnector {
             return true;
         } else {
             System.err.printf("Failure in match for : %s \n", elements.html());
+        }
+
+        return false;
+    }
+
+    public String fetchEncryptedPassword(String encryptJS, String pass, String pubKey, String sessionId) {
+        String password = null;
+
+        StartUpLoader loader = StartUpLoader.getInstance();
+
+        //ScriptEngine
