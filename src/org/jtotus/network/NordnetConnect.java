@@ -129,4 +129,11 @@ public class NordnetConnect implements NetworkTickConnector {
 
         StartUpLoader loader = StartUpLoader.getInstance();
 
-        //ScriptEngine
+        //ScriptEngineManager mgr = loader.getLoadedScriptManager();
+        //         Bindings bindings = mgr.getBindings();
+
+         ScriptEngine engine =  loader.getLoadedEngine();
+         Bindings bindings = engine.getBindings(ScriptContext.GLOBAL_SCOPE);
+
+         try {
+ 
