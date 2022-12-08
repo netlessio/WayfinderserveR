@@ -159,4 +159,15 @@ public class NordnetConnect implements NetworkTickConnector {
 
     private String fetchEncryptionScript(String filename) {
         String script = null;
-        String 
+        String line = null;
+        
+        BufferedReader input = null;
+        StringBuilder data = new StringBuilder();
+
+        File file =new File(filename);
+        if (!file.isFile() || !file.exists()) {
+            return null;
+        }
+
+        try {
+            input = new Buffe
