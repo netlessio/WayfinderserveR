@@ -140,4 +140,11 @@ public class NordnetConnect implements NetworkTickConnector {
              strBuild.append(encryptJS);
 
              strBuild.append(" \n var keyObj = RSA.getPublicKey(\'"+pubKey+"\');\n"
-                            + "  var encryptedPass = RSA.encrypt(\'"+pass+
+                            + "  var encryptedPass = RSA.encrypt(\'"+pass+"\', keyObj, \'"+sessionId+"\');\n");
+
+             engine.eval(strBuild.toString(), bindings);
+
+             password = (String)bindings.get("encryptedPass");
+             
+        } catch (ScriptException ex) {
+            Logger.getLogger(Nor
