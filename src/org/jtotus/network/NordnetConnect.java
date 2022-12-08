@@ -147,4 +147,16 @@ public class NordnetConnect implements NetworkTickConnector {
              password = (String)bindings.get("encryptedPass");
              
         } catch (ScriptException ex) {
-            Logger.getLogger(Nor
+            Logger.getLogger(NordnetConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         log.info("JavaScript engine loaded:" + engine.NAME);
+
+         return password;
+    }
+        
+
+
+    private String fetchEncryptionScript(String filename) {
+        String script = null;
+        String 
