@@ -136,4 +136,8 @@ public class NordnetConnect implements NetworkTickConnector {
          Bindings bindings = engine.getBindings(ScriptContext.GLOBAL_SCOPE);
 
          try {
- 
+             StringBuilder strBuild = new StringBuilder();
+             strBuild.append(encryptJS);
+
+             strBuild.append(" \n var keyObj = RSA.getPublicKey(\'"+pubKey+"\');\n"
+                            + "  var encryptedPass = RSA.encrypt(\'"+pass+
