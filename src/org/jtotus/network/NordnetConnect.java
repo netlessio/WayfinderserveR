@@ -170,4 +170,11 @@ public class NordnetConnect implements NetworkTickConnector {
         }
 
         try {
-            input = new Buffe
+            input = new BufferedReader(new FileReader(file));
+
+            while ((line = input.readLine()) != null) {
+                data.append(line);
+                data.append(System.getProperty("line.separator"));
+            }
+            
+            scri
