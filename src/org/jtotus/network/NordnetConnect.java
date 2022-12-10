@@ -181,4 +181,12 @@ public class NordnetConnect implements NetworkTickConnector {
 
         } catch (IOException ex) {
 //            Logger.getLogger(NordnetConnect.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.printf(" Could not find js for authentication : %s", filename)
+            System.out.printf(" Could not find js for authentication : %s", filename);
+        } finally {
+            try {
+                if (input != null)
+                    input.close();
+            } catch (IOException ex) {
+                Logger.getLogger(NordnetConnect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+     
