@@ -189,4 +189,15 @@ public class NordnetConnect implements NetworkTickConnector {
             } catch (IOException ex) {
                 Logger.getLogger(NordnetConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
-     
+        }
+        
+        return script;
+    }
+
+
+    private boolean connectAndAuth(String user, String password) {
+        ArrayList<String> inputList = new ArrayList();
+
+        connector = new NordnetConnector();
+
+        String encryptJS = fetchEncryptio
