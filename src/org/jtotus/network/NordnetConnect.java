@@ -216,3 +216,12 @@ public class NordnetConnect implements NetworkTickConnector {
         }
 
         Document doc = Jsoup.parse(loginPage);
+        Elements elements = doc.select("input");
+
+        Iterator<Element> iter = elements.iterator();
+        while (iter.hasNext()) {
+            Element elem = iter.next();
+            inputList.add(elem.attr("name"));
+        }
+
+     
