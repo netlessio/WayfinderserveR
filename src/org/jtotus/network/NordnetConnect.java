@@ -200,4 +200,9 @@ public class NordnetConnect implements NetworkTickConnector {
 
         connector = new NordnetConnector();
 
-        String encryptJS = fetchEncryptio
+        String encryptJS = fetchEncryptionScript("./lib/encrypt.js");
+        if (encryptJS == null) {
+            encryptJS = connector.getPage(_ECRYPT_JS_);
+            if (encryptJS == null) {
+                System.err.printf("Failed to get encrypt javascript\n");
+                
