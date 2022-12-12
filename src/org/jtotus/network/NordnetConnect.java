@@ -205,4 +205,14 @@ public class NordnetConnect implements NetworkTickConnector {
             encryptJS = connector.getPage(_ECRYPT_JS_);
             if (encryptJS == null) {
                 System.err.printf("Failed to get encrypt javascript\n");
-                
+                return false;
+            }
+        }
+        
+        String loginPage = connector.getPage(_LOGIN_URL_);
+        if (loginPage == null) {
+            System.err.printf("Failed to get login page\n");
+            return false;
+        }
+
+        Document doc = Jsoup.parse(loginPage);
