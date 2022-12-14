@@ -224,4 +224,11 @@ public class NordnetConnect implements NetworkTickConnector {
             inputList.add(elem.attr("name"));
         }
 
-     
+        if (inputList.size()<2) {
+            System.err.printf("Failure: \n %s \n", loginPage);
+            return false;
+        }
+
+        elements = doc.select("script");
+        if (elements.size() < 4) {
+            System.err.printf("Inc
