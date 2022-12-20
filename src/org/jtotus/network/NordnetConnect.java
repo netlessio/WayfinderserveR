@@ -231,4 +231,12 @@ public class NordnetConnect implements NetworkTickConnector {
 
         elements = doc.select("script");
         if (elements.size() < 4) {
-            System.err.printf("Inc
+            System.err.printf("Incorrect size of script elements\n");
+            return false;
+        }
+        Element elem = elements.get(4);
+
+        
+        String []data = elem.data().split("'");
+        if (data.length < 8) {
+            System.err.printf("Incorrect size of splitted elements for pass 
