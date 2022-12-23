@@ -239,4 +239,10 @@ public class NordnetConnect implements NetworkTickConnector {
         
         String []data = elem.data().split("'");
         if (data.length < 8) {
-            System.err.printf("Incorrect size of splitted elements for pass 
+            System.err.printf("Incorrect size of splitted elements for pass and login tokens\n");
+            return false;
+        }
+        log.info("Got element: data:"+data[7]+" html:" + data[5]);
+
+        String encryptedPassword = fetchEncryptedPassword(encryptJS,
+                                         
