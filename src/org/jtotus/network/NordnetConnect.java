@@ -245,4 +245,9 @@ public class NordnetConnect implements NetworkTickConnector {
         log.info("Got element: data:"+data[7]+" html:" + data[5]);
 
         String encryptedPassword = fetchEncryptedPassword(encryptJS,
-                                         
+                                                 password,
+                                                 data[5].trim() /*pubKey*/,
+                                                 data[7].trim() /*sessionId*/);
+
+        loginPage = connector.authenticate(_LOGININPUT_URL_,
+                 
