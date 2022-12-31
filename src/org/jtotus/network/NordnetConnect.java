@@ -255,4 +255,18 @@ public class NordnetConnect implements NetworkTickConnector {
 
         System.err.printf("login: %s = %s pass: %s = %s\n", inputList.get(3), user, inputList.get(5), encryptedPassword);
 
-        if (l
+        if (loginPage == null) {
+            System.err.printf("Failed to get authenticate\n");
+            return false;
+        }
+
+        if (!authenticated()) {
+            return false;
+        }
+        
+        return true;
+    }
+
+    public boolean connect() {
+
+        ConfigLoader<
