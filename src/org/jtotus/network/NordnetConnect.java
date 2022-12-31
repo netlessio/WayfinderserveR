@@ -250,4 +250,9 @@ public class NordnetConnect implements NetworkTickConnector {
                                                  data[7].trim() /*sessionId*/);
 
         loginPage = connector.authenticate(_LOGININPUT_URL_,
-                 
+                                           inputList.get(3), user,
+                                           inputList.get(5), encryptedPassword);
+
+        System.err.printf("login: %s = %s pass: %s = %s\n", inputList.get(3), user, inputList.get(5), encryptedPassword);
+
+        if (l
