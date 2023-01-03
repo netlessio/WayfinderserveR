@@ -269,4 +269,12 @@ public class NordnetConnect implements NetworkTickConnector {
 
     public boolean connect() {
 
-        ConfigLoader<
+        ConfigLoader<GUIConfig> loader = new ConfigLoader<GUIConfig>("GUIConfig");
+        GUIConfig config = loader.getConfig();
+        if (config == null) {
+            return false;
+        }
+
+        this.fillStockNamesConverter();
+
+        return this.connectAndAuth(config.ge
