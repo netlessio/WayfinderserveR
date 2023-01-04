@@ -277,4 +277,14 @@ public class NordnetConnect implements NetworkTickConnector {
 
         this.fillStockNamesConverter();
 
-        return this.connectAndAuth(config.ge
+        return this.connectAndAuth(config.getBrokerLogin(),
+                                config.getBrokerPassword());
+    }
+
+
+
+    private StockTick parseAuthenticatedStream(String infoPage, String stockName) {
+        StockTick tick = null;
+
+        Document doc = Jsoup.parse(infoPage);
+        Ele
