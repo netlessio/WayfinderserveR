@@ -296,4 +296,11 @@ public class NordnetConnect implements NetworkTickConnector {
             return tick;
         }
         tick = new StockTick();
-        tick.setS
+        tick.setStockName(stockName);
+
+        Iterator<Element> iter = elements.iterator();
+        for (int count = 0; iter.hasNext(); count++) {
+            Element elem = iter.next();
+
+            log.info("Element value ("+count+"):"+elem.text());
+ 
