@@ -303,4 +303,7 @@ public class NordnetConnect implements NetworkTickConnector {
             Element elem = iter.next();
 
             log.info("Element value ("+count+"):"+elem.text());
- 
+            switch (count) {
+                case 3:
+                    if (!elem.text().equalsIgnoreCase("OMX Helsinki")) {
+                        System.err.printf("Data corruption in broker site? :%s for: %s\n", 
