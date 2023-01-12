@@ -312,4 +312,9 @@ public class NordnetConnect implements NetworkTickConnector {
                     break;
                 case 4://latest price
                     tick.setLatestPrice(Double.parseDouble(elem.text().replace(",", ".").trim()));
-   
+                    break;
+                case 5://latest buy
+                    tick.setLatestBuy(Double.parseDouble(elem.text().replace(",", ".").trim()));
+                    break;
+                case 6://latest sell
+                    tick.setLatestSell(D
