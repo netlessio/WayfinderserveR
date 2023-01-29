@@ -351,4 +351,13 @@ public class NordnetConnect implements NetworkTickConnector {
     private StockTick parseNonAuthenticatedStream(String infoPage, String stockName) {
         StockTick tick = null;
 
-        Document doc = Jsoup.parse(infoPa
+        Document doc = Jsoup.parse(infoPage);
+        Elements elements = doc.select("tr[class=first]");
+
+        doc = Jsoup.parse(elements.html());
+        elements = doc.select("td");
+
+        if (elements.size() != 13) { //not authenticated 13
+            return tick;
+        }
+        
