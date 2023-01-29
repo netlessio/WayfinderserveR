@@ -331,4 +331,11 @@ public class NordnetConnect implements NetworkTickConnector {
                 case 12://latest Lowest
                     tick.setTradesSum(Double.parseDouble(elem.text().replace(" ", "").trim()));
                     break;
-         
+                case 14://Time
+                    tick.setTime(elem.text().trim());
+                    break;
+
+                //TODO:currency and time
+                default:
+                    log.info("Not matched(" +count+ ") = " + elem.text());
+            
