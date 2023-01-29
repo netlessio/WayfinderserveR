@@ -360,4 +360,11 @@ public class NordnetConnect implements NetworkTickConnector {
         if (elements.size() != 13) { //not authenticated 13
             return tick;
         }
-        
+        tick = new StockTick();
+        tick.setStockName(stockName);
+
+        Iterator<Element> iter = elements.iterator();
+        for (int count = 0; iter.hasNext(); count++) {
+            Element elem = iter.next();
+
+            System
