@@ -338,4 +338,17 @@ public class NordnetConnect implements NetworkTickConnector {
                 //TODO:currency and time
                 default:
                     log.info("Not matched(" +count+ ") = " + elem.text());
-            
+                    break;
+            }
+        }
+        log.info("StockTick:" + tick.toString());
+
+        return tick;
+    }
+
+
+
+    private StockTick parseNonAuthenticatedStream(String infoPage, String stockName) {
+        StockTick tick = null;
+
+        Document doc = Jsoup.parse(infoPa
