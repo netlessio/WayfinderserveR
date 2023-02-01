@@ -367,4 +367,8 @@ public class NordnetConnect implements NetworkTickConnector {
         for (int count = 0; iter.hasNext(); count++) {
             Element elem = iter.next();
 
-            System
+            System.out.printf("Non-Auth Element value (%d):%s for:%s\n", count, elem.text(), stockName);
+            switch (count) {
+                case 1:
+                    if (!elem.text().equalsIgnoreCase("OMX Helsinki")) {
+                        Sy
