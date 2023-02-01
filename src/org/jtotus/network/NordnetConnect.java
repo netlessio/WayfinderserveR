@@ -371,4 +371,9 @@ public class NordnetConnect implements NetworkTickConnector {
             switch (count) {
                 case 1:
                     if (!elem.text().equalsIgnoreCase("OMX Helsinki")) {
-                        Sy
+                        System.err.printf("Data corruption in broker site? :%s for: %s\n", elem.text(), stockName);
+                        return null;
+                    }
+                    break;
+                case 2://latest price
+                    t
