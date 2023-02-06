@@ -396,3 +396,10 @@ public class NordnetConnect implements NetworkTickConnector {
                 case 10://Trade Sum
                     tick.setTradesSum(Double.parseDouble(elem.text().replace(" ", "").trim()));
                     break;
+                case 12://Time
+                    tick.setTime(elem.text().trim());
+                    break;
+
+                //TODO:currency and time
+                default:
+                    System.out.printf("Not matched(%d) = %s \n"
