@@ -414,4 +414,12 @@ public class NordnetConnect implements NetworkTickConnector {
 
 
     // http://jsoup.org/apidocs/org/jsoup/select/Selector.html
-    public StockTick getTick(String
+    public StockTick getTick(String stockName) {
+
+        Integer index = stockNameToIndex.get(stockName);
+        if (index == null) {
+            System.err.printf("Index is not found for :%s\n", stockName);
+            return null;
+        }
+
+        String infoPage = c
