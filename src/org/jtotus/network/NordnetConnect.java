@@ -402,4 +402,16 @@ public class NordnetConnect implements NetworkTickConnector {
 
                 //TODO:currency and time
                 default:
-                    System.out.printf("Not matched(%d) = %s \n"
+                    System.out.printf("Not matched(%d) = %s \n", count, elem.text());
+                    break;
+            }
+        }
+        System.out.printf("StockTick:%s\n", tick.toString());
+
+        return tick;
+    }
+
+
+
+    // http://jsoup.org/apidocs/org/jsoup/select/Selector.html
+    public StockTick getTick(String
