@@ -428,4 +428,10 @@ public class NordnetConnect implements NetworkTickConnector {
         //Try to reconnect to server once.
         if (infoPage == null) {
             if (!this.connect()) {
-                retur
+                return null;
+            } else {
+                infoPage = connector.getPage("%s?identifier=%d&marketid=%d",
+                                            _STOCK_INFO_URL_, index.intValue(), 24);
+                if (infoPage == null) {
+                    return null;
+       
