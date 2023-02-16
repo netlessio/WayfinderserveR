@@ -434,4 +434,16 @@ public class NordnetConnect implements NetworkTickConnector {
                                             _STOCK_INFO_URL_, index.intValue(), 24);
                 if (infoPage == null) {
                     return null;
-       
+                }
+            }
+        }
+
+        if(authenticated()) {
+            return parseAuthenticatedStream(infoPage, stockName);
+        }else {
+            return parseNonAuthenticatedStream(infoPage, stockName);
+        }
+
+    }
+
+}
