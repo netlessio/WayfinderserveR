@@ -44,4 +44,18 @@ import org.apache.http.util.EntityUtils;
 
 /**
  *
- * @auth
+ * @author work
+ *
+ *
+ *
+ *
+ * http://www.java-tips.org/other-api-tips/httpclient/how-to-use-http-cookies.html
+ * 
+ */
+public class NordnetConnector implements BrokerConnector {
+    private DefaultHttpClient httpclient = null;
+
+
+
+
+    private void
