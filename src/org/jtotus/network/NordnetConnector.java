@@ -67,4 +67,11 @@ public class NordnetConnector implements BrokerConnector {
             System.out.println(params.getParameter(
                 CoreProtocolPNames.USE_EXPECT_CONTINUE));
             System.out.println(params.getParameter(
-     
+                CoreProtocolPNames.USER_AGENT));
+            System.out.println(params.getParameter(
+                CoreConnectionPNames.SO_TIMEOUT));
+    }
+    private DefaultHttpClient getClient() {
+
+        if (httpclient != null) {
+            return httpclient;
