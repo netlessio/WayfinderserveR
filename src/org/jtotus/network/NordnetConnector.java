@@ -62,4 +62,9 @@ public class NordnetConnector implements BrokerConnector {
         System.out.printf("HttpClient parameters:\n");
         System.out.println(params.getParameter(
                 CoreProtocolPNames.PROTOCOL_VERSION));
-            System.out.prin
+            System.out.println(params.getParameter(
+                CoreProtocolPNames.HTTP_CONTENT_CHARSET));
+            System.out.println(params.getParameter(
+                CoreProtocolPNames.USE_EXPECT_CONTINUE));
+            System.out.println(params.getParameter(
+     
