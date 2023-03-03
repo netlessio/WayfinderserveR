@@ -81,4 +81,9 @@ public class NordnetConnector implements BrokerConnector {
         schemeRegistry.register(
                  new Scheme("https", 443, SSLSocketFactory.getSocketFactory()));
 
-        ClientConnectionManager cm = new ThreadSafeClientConnManager(
+        ClientConnectionManager cm = new ThreadSafeClientConnManager(schemeRegistry);
+
+        BasicHttpParams params = new BasicHttpParams();
+        params.setBooleanParameter(HttpConnectionParams.STALE_CONNECTION_CHECK, true);
+        params.setBooleanParameter(CoreConnectionPNames.STALE_CONNECTION_CHECK, true);
+        
