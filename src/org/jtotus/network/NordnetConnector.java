@@ -86,4 +86,7 @@ public class NordnetConnector implements BrokerConnector {
         BasicHttpParams params = new BasicHttpParams();
         params.setBooleanParameter(HttpConnectionParams.STALE_CONNECTION_CHECK, true);
         params.setBooleanParameter(CoreConnectionPNames.STALE_CONNECTION_CHECK, true);
-        
+        params.setBooleanParameter(CoreProtocolPNames.USE_EXPECT_CONTINUE, false);
+//        params.setIntParameter(CoreProtocolPNames.WAIT_FOR_CONTINUE, 5000000);
+//        params.setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 5000000);
+//        params.setIntPa
