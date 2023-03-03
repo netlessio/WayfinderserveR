@@ -75,3 +75,10 @@ public class NordnetConnector implements BrokerConnector {
 
         if (httpclient != null) {
             return httpclient;
+        }
+
+        SchemeRegistry schemeRegistry = new SchemeRegistry();
+        schemeRegistry.register(
+                 new Scheme("https", 443, SSLSocketFactory.getSocketFactory()));
+
+        ClientConnectionManager cm = new ThreadSafeClientConnManager(
