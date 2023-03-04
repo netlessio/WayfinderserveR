@@ -97,4 +97,10 @@ public class NordnetConnector implements BrokerConnector {
 
         httpclient = new DefaultHttpClient(cm, params);
 
-//        httpclient.getParams().setParameter(ClientPNa
+//        httpclient.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
+
+        Properties prop = System.getProperties();
+        if (prop.getProperty("https.proxyHost") != null
+                && prop.getProperty("https.proxyPort") != null) {
+
+            ((DefaultHttpClient)httpclient).get
