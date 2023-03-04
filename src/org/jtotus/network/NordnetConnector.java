@@ -106,4 +106,10 @@ public class NordnetConnector implements BrokerConnector {
             ((DefaultHttpClient)httpclient).getCredentialsProvider().setCredentials(
                     new AuthScope(prop.getProperty("https.proxyHost"),
                     Integer.parseInt(prop.getProperty("https.proxyPort"))),
-                    new UsernamePasswordCredentials(prop.getProperty("https.pr
+                    new UsernamePasswordCredentials(prop.getProperty("https.proxyUser"),
+                    prop.getProperty("https.proxyPassword")));
+
+            HttpHost proxy = new HttpHost(prop.getProperty("https.proxyHost"),
+                    Integer.parseInt(prop.getProperty("https.proxyPort")));
+
+            httpclient.getParams().setP
