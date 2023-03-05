@@ -112,4 +112,15 @@ public class NordnetConnector implements BrokerConnector {
             HttpHost proxy = new HttpHost(prop.getProperty("https.proxyHost"),
                     Integer.parseInt(prop.getProperty("https.proxyPort")));
 
-            httpclient.getParams().setP
+            httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
+        }
+
+        
+        return httpclient;
+    }
+
+
+    private void dumpHeaders(HttpGet url) {
+        CookieStore cookieStore = null;
+        
+        Header [] headers = url.getAll
