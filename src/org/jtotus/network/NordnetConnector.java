@@ -123,4 +123,11 @@ public class NordnetConnector implements BrokerConnector {
     private void dumpHeaders(HttpGet url) {
         CookieStore cookieStore = null;
         
-        Header [] headers = url.getAll
+        Header [] headers = url.getAllHeaders();
+        for (int i = 0;i < headers.length; i++ ) {
+            Header tmp = headers[i];
+            System.out.printf("Headers Name: %s Value:%s\n", tmp.getName(), tmp.getValue());
+        }
+
+        if (httpclient != null)
+            cookieStore = h
