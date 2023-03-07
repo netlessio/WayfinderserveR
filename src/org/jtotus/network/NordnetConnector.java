@@ -130,4 +130,9 @@ public class NordnetConnector implements BrokerConnector {
         }
 
         if (httpclient != null)
-            cookieStore = h
+            cookieStore = httpclient.getCookieStore();
+        if (cookieStore != null) {
+        List<Cookie> listOfCookies = cookieStore.getCookies();
+            for (Cookie me : listOfCookies) {
+                System.out.printf("Cookie dump: %s version:%d!\n", me.getName(), me.getVersion());
+                
