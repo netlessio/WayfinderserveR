@@ -144,4 +144,7 @@ public class NordnetConnector implements BrokerConnector {
     }
 
     
-    public
+    public HttpGet getMethod(String url) {
+        HttpGet httpget = new HttpGet(url);
+//        httpget.addHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+//        httpget.setHeader("Content-Type","te
