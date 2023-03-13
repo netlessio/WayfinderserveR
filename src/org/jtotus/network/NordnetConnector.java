@@ -164,4 +164,12 @@ public class NordnetConnector implements BrokerConnector {
     
     public String getPage(String pattern, Object... arg) {
         //System.out.printf("Fetching-->:%s\n", String.format(pattern, arg));
-        return this.fetchPage(this.ge
+        return this.fetchPage(this.getMethod(String.format(pattern, arg)));
+    }
+
+
+    public String fetchPage(HttpUriRequest url) {
+
+        System.out.printf("fetching: %s:%s?%s [%s:%s:%s] %s\n",
+                          url.getURI().getHost(),
+                          url.getURI().getRawP
