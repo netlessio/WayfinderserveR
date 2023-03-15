@@ -172,4 +172,8 @@ public class NordnetConnector implements BrokerConnector {
 
         System.out.printf("fetching: %s:%s?%s [%s:%s:%s] %s\n",
                           url.getURI().getHost(),
-                          url.getURI().getRawP
+                          url.getURI().getRawPath(),
+                          url.getURI().getQuery(),
+                          url.getURI().getRawFragment(),
+                          url.getURI().getRawSchemeSpecificPart(),
+                          url.getURI().getRawUserInfo(), url.getPa
