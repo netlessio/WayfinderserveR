@@ -185,4 +185,9 @@ public class NordnetConnector implements BrokerConnector {
             HttpEntity entity = response.getEntity();
             //Fixme: encoding!!!
             
-            return Enti
+            return EntityUtils.toString(entity, "UTF-8");
+
+//            StringBuilder respond = new StringBuilder();
+//            InputStream instream = entity.getContent();
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(instream, Charset.forName("UTF-8")));
+//
