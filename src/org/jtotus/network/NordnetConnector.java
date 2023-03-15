@@ -176,4 +176,13 @@ public class NordnetConnector implements BrokerConnector {
                           url.getURI().getQuery(),
                           url.getURI().getRawFragment(),
                           url.getURI().getRawSchemeSpecificPart(),
-                          url.getURI().getRawUserInfo(), url.getPa
+                          url.getURI().getRawUserInfo(), url.getParams().toString());
+
+        HttpResponse response = null;
+
+        try {
+            response = this.getClient().execute(url);
+            HttpEntity entity = response.getEntity();
+            //Fixme: encoding!!!
+            
+            return Enti
