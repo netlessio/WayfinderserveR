@@ -204,4 +204,8 @@ public class NordnetConnector implements BrokerConnector {
 //            return respond.toString();
 
         } catch (IOException ex) {
-     
+            //Logger.getLogger(NordnetConnector.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.printf("Connection failure ... : %s \n", ex.getMessage());
+            ex.printStackTrace();
+            return null;
+ 
