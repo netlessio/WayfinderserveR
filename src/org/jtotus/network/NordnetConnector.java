@@ -196,4 +196,12 @@ public class NordnetConnector implements BrokerConnector {
 //            String line = null;
 //
 //
-//        
+//            while ((line = reader.readLine()) != null) {
+//                respond.append(line);
+//                //System.out.printf("got:%s\n", line);
+//            }
+//
+//            return respond.toString();
+
+        } catch (IOException ex) {
+     
