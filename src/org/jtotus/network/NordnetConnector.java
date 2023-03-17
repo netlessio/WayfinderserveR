@@ -191,3 +191,9 @@ public class NordnetConnector implements BrokerConnector {
 //            InputStream instream = entity.getContent();
 //            BufferedReader reader = new BufferedReader(new InputStreamReader(instream, Charset.forName("UTF-8")));
 //
+//            // do something useful with the response
+//            System.out.printf("done:%s : %s content type:%s\n", url, response.getStatusLine().toString(), entity.getContentType());
+//            String line = null;
+//
+//
+//        
