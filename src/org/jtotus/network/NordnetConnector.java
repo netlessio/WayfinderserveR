@@ -208,4 +208,13 @@ public class NordnetConnector implements BrokerConnector {
             System.err.printf("Connection failure ... : %s \n", ex.getMessage());
             ex.printStackTrace();
             return null;
- 
+        }
+    }
+
+    
+    void dumpObjects(Collection<Object> collection) {
+        Iterator<Object> iter = collection.iterator();
+
+        while (iter.hasNext()) {
+            Object obj = iter.next();
+            System.out.printf("Object: %s \n", obj.toString());
