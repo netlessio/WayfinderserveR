@@ -218,3 +218,12 @@ public class NordnetConnector implements BrokerConnector {
         while (iter.hasNext()) {
             Object obj = iter.next();
             System.out.printf("Object: %s \n", obj.toString());
+        }
+    }
+
+    
+    public String authenticate(String url,
+                               String loginToken,
+                               String login,
+                               String passToken,
+                               String encrypted
