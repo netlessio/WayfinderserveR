@@ -226,4 +226,10 @@ public class NordnetConnector implements BrokerConnector {
                                String loginToken,
                                String login,
                                String passToken,
-                               String encrypted
+                               String encryptedPassword) {
+
+        try {
+            HttpPost httpPost = new HttpPost(url);
+
+            httpPost.addHeader("User-Agent", "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.15) Gecko/20110303 Ubuntu/10.04 (lucid) Firefox/3.6.15");
+//            httpPost.addHeader("Referer"
