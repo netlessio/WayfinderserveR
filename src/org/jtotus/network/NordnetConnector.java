@@ -236,4 +236,10 @@ public class NordnetConnector implements BrokerConnector {
             
             httpPost.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
             httpPost.addHeader("Accept-Language", "en-us,en;q=0.5");
-            httpPost.addHeader("Keep-Alive", "11
+            httpPost.addHeader("Keep-Alive", "115");
+
+            BasicClientCookie cookie1 = new BasicClientCookie("s_cc","true");
+	    BasicClientCookie cookie2 = new BasicClientCookie("s_sq","%5B%5BB%5D%5D");
+
+            cookie1.setDomain("www.nordnet.fi");
+            cookie2.setDomain
