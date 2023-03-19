@@ -242,4 +242,11 @@ public class NordnetConnector implements BrokerConnector {
 	    BasicClientCookie cookie2 = new BasicClientCookie("s_sq","%5B%5BB%5D%5D");
 
             cookie1.setDomain("www.nordnet.fi");
-            cookie2.setDomain
+            cookie2.setDomain("www.nordnet.fi");
+
+            httpclient.getCookieStore().addCookie(cookie1);
+            httpclient.getCookieStore().addCookie(cookie2);
+
+            
+            
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValu
