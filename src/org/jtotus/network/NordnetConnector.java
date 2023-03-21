@@ -252,4 +252,8 @@ public class NordnetConnector implements BrokerConnector {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("checksum", ""));
             nameValuePairs.add(new BasicNameValuePair("referer", "" /* URLEncoder.encode("/mux/login/startFI.html", "utf-8")*/));
-            
+            nameValuePairs.add(new BasicNameValuePair("encryption", "1"));
+
+            nameValuePairs.add(new BasicNameValuePair(loginToken, login));
+
+            nameValuePairs.add(new BasicNameValuePair(passToken, encryptedPassword /*URLEncoder.encode(encr
