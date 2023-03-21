@@ -256,4 +256,7 @@ public class NordnetConnector implements BrokerConnector {
 
             nameValuePairs.add(new BasicNameValuePair(loginToken, login));
 
-            nameValuePairs.add(new BasicNameValuePair(passToken, encryptedPassword /*URLEncoder.encode(encr
+            nameValuePairs.add(new BasicNameValuePair(passToken, encryptedPassword /*URLEncoder.encode(encryptedPassword, "utf-8")*/));
+
+            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
+//            System.out.printf("Login:(%s)%s (%s)Pass:%s\n", loginToken, login, passToken, URLEncoder.encode(encrypt
