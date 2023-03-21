@@ -249,4 +249,7 @@ public class NordnetConnector implements BrokerConnector {
 
             
             
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValu
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("checksum", ""));
+            nameValuePairs.add(new BasicNameValuePair("referer", "" /* URLEncoder.encode("/mux/login/startFI.html", "utf-8")*/));
+            
