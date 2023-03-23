@@ -273,4 +273,10 @@ public class NordnetConnector implements BrokerConnector {
     }
 
 
-    p
+    public void close() {
+        if (httpclient != null) {
+            httpclient.getConnectionManager().closeExpiredConnections();
+        }
+    }
+    
+}
