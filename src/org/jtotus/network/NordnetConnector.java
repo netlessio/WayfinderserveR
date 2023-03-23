@@ -259,4 +259,18 @@ public class NordnetConnector implements BrokerConnector {
             nameValuePairs.add(new BasicNameValuePair(passToken, encryptedPassword /*URLEncoder.encode(encryptedPassword, "utf-8")*/));
 
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
-//            System.out.printf("Login:(%s)%s (%s)Pass:%s\n", loginToken, login, passToken, URLEncoder.encode(encrypt
+//            System.out.printf("Login:(%s)%s (%s)Pass:%s\n", loginToken, login, passToken, URLEncoder.encode(encryptedPassword, "utf-8"));
+            
+
+
+            return this.fetchPage(httpPost);
+
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(NordnetConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+
+    p
