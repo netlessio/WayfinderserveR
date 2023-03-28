@@ -21,4 +21,18 @@ package org.jtotus.network;
 import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.Map;
-import java.util
+import java.util.Date;
+import org.joda.time.DateTime;
+import org.jtotus.common.Helper;
+import org.jtotus.common.StockNames;
+import org.jtotus.database.DataFetcher;
+
+
+
+
+/**
+ *
+ * @author Evgeni Kappinen
+ */
+public class StockType implements Iterator{
+    private String s
