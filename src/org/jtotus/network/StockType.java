@@ -35,4 +35,12 @@ import org.jtotus.database.DataFetcher;
  * @author Evgeni Kappinen
  */
 public class StockType implements Iterator{
-    private String s
+    private String stockName=null;
+    private StockNames stocks = new StockNames();
+    private Iterator mapIter = null;
+    private final DataFetcher fetcher = new DataFetcher();
+    private Helper help=Helper.getInstance();
+
+
+    public StockType() {
+        mapIter = st
