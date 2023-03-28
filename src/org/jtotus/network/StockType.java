@@ -43,4 +43,17 @@ public class StockType implements Iterator{
 
 
     public StockType() {
-        mapIter = st
+        mapIter = stocks.iterator();
+    }
+    
+    public StockType(String name) {
+        stockName = name;
+        mapIter = stocks.iterator();
+    }
+
+    public boolean hasNext() {
+        return mapIter.hasNext();
+    }
+
+    public Object next() {
+    
