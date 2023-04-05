@@ -56,4 +56,16 @@ public class StockType implements Iterator{
     }
 
     public Object next() {
-    
+        Map.Entry entry = (Map.Entry)mapIter.next();
+        return (String)entry.getValue();
+        
+    }
+
+    public String nextValue() {
+        Map.Entry entry = (Map.Entry)mapIter.next();
+        return (String)entry.getValue();
+
+    }
+
+   public String nextKey() {
+ 
