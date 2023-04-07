@@ -94,4 +94,9 @@ public class StockType implements Iterator{
         stockName = name;
     }
 
-    public B
+    public BigDecimal fetchCurrentClosingPrice() {
+        DateTime cal = new DateTime();
+        BigDecimal retValue = null;
+        help.debug("StockType", "Fetching:%s: Time:" + cal.toDate() + "\n" , stockName);
+
+        while((retValue = fetcher.fetchData(stockName, cal, "CLOSE")) 
