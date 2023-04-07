@@ -68,4 +68,15 @@ public class StockType implements Iterator{
     }
 
    public String nextKey() {
- 
+        Map.Entry entry = (Map.Entry)mapIter.next();
+        return (String)entry.getKey();
+
+    }
+
+    public void remove() {
+        mapIter.remove();
+    }
+
+
+    public String getHexName(String name) {
+        return stocks.getHexName(name);
