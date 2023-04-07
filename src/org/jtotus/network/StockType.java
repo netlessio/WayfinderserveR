@@ -99,4 +99,14 @@ public class StockType implements Iterator{
         BigDecimal retValue = null;
         help.debug("StockType", "Fetching:%s: Time:" + cal.toDate() + "\n" , stockName);
 
-        while((retValue = fetcher.fetchData(stockName, cal, "CLOSE")) 
+        while((retValue = fetcher.fetchData(stockName, cal, "CLOSE")) == null) {
+            //TODO:check end
+            cal = cal.minusDays(1);
+        }
+
+        return retValue;
+    }
+
+    public BigDecimal fetchClosingPrice(DateTime calendar) {
+
+        help.debug("StockType", "Fetching:%s: Time:%s\n", stockName, calen
