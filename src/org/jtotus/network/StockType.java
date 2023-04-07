@@ -80,3 +80,18 @@ public class StockType implements Iterator{
 
     public String getHexName(String name) {
         return stocks.getHexName(name);
+    }
+
+    public String getHexName() {
+        return stocks.getHexName(stockName);
+    }
+
+    public String getStockName() {
+        return stockName;
+    }
+
+    public void setStockName(String name) {
+        stockName = name;
+    }
+
+    public B
