@@ -109,4 +109,15 @@ public class StockType implements Iterator{
 
     public BigDecimal fetchClosingPrice(DateTime calendar) {
 
-        help.debug("StockType", "Fetching:%s: Time:%s\n", stockName, calen
+        help.debug("StockType", "Fetching:%s: Time:%s\n", stockName, calendar.toString());
+
+        return fetcher.fetchData(stockName, calendar, "CLOSE");
+    }
+
+    public BigDecimal fetchClosingPrice(Date time){
+
+        if (time==null) {
+            return null;
+        }
+        
+        DateTime cal = new DateTime(time);
