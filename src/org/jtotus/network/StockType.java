@@ -121,3 +121,10 @@ public class StockType implements Iterator{
         }
         
         DateTime cal = new DateTime(time);
+
+        help.debug("StockType", "Fetching:%s: Time:" + time + "\n" , stockName);
+
+        return fetcher.fetchData(stockName, cal, "CLOSE");
+    }
+
+    public double []fetchClosingPricePeriod(final String stockName, final DateTime startDate, f
