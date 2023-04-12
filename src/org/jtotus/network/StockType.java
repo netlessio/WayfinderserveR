@@ -134,4 +134,9 @@ public class StockType implements Iterator{
     public BigDecimal fetchPastDayClosingPrice(int count){
         BigDecimal tmp = null;
 
-        DateTime cal = new DateTime().minusDays(co
+        DateTime cal = new DateTime().minusDays(count);
+        tmp = fetcher.fetchData(stockName, cal, "CLOSE");
+        return tmp;
+    }
+
+}
