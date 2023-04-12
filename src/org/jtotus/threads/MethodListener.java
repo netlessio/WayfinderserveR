@@ -46,3 +46,6 @@ public class MethodListener implements InterfaceMethodListner {
         results.printToConsole();
         MethodResultsPrinter printer = engine.getResultsPrinter();
         printer.drawResults(results);
+
+    }
+}
