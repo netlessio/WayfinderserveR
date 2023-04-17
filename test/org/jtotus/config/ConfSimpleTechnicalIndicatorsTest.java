@@ -24,4 +24,11 @@ public class ConfSimpleTechnicalIndicatorsTest {
     public static void setUpClass() throws Exception {
     }
 
-    @AfterCla
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Test
+    public void testSomeMethod() {
+        double cor = SimpleTechnicalIndicators.correlation(new double[] {0,1,2,3}, new double[] {0,1,2,3});
+        Asse
