@@ -31,4 +31,8 @@ public class ConfSimpleTechnicalIndicatorsTest {
     @Test
     public void testSomeMethod() {
         double cor = SimpleTechnicalIndicators.correlation(new double[] {0,1,2,3}, new double[] {0,1,2,3});
-        Asse
+        Assert.assertFalse(cor != 1.0);
+
+    }
+
+}
